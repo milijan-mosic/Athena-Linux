@@ -1,0 +1,19 @@
+Top priority issues are on top...
+
+> Format SSD to hold 0 partitions before doing my partition scheme in invoke.sh
+> Encryption with VeraCrypt (also, prompt user for a passphrase).
+> Setup LVM.
+> Make your own ISO with packages and mOS git into it.
+> Borg backup as systemd service.
+> User can choose how big SWAP partiton should be.
+> User can choose timezone.
+> Change hostname in two files (also, prompt user for a hostname).
+> Change grub.cfg timeout from '5' to '0.1' in one line (or more lines).
+> Change volume levels on all devices to '0db' via one line (or more lines).
+> Dotfiles deployer; It puts dotfiles in proper places so a user can have customized programs' settings and looks.
+> All packages must be FLOSS.
+> Check many other OS's and make a good, minimalist package list. Good experience out of the box.
+
+? Is there a way to implant EFI and BIOS Arch Linux on same USB
+
+Now: Configure SDDM startup manager
