@@ -270,11 +270,13 @@ fi
 # INSTALLATION #
 ################
 
-internet="broadcom-wl curl firefox flashplugin icedtea-web networkmanager nftables openssh reflector transmission-gtk webkit2gtk wget youtube-dl network-manager-applet wireless_tools wpa_supplicant"
-multimedia=" alsa alsa-utils android-file-transfer ciano ffmpeg kamoso kdeconnect kphotoalbum mpc mpd strawberry pavucontrol spectacle sxiv vlc"
-utilities=" acpi alacritty alsa-lib alsa-plugins ark bleachbit blueberry blueman bluez-tools bluez-utils cdrdao cdrtools cmake cups cups-pdf dbus dialog dmidecode doublecmd-gtk2 dvd+rw-tools ttf-font-awesome fuseiso gnu-free-fonts gparted grub gxkb gzip hardinfo htop iw k3b kcron libtool libxft libxinerama linux-hardened mtpfs nautilus neofetch p7zip pacman-contrib picom psensor pulseaudio-bluetooth python python-pipenv python-pyalsa python3 redshift testdisk udiskie unrar unzip vim xorg-server xorg-xinit zip mesa"
-text=" bookworm calibre calligra gedit gedit-plugins libreoffice-still man-db man-pages mcomix paperwork texinfo zathura zathura-pdf-mupdf"
-security=" speedcrunch sudo korganizer kronometer livewallpaper pulseaudio pulseaudio-alsa jack jack2"
+apps="arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura speedcrunch korganizer kronometer gnome-disk-utility"
+internet=" broadcom-wl flashplugin icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
+storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
+utilities=" blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened  neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
+text=" paperwork gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
+extra=" sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa"
+misc=" alsa alsa-utils ffmpeg mpc mpd jack jack2 acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 
 efi_package=" efibootmgr"
@@ -291,7 +293,7 @@ gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"       # 32bit: lib32-a
 gpu_nvidia=" nvidia nvidia-utils"                               # 32bit: lib32-nvidia-utils
                                                                 # 32bit: lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama lib32-mesa
 
-mos="$internet$multimedia$utilities$text$security$codecs$essential$desktopenv"
+mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
 echo $mos >> packages.txt
 
 if [ $cpu_choice == 1 ]

@@ -69,6 +69,7 @@ rm -rf /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
 
 bash /Atina/scrollbook/32bit.sh
+sudo pacman -Rns git --noconfirm
 
 ###########################
 # SETTING UP A BOOTLOADER #
