@@ -22,7 +22,7 @@
         passwd username
 
 #### If you want, you can setup a set of folders
-	bash ~/mOS/scrollbook/deploy-folders.sh
+        bash ~/mOS/scrollbook/deploy-folders.sh
 
 #### Change your timezone (default is Europe/Belgrade)
         ln -sf /usr/share/zoneinfo/X/Y /etc/localtime
