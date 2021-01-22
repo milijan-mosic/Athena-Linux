@@ -4,12 +4,13 @@
 # PREPARATION #
 ###############
 
-array=('cat /note/file.txt')
-ssd=array[1]
-efi=array[2]
-rootpwd=array[3]
-username=array[4]
-userpwd=array[5]
+cd /note
+ssd=cat ssd.txt
+efi=cat efi.txt
+rootpwd=cat rootpwd.txt
+username=cat username.txt
+userpwd=cat userpwd.txt
+cd /
 
 set -o pipefail
 

@@ -5,7 +5,6 @@
 ###############
 
 flag=1
-choice=1
 
 ##############
 # USER INPUT #
@@ -13,15 +12,17 @@ choice=1
 
 while [ $flag == 1 ]
 do
+        choice=1
+
         while [ $choice == 1 ]
         do
                 lsblk
-                echo " " ; echo "Where do you want to install mOS?" ; echo " "
+                echo " " ; echo "Where do you want to install Atina?" ; echo " "
                 read ssd
 
                 lenght=${#ssd}
 
-                if [ $lenght != 8 ]
+                if [ $lenght != 8 ] || [ -z ssd ]
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
@@ -34,11 +35,11 @@ do
         while [ $choice == 1 ]
         do
                 echo " " ; echo "Type in password for root:" ; echo " "
-                read rootpwd
+                read -s rootpwd
 
                 lenght=${#rootpwd}
 
-                if [ $lenght < 5 ]
+                if [ $lenght -lt 5 ] || [ -z rootpwd ]
                 then
                         echo " " ; echo "Password is too small... try again." ; echo " "
                 else
@@ -55,7 +56,7 @@ do
 
                 lenght=${#username}
 
-                if [ $lenght < 3 ]
+                if [ $lenght -lt 3 ] || [ -z rootpwd ]
                 then
                         echo " " ; echo "Username is too small... try again." ; echo " "
                 else
@@ -123,6 +124,7 @@ do
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
                         choice=0
+                        clear
                 fi
         done
 done
@@ -197,70 +199,70 @@ fi
 # FORMATTING DISK #
 ###################
 
-1="1"
-2="2"
-3="3"
-4="4"
-5="5"
+one="1"
+two="2"
+three="3"
+four="4"
+five="5"
 
 if [ $efi == 1 ]
 then
-        temp="$ssd$1"
+        temp="$ssd$one"
         mkfs.fat -F32 $temp
         temp=""
 
-        temp="$ssd$3"
+        temp="$ssd$three"
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$4"
+        temp="$ssd$four"
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$2"
+        temp="$ssd$two"
         mkswap $temp
         swapon $temp
         temp=""
 
-        temp="$ssd$3"
+        temp="$ssd$three"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
 
-        temp="$ssd$1"
+        temp="$ssd$one"
         mount $temp /mnt/boot
         temp=""
 
-        temp="$ssd$4"
+        temp="$ssd$four"
         mount $temp /mnt/home
 else
-        temp="$ssd$2"
+        temp="$ssd$two"
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$4"
+        temp="$ssd$four"
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$5"
+        temp="$ssd$five"
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$3"
+        temp="$ssd$three"
         mkswap $temp
         swapon $temp
         temp=""
 
-        temp="$ssd$4"
+        temp="$ssd$four"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
 
-        temp="$ssd$1"
+        temp="$ssd$one"
         mount $temp /mnt/boot
         temp=""
 
-        temp="$ssd$5"
+        temp="$ssd$five"
         mount $temp /mnt/home
 fi
 
@@ -275,7 +277,7 @@ text=" bookworm calibre calligra gedit gedit-plugins libreoffice-still man-db ma
 security=" speedcrunch sudo korganizer kronometer livewallpaper pulseaudio pulseaudio-alsa jack jack2"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 
-efi=" efibootmgr"
+efi_package=" efibootmgr"
 
 essential=" base base-devel linux linux-firmware"
 desktopenv=" lxqt breeze-icons sddm" # OR xfce4; config sddm manager...
@@ -290,52 +292,61 @@ gpu_nvidia=" nvidia nvidia-utils"                               # 32bit: lib32-n
                                                                 # 32bit: lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama lib32-mesa
 
 mos="$internet$multimedia$utilities$text$security$codecs$essential$desktopenv"
-
-if [ $efi == 1 ]
-then
-        mos="$efi"
-else
-        something=1
-fi
+echo $mos >> packages.txt
 
 if [ $cpu_choice == 1 ]
 then
-        mos="$cpu_intel"
+        echo $cpu_intel >> packages.txt
 else
-        mos="$cpu_amd"
+        echo $cpu_amd >> packages.txt
 fi
 
 if [ $gpu_choice == 0 ]
 then
-        mos="$gpu_amd"
+        echo $gpu_amd >> packages.txt
 else
         something=1
 fi
 
 if [ $gpu_choice == 1 ]
 then
-        mos="$gpu_intel"
+        echo $gpu_intel >> packages.txt
 else
         something=1
 fi
 
 if [ $gpu_choice == 2 ]
 then
-        mos="$gpu_nvidia"
+        echo $gpu_nvidia >> packages.txt
 else
         something=1
 fi
 
+if [ $efi == 1 ]
+then
+        echo $efi_package >> packages.txt
+else
+        something=1
+fi
+
+mos=cat packages.txt
+
 pacstrap /mnt $mos
+
+rm packages.txt
 
 cd /mnt
 git clone https://github.com/windwalk-bushido/Atina.git
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-array=(0 $ssd $efi $rootpwd $username $userpwd) # For me, everything starts with '1'...
 cd /mnt ; mkdir note
-cd /mnt/note ; touch file.txt
-echo "$array" > file.txt
+cd /mnt/note
+echo $ssd > ssd.txt
+echo $efi > efi.txt
+echo $rootpwd > rootpwd.txt
+echo $userpwd > userpwd.txt
+echo $username > username.txt
+cd /mnt
 
 arch-chroot /mnt
