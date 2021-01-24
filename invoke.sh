@@ -69,7 +69,7 @@ do
 
         while [ $choice == 1 ]
         do
-                ls /sys/firmware/efi/efivars
+                echo " " ; ls /sys/firmware/efi/efivars
                 echo " " ; echo "Is this an EFI or BIOS motherboard? ('0' for BIOS, '1' for EFI) (If no directory is found, it's BIOS)" ; echo " "
                 read efi
 
@@ -212,49 +212,53 @@ then
         mkfs.fat -F32 $temp
         temp=""
 
-        temp="$ssd$three"
-        mkfs.ext4 $temp
-        temp=""
-
-        temp="$ssd$four"
-        mkfs.ext4 $temp
-        temp=""
-
         temp="$ssd$two"
+        mkfs.ext4 $temp
+        temp=""
+
+        temp="$ssd$three"
         mkswap $temp
         swapon $temp
         temp=""
 
-        temp="$ssd$three"
+        temp="$ssd$four"
+        mkfs.ext4 $temp
+        temp=""
+
+        temp="$ssd$five"
+        mkfs.ext4 $temp
+        temp=""
+
+        temp="$ssd$four"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
 
-        temp="$ssd$one"
+        temp="$ssd$two"
         mount $temp /mnt/boot
         temp=""
 
-        temp="$ssd$four"
+        temp="$ssd$five"
         mount $temp /mnt/home
 else
+        temp="$ssd$one"
+        mkfs.ext4 $temp
+        temp=""
+
         temp="$ssd$two"
-        mkfs.ext4 $temp
-        temp=""
-
-        temp="$ssd$four"
-        mkfs.ext4 $temp
-        temp=""
-
-        temp="$ssd$five"
-        mkfs.ext4 $temp
-        temp=""
-
-        temp="$ssd$three"
         mkswap $temp
         swapon $temp
         temp=""
 
+        temp="$ssd$three"
+        mkfs.ext4 $temp
+        temp=""
+
         temp="$ssd$four"
+        mkfs.ext4 $temp
+        temp=""
+
+        temp="$ssd$three"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
@@ -263,7 +267,7 @@ else
         mount $temp /mnt/boot
         temp=""
 
-        temp="$ssd$five"
+        temp="$ssd$four"
         mount $temp /mnt/home
 fi
 
@@ -288,11 +292,9 @@ desktopenv=" lxqt breeze-icons sddm" # OR xfce4; config sddm manager...
 cpu_intel=" intel-ucode"
 cpu_amd=" amd-ucode"
 
-                                                                # DRIVERS
-gpu_intel=" xf86-video-intel vulkan-intel"                      # 32bit: lib32-vulkan-intel
-gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"       # 32bit: lib32-amdvlk lib32-vulkan-radeon
-gpu_nvidia=" nvidia nvidia-utils"                               # 32bit: lib32-nvidia-utils
-                                                                # 32bit: lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama lib32-mesa
+gpu_intel=" xf86-video-intel vulkan-intel"
+gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"
+gpu_nvidia=" nvidia nvidia-utils"
 
 mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
 echo $mos >> Atina/packages.txt
