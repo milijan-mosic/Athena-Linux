@@ -8,5 +8,4 @@ mkdir Documents
 mkdir Pictures
 mkdir Downloads
 mkdir Desktop
-# git clone https://github.com/windwalk-bushido/mOS.git
-echo " " ; echo "DONE!" ; echo " "
+echo "DONE!" ; echo " "
