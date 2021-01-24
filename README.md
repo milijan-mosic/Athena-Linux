@@ -4,6 +4,8 @@
         Filesystem: ext4. Currently without Encryption nor LVM.
 
         Desktop Environment: LXQT, because it's lightweight DE.
+        
+        This rice is designed with two things in mind: No Windows/MacOS apps + No dual boot.
 
         It installs some graphics drivers depending on choice you make in installer but it might won't work for all graphics cards. Make sure you're running proper drivers. You have to remove bad ones and install good ones manually. (You can find installed drivers in /scrollbook/32bit.sh)
 
@@ -33,7 +35,8 @@
 
 ## Change bootloader menu screentime (timeout from '5' to '0.1' seconds)
         vim /boot/grub/grub.cfg
-
+        
+        // Since I really like fast boot times...
 ## Finish installation
         exit
         umount -R /mnt
