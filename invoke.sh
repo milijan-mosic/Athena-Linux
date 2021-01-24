@@ -143,7 +143,7 @@ timedatectl set-ntp true
 # PARTITIONING #
 ################
 
-if [ $efi == 1 ]
+if [ $efi == 0 ]
 then
         boot_n="1"
         boot_size="+512M"
