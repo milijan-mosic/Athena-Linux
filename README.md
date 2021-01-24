@@ -1,8 +1,8 @@
 ## After booting from USB (works for both EFI and BIOS motherboards)
-        Make sure you are connected to internet (via RJ-45 cable preferred)
+        Make sure you are connected to internet (via LAN cable preferred)
 
         sudo pacman -Syy git --noconfirm
-        git clone https://github.com/windwalk-bushido/mOS.git
+        git clone https://github.com/windwalk-bushido/Atina.git
         bash /mOS/invoke.sh
 
 ## After arch-chroot /mnt (it will stop, you'll see)
