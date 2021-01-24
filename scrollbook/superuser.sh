@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S vi man-db man-pages texinfo curl openssh wget gxkb kcron testdisk livewallpaper ardour code atom spotify qtractor audacity flowblade gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper --noconfirm
+sudo pacman -S git vi man-db man-pages texinfo curl openssh wget gxkb kcron testdisk livewallpaper ardour code atom spotify qtractor audacity flowblade gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper --noconfirm
 
 cd ~/ ; mkdir Config
 cd ~/Config

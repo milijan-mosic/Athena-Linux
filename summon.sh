@@ -68,7 +68,6 @@ cp /Atina/files/pacman.conf /etc/
 
 pacman -Sy
 bash /Atina/scrollbook/32bit.sh
-sudo pacman -Rns git --noconfirm
 
 ###########################
 # SETTING UP A BOOTLOADER #
@@ -95,3 +94,4 @@ rm -rf /note/
 
 cd /home/$username/
 git clone https://github.com/windwalk-bushido/Atina.git ; cd /
+sudo pacman -Rns git --noconfirm
