@@ -1,7 +1,7 @@
 # Write down commands to type or things to do, so you can check if everything is OK post-install. #
 >>>
 
-Try to login as root and as new user... the password should be the same
+Try to login as root and as new user... the password should be the same.
 
 lsblk
 Check the partition scheme.
@@ -13,13 +13,14 @@ programlist
 Make sure everything is installed properly.
 
 cd /etc/
-Find:
+Check:
         fstab
         locale.conf
         locale.gen
         hostname
         hosts
-Check pacman.conf
+        pacman.conf
+        sudoers
 
 timedatectl status
 Check if timezone and the clock are right.
@@ -27,7 +28,7 @@ Check if timezone and the clock are right.
 systemctl status NetworkManager
 systemctl status nftables
 systemctl status paccache
-It should be green (and thus enabled)
+It should be green (and thus enabled).
 
 cd ~/
 vim .bashrc

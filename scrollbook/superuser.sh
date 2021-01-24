@@ -11,7 +11,7 @@ makepkg -si
 cd ~/
 git clone https://github.com/windwalk-bushido/AIFAL.git
 
-yay -S ttf-iosevka balena-etcher gedit-latex cherrytree labyrinth neroaac-bin openjpeg davs2 daala-git aften peaclock balena-etcher --noconfirm
+yay -S ttf-iosevka gedit-latex cherrytree labyrinth openjpeg davs2 daala-git aften peaclock --noconfirm
 
 yay -Scc --noconfirm
 sudo pacman -Scc --noconfirm
