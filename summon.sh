@@ -4,11 +4,11 @@
 # PREPARATION #
 ###############
 
-ssd=cat /note/ssd.txt
-efi=cat /note/efi.txt
-rootpwd=cat /note/rootpwd.txt
-username=cat /note/username.txt
-userpwd=cat /note/userpwd.txt
+ssd="/dev/sda"
+efi=0
+rootpwd=11111
+username="windwalk"
+userpwd=$rootpwd
 
 set -o pipefail
 

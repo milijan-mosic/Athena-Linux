@@ -1,7 +1,7 @@
 ### Notes:
         Those scripts are installing GPT partition table scheme.
 
-        ext4 is format of partitions. Currently without Encryption nor LVM.
+        Filesystem: ext4. Currently without Encryption nor LVM.
 
         Desktop Environment: LXQT, because it's lightweight DE.
 
@@ -18,6 +18,8 @@
         You will have awesome list of apps available; out of the box experience. Rice it on your own liking. I've done this setup so my friends and family can have basic OS for everyday use.
 
         This repo will continue down the path of creating Serbian Linux distro. Fork it if you want to create something else :)
+
+        Want to help out? Check out "to do.txt" file.
 
 ## After booting from USB (works for both EFI and BIOS motherboards)
         Make sure you are connected to internet (via LAN cable preferred)

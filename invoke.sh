@@ -144,7 +144,7 @@ timedatectl set-ntp true
 # PARTITIONING #
 ################
 
-if [ $efi == 0 ]
+if [ $efi == 1 ]
 then
         boot_n="1"
         boot_size="+512M"
@@ -172,25 +172,20 @@ else
         bios_boot_size="+1M"
         bios_boot_type="EF02"
 
-        boot_n="2"
-        boot_size="+512M"
-        boot_type="EF00"
-
-        swap_n="3"
+        swap_n="2"
         swap_size="+8192M"
         swap_type="8200"
 
-        root_n="4"
+        root_n="3"
         root_size="+15G" # For testing purposes, this will be 15 GBs.
         root_type="8304"
 
-        home_n="5"
+        home_n="4"
         home_type="8302"
 
         sgdisk -p $ssd
         sgdisk -o $ssd
         sgdisk -n $bios_boot_n:0:$bios_boot_size -t $bios_boot_n:$bios_boot_type -g $ssd
-        sgdisk -n $boot_n:0G:$boot_size -t $boot_n:$boot_type -g $ssd
         sgdisk -n $swap_n:0G:$swap_size -t $swap_n:$swap_type -g $ssd
         sgdisk -n $root_n:0G:$root_size -t $root_n:$root_type -g $ssd
         sgdisk -n $home_n:0G -t $home_n:$home_type -g $ssd
@@ -213,38 +208,30 @@ then
         temp=""
 
         temp="$ssd$two"
-        mkfs.ext4 $temp
-        temp=""
-
-        temp="$ssd$three"
         mkswap $temp
         swapon $temp
         temp=""
 
-        temp="$ssd$four"
-        mkfs.ext4 $temp
-        temp=""
-
-        temp="$ssd$five"
+        temp="$ssd$three"
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$four"
+        mkfs.ext4 $temp
+        temp=""
+
+        temp="$ssd$three"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
 
-        temp="$ssd$two"
+        temp="$ssd$one"
         mount $temp /mnt/boot
         temp=""
 
-        temp="$ssd$five"
+        temp="$ssd$four"
         mount $temp /mnt/home
 else
-        temp="$ssd$one"
-        mkfs.ext4 $temp
-        temp=""
-
         temp="$ssd$two"
         mkswap $temp
         swapon $temp
@@ -260,11 +247,7 @@ else
 
         temp="$ssd$three"
         mount $temp /mnt
-        mkdir /mnt/boot ; mkdir /mnt/home
-        temp=""
-
-        temp="$ssd$one"
-        mount $temp /mnt/boot
+        mkdir /mnt/home
         temp=""
 
         temp="$ssd$four"
