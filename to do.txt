@@ -6,7 +6,6 @@ Top priority issues are on top...
 > Make your own ISO with packages and mOS git into it.
 > Borg backup as systemd service.
 > User can choose how big SWAP partiton should be.
-> User can choose timezone.
 > Change hostname in two files (also, prompt user for a hostname).
 > Change grub.cfg timeout from '5' to '0.1' in one line (or more lines).
 > Change volume levels on all devices to '0db' via one line (or more lines).
@@ -14,6 +13,6 @@ Top priority issues are on top...
 > All packages must be FLOSS.
 > Check many other OS's and make a good, minimalist package list. Good experience out of the box.
 
-? Is there a way to implant EFI and BIOS Arch Linux on same USB
-
-Now: Configure SDDM startup manager
+Now: 
+Configure SDDM startup manager,
+Resolve folder permission issue.

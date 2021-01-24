@@ -4,6 +4,12 @@
 # PREPARATION #
 ###############
 
+# ssd=cat /note/ssd.txt
+# efi=cat /note/efi.txt
+# rootpwd=cat /note/rootpwd.txt
+# userpwd=cat /note/userpwd.txt
+# username=cat /note/username.txt
+
 ssd="/dev/sda"
 efi=0
 rootpwd=11111
@@ -32,8 +38,13 @@ systemctl enable --now paccache.timer
 ######################################
 
 echo -e "$rootpwd\n$rootpwd" | passwd root
-useradd -m -G wheel -G optical -G storage -s /bin/bash $username
+useradd -m -G wheel -s /bin/bash $username
+gpasswd -a $username optical
+gpasswd -a $username storage
 echo -e "$userpwd\n$userpwd" | passwd $username
+
+rm -rf /etc/sudoers
+cp /Atina/files/sudoers /etc/
 
 #####################################
 # SETTING UP LANGUAGES AND KEYBOARD #
@@ -94,4 +105,3 @@ rm -rf /note/
 
 cd /home/$username/
 git clone https://github.com/windwalk-bushido/Atina.git ; cd /
-sudo pacman -Rns git --noconfirm

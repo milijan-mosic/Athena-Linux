@@ -264,7 +264,7 @@ storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gz
 utilities=" git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened  neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
 text=" paperwork gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
 extra=" sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa"
-misc=" alsa alsa-utils ffmpeg mpc mpd jack jack2 acpi alsa-lib alsa-plugins"
+misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 
 efi_package=" efibootmgr"
@@ -337,5 +337,6 @@ echo $username > /mnt/note/username.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 
 chmod ugo+rwx /mnt/note # Change permissions of the whole note directory!
+# CURRENTLY NOT WORKING
 
 arch-chroot /mnt
