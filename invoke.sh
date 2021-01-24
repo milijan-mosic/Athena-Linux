@@ -271,7 +271,7 @@ fi
 ################
 
 apps="arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura speedcrunch korganizer kronometer gnome-disk-utility"
-internet=" broadcom-wl flashplugin icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
+internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened  neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
 text=" paperwork gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
@@ -294,48 +294,48 @@ gpu_nvidia=" nvidia nvidia-utils"                               # 32bit: lib32-n
                                                                 # 32bit: lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama lib32-mesa
 
 mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
-echo $mos >> packages.txt
+echo $mos >> Atina/packages.txt
 
 if [ $cpu_choice == 1 ]
 then
-        echo $cpu_intel >> packages.txt
+        echo $cpu_intel >> Atina/packages.txt
 else
-        echo $cpu_amd >> packages.txt
+        echo $cpu_amd >> Atina/packages.txt
 fi
 
 if [ $gpu_choice == 0 ]
 then
-        echo $gpu_amd >> packages.txt
+        echo $gpu_amd >> Atina/packages.txt
 else
         something=1
 fi
 
 if [ $gpu_choice == 1 ]
 then
-        echo $gpu_intel >> packages.txt
+        echo $gpu_intel >> Atina/packages.txt
 else
         something=1
 fi
 
 if [ $gpu_choice == 2 ]
 then
-        echo $gpu_nvidia >> packages.txt
+        echo $gpu_nvidia >> Atina/packages.txt
 else
         something=1
 fi
 
 if [ $efi == 1 ]
 then
-        echo $efi_package >> packages.txt
+        echo $efi_package >> Atina/packages.txt
 else
         something=1
 fi
 
-mos=cat packages.txt
+mos=cat Atina/packages.txt
 
 pacstrap /mnt $mos
 
-rm packages.txt
+rm Atina/packages.txt
 
 cd /mnt
 git clone https://github.com/windwalk-bushido/Atina.git
