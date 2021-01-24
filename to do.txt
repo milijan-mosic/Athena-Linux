@@ -16,3 +16,6 @@ Top priority upgrades are on top...
 Now: 
 Configure SDDM startup manager,
 Resolve folder permission issue.
+
+Change speedcrunch for a better calc app.
+timedatectl set-ntp true ; not working in script?

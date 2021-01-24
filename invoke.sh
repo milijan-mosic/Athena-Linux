@@ -138,7 +138,7 @@ set -o pipefail
 
 sudo pacman -Syy --noconfirm
 
-timedatectl set-ntp true
+timedatectl set-ntp true        # Not working!
 
 ################
 # PARTITIONING #
@@ -312,11 +312,12 @@ fi
 
 if [ $efi == 1 ]
 then
-        echo $efi_package >> Atina/packages.txt
+        echo $efi_package >> Atina/packages.txt         # Not working!
 else
         something=1
 fi
 
+chmod ugo+rwx Atina/packages.txt
 mos=cat Atina/packages.txt
 
 pacstrap /mnt $mos
@@ -336,7 +337,8 @@ echo $userpwd > /mnt/note/userpwd.txt
 echo $username > /mnt/note/username.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 
-chmod ugo+rwx /mnt/note # Change permissions of the whole note directory!
+chmod ugo+rwx /mnt/note 
+# Change permissions of the whole note directory!
 # CURRENTLY NOT WORKING
 
 arch-chroot /mnt
