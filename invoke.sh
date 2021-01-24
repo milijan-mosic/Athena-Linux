@@ -342,13 +342,11 @@ git clone https://github.com/windwalk-bushido/Atina.git
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cd /mnt ; mkdir note
-cd /mnt/note
-echo $ssd > ssd.txt
-echo $efi > efi.txt
-echo $rootpwd > rootpwd.txt
-echo $userpwd > userpwd.txt
-echo $username > username.txt
-cd /mnt
+mkdir /mnt/note
+echo $ssd > /mnt/note/ssd.txt
+echo $efi > /mnt/note/efi.txt
+echo $rootpwd > /mnt/note/rootpwd.txt
+echo $userpwd > /mnt/note/userpwd.txt
+echo $username > /mnt/note/username.txt
 
 arch-chroot /mnt

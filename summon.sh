@@ -4,13 +4,11 @@
 # PREPARATION #
 ###############
 
-cd /note
-ssd=cat ssd.txt
-efi=cat efi.txt
-rootpwd=cat rootpwd.txt
-username=cat username.txt
-userpwd=cat userpwd.txt
-cd /
+ssd=cat /note/ssd.txt
+efi=cat /note/efi.txt
+rootpwd=cat /note/rootpwd.txt
+username=cat /note/username.txt
+userpwd=cat /note/userpwd.txt
 
 set -o pipefail
 
@@ -68,6 +66,7 @@ mv /home/$username/xinitrc /home/$username/.xinitrc
 rm -rf /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
 
+pacman -Sy
 bash /Atina/scrollbook/32bit.sh
 sudo pacman -Rns git --noconfirm
 
