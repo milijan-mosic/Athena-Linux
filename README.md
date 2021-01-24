@@ -1,6 +1,12 @@
 ### Notes:
-        Those scripts are installing GPT partition table scheme. 
-        
+        Those scripts are installing GPT partition table scheme.
+
+        ext4 is format of partitions. Currently without Encryption nor LVM.
+
+        Desktop Environment: LXQT, because it's lightweight DE.
+
+        It installs some graphics drivers depending on choice you make in installer but it might won't work for all graphics cards. Make sure you're running proper drivers. You have to remove bad ones and install good ones manually. (You can find installed drivers in /scrollbook/32bit.sh)
+
         If you don't want any human interactions between calling out scripts "invoke.sh" and "summon.sh", format SSD/Hard disk before doing anything else. Delete all partitions on it.
                 e.g. ---> fdisk /dev/sda
                 commands: 
