@@ -1,12 +1,12 @@
 ## After booting from USB (works for both EFI and BIOS motherboards)
         Make sure you are connected to internet (via LAN cable preferred)
 
-        sudo pacman -Syy git --noconfirm
+        sudo pacman -Sy git --noconfirm
         git clone https://github.com/windwalk-bushido/Atina.git
-        bash /mOS/invoke.sh
+        bash /Atina/invoke.sh
 
 ## After arch-chroot /mnt (it will stop, you'll see)
-        bash /mOS/summon.sh
+        bash /Atina/summon.sh
 
 ## Change bootloader menu screentime (timeout from '5' to '0.1' seconds)
         vim /boot/grub/grub.cfg
@@ -22,7 +22,7 @@
         passwd username
 
 #### If you want, you can setup a set of folders
-        bash ~/mOS/scrollbook/deploy-folders.sh
+        bash ~/Atina/scrollbook/deploy-folders.sh
 
 #### Change your timezone (default is Europe/Belgrade)
         ln -sf /usr/share/zoneinfo/X/Y /etc/localtime
