@@ -1,3 +1,18 @@
+### Notes:
+        Those scripts are installing GPT partition table scheme. 
+        
+        If you don't want any human interactions between calling out scripts "invoke.sh" and "summon.sh", format SSD/Hard disk before doing anything else. Delete all partitions on it.
+                e.g. ---> fdisk /dev/sda
+                commands: 
+                        p - print partition table,
+                        d - delete partition,
+                        w - write to disk.
+        I'm working on a solution where this will be done automatically too!
+        
+        You will have awesome list of apps available; out of the box experience. Rice it on your own liking. I've done this setup so my friends and family can have basic OS for everyday use.
+
+        This repo will continue down the path of creating Serbian Linux distro. Fork it if you want to create something else :)
+
 ## After booting from USB (works for both EFI and BIOS motherboards)
         Make sure you are connected to internet (via LAN cable preferred)
 
