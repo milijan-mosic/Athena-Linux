@@ -19,3 +19,5 @@ Resolve folder permission issue.
 
 Change speedcrunch for a better calc app.
 timedatectl set-ntp true ; not working in script?
+
+IF: app startup time is still long, consider installing all of them after 'chroot'. Except for essential packages.
