@@ -6,13 +6,14 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias update='bash ~/Atina/scrollbook/uadc.sh'
+alias update='bash ~/.atina/scrollbook/uadc.sh'
 alias wifi='nmtui'
 alias bat='acpi'
 alias h='htop'
 alias size='df -h'
 alias programlist='sudo pacman -Qeq'
-alias audio='bash ~/Atina/scrollbook/ytdl-audio.sh'
-alias video='bash ~/Atina/scrollbook/ytdl-video.sh'
+alias audio='bash ~/.atina/scrollbook/ytdl-audio.sh'
+alias video='bash ~/.atina/scrollbook/ytdl-video.sh'
+alias deploy='bash ~/.atina/scrollbook/deploy-folders.sh'
 
 PS1='[\u@\h \W]\$ '

@@ -34,18 +34,17 @@ systemctl status nftables
 systemctl status paccache
 It should be green (and thus enabled).
 
-cd ~/
 vim .bashrc
 vim .xinitrc
-ls
-        Is there 'Atina' folder?
-        Are there other deployed folders?
+
+deploy
+Are there other deployed folders?
 
 alsamixer
 Check 'Auto-Mute Mode' if it's disabled.
 
 cd / ; ls
-There should be no 'note' folder.
+There should be no 'note' and 'Atina' folder.
 
 cd /boot/grub
 Is there grub.cfg file? 
@@ -53,3 +52,6 @@ Did it booted properly, or at all?
 
 sudo pacman -Qeq | grep xfce4-terminal
 Should return nothing.
+
+cd ~/ ; ls
+Is there sand_dune.jpg file?

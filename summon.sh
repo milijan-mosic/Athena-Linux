@@ -116,8 +116,13 @@ sudo alsactl store
 
 sudo pacman -Rns xfce4-terminal --noconfirm
 sudo pacman -Scc --noconfirm
+
+cd /home/$username/ ; mkdir .atina
+cp -r /Atina/scrollbook/ /home/$username/.atina/
+
+chmod ugo+rwx /Atina/wallpaper/sand_dune.jpg
+cp /Atina/wallpaper/sand_dune.jpg /home/$username/
+chmod ugo+rwx /home/$username/sand_dune.jpg
+
 rm -rf /note/
 rm -rf /Atina/
-
-cd /home/$username/
-git clone https://github.com/windwalk-bushido/Atina.git ; cd /
