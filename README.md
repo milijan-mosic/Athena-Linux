@@ -11,11 +11,12 @@
 
         > My preferred text editor is vim. If you like any other editor, open those files with it. Ignore 'vim' down this readme.md
 
-        > If you don't want any human interactions between running scripts "invoke.sh" and "summon.sh", format SSD/Hard disk before doing anything else. Delete all partitions on it.*
+        > If you don't want any human interactions between running scripts "invoke.sh" and "summon.sh", format SSD/Hard disk before doing anything else. Delete all partitions on it.* Also, make a new GPT table scheme. Then reboot system.
                 e.g. ---> fdisk /dev/sda
                 commands: 
                         p - print partition table scheme,
                         d - delete partition,
+                        g - new GPT scheme,
                         w - write to disk.
         I'm working on a solution where this will be done automatically!
         * It still can ask you for confirming that you want to format certain partitions to ext4... unfortunately. Hit 'Enter' and you're good to go. It's early in the installation process so wait for a while.

@@ -18,6 +18,8 @@ userpwd=$rootpwd
 
 set -o pipefail
 
+timedatectl set-ntp true
+
 #######################
 # SETTING UP TIMEZONE #
 #######################
@@ -32,6 +34,7 @@ timedatectl set-timezone Europe/Belgrade
 systemctl enable --now NetworkManager
 systemctl enable --now nftables.service
 systemctl enable --now paccache.timer
+systemctl enable lightdm
 
 ######################################
 # CREATING USER & CHANGING PASSWORDS #
@@ -77,6 +80,9 @@ mv /home/$username/xinitrc /home/$username/.xinitrc
 rm -rf /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
 
+rm -rf /etc/lightdm/lightdm.conf
+cp /Atina/files/lightdm.conf /etc/lightdm/
+
 pacman -Sy
 bash /Atina/scrollbook/32bit.sh
 
@@ -100,6 +106,7 @@ fi
 sudo amixer -c 0 sset "Auto-Mute Mode" Disabled
 sudo alsactl store
 
+sudo pacman -Rns xfce4-terminal
 sudo pacman -Scc --noconfirm
 rm -rf /note/
 rm -rf /Atina/

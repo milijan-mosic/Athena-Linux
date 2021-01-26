@@ -22,6 +22,10 @@ Check:
         pacman.conf
         sudoers
 
+cd /etc/lightdm/
+Is there lightdm.conf file? 
+Did it displayed startup splash screen?
+
 timedatectl status
 Check if timezone and the clock are right.
 
@@ -35,13 +39,17 @@ vim .bashrc
 vim .xinitrc
 ls
         Is there 'Atina' folder?
-        Are there other folders?
+        Are there other deployed folders?
 
 alsamixer
+Check 'Auto-Mute Mode' if it's disabled.
 
-cd /
-ls
-Is there 'note' folder?
+cd / ; ls
+There should be no 'note' folder.
 
 cd /boot/grub
-Is there grub.cfg file?
+Is there grub.cfg file? 
+Did it booted properly, or at all?
+
+sudo pacman -Qeq | grep xfce4-terminal
+Should return nothing.

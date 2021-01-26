@@ -1,12 +1,14 @@
 Now:
 
-Configure SDDM startup manager,
+CPU + GPU + EFI boot choice are not working! It does not install proper packages
+
+Configure picom.
 
 Permissions for /note/ dir are not right.
 
-Change speedcrunch for a better calc app.
+Change speedcrunch for a better calc app. # FIXED ?
 
-timedatectl set-ntp true ; not working in script?
+timedatectl set-ntp true ; not working in script? # FIXED ?
 
 paccache systemd service is not working. I think it's not that important since our users wont update OS themselves.
 
