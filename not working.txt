@@ -1,1 +1,15 @@
-Permissions for /note/ dir.
+Now:
+
+Configure SDDM startup manager,
+
+Permissions for /note/ dir are not right.
+
+Change speedcrunch for a better calc app.
+
+timedatectl set-ntp true ; not working in script?
+
+paccache systemd service is not working. I think it's not that important since our users wont update OS themselves.
+
+alsamixer line where Auto-Mute mode is disabled > is not working.
+
+IF: app startup time is still long, consider installing all of them after 'chroot'. Except for essential packages.

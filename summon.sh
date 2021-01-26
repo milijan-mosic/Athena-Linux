@@ -102,6 +102,7 @@ sudo alsactl store
 
 sudo pacman -Scc --noconfirm
 rm -rf /note/
+rm -rf /Atina/
 
 cd /home/$username/
 git clone https://github.com/windwalk-bushido/Atina.git ; cd /

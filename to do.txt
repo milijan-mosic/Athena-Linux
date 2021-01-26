@@ -12,12 +12,3 @@ Top priority upgrades are on top...
 > Dotfiles deployer; It puts dotfiles in proper places so a user can have customized programs' settings and looks. (Theming...)
 > All packages must be FLOSS.
 > Check many other OS's and make a good, minimalist package list. Good experience out of the box.
-
-Now: 
-Configure SDDM startup manager,
-Resolve folder permission issue.
-
-Change speedcrunch for a better calc app.
-timedatectl set-ntp true ; not working in script?
-
-IF: app startup time is still long, consider installing all of them after 'chroot'. Except for essential packages.
