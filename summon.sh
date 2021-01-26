@@ -84,6 +84,14 @@ rm -rf /etc/lightdm/lightdm.conf
 cp /Atina/files/lightdm.conf /etc/lightdm/
 
 pacman -Sy
+
+if [ $efi == 1 ]
+then
+        sudo pacman -S efibootmgr --noconfirm
+else
+        something=1
+fi
+
 bash /Atina/scrollbook/32bit.sh
 
 ###########################
@@ -103,10 +111,10 @@ fi
 # ENABLING AUDIO AND CLEANING CACHE #
 #####################################
 
-sudo amixer -c 0 sset "Auto-Mute Mode" Disabled
+sudo amixer sset "Auto-Mute Mode" Disabled
 sudo alsactl store
 
-sudo pacman -Rns xfce4-terminal
+sudo pacman -Rns xfce4-terminal --noconfirm
 sudo pacman -Scc --noconfirm
 rm -rf /note/
 rm -rf /Atina/

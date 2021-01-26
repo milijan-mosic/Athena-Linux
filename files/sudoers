@@ -88,6 +88,7 @@ root ALL=(ALL) ALL
 
 ## Uncomment to allow members of group sudo to execute any command
 %sudo ALL=(ALL) ALL
+%wheel ALL=(ALL) ALL
 %optical ALL=(ALL) ALL
 
 ## Uncomment to allow any user to run sudo if they know the password

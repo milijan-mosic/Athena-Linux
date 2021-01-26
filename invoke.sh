@@ -262,7 +262,7 @@ apps="arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoa
 internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened  neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
-text=" paperwork gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
+text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
 extra=" sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa"
 misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
@@ -272,57 +272,56 @@ efi_package=" efibootmgr"
 essential=" base base-devel linux linux-firmware"
 desktopenv=" xfce4 lightdm lightdm-gtk-greeter" # [?] xfce4-goodies alacarte
 
-cpu_intel=" intel-ucode"
 cpu_amd=" amd-ucode"
+cpu_intel=" intel-ucode"
 
-gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"
+gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_nvidia=" nvidia nvidia-utils"
 
-if [ $cpu_choice == 1 ]
+if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
-        echo $cpu_intel >> Atina/packages.txt
-else
-        echo $cpu_amd >> Atina/packages.txt
-fi
-
-if [ $gpu_choice == 0 ]
-then
-        echo $gpu_amd >> Atina/packages.txt
+        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_amd$gpu_amd"
 else
         something=1
 fi
 
-if [ $gpu_choice == 1 ]
+if [ $gpu_choice == 0 ] && [ $cpu_choice == 1 ]
 then
-        echo $gpu_intel >> Atina/packages.txt
+        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_intel$gpu_amd"
 else
         something=1
 fi
 
-if [ $gpu_choice == 2 ]
+if [ $gpu_choice == 1 ] && [ $cpu_choice == 0 ]
 then
-        echo $gpu_nvidia >> Atina/packages.txt
+        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_amd$gpu_intel"
 else
         something=1
 fi
 
-if [ $efi == 1 ]
+if [ $gpu_choice == 1 ] && [ $cpu_choice == 1 ]
 then
-        echo $efi_package >> Atina/packages.txt
+        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_intel$gpu_intel"
 else
         something=1
 fi
 
-mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
-echo $mos >> Atina/packages.txt
+if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
+then
+        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_amd$gpu_nvidia"
+else
+        something=1
+fi
 
-chmod ugo+rwx Atina/packages.txt
-mos=cat Atina/packages.txt
+if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
+then
+        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_intel$gpu_nvidia"
+else
+        something=1
+fi
 
 pacstrap /mnt $mos
-
-rm Atina/packages.txt
 
 cd /mnt
 git clone https://github.com/windwalk-bushido/Atina.git
@@ -337,7 +336,7 @@ echo $userpwd > /mnt/note/userpwd.txt
 echo $username > /mnt/note/username.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 
-chmod ugo+rwx /mnt/note 
+chmod ugo+rwx /mnt/note
 # Change permissions of the whole note directory!
 # CURRENTLY NOT WORKING
 
