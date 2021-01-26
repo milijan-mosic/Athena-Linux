@@ -70,6 +70,9 @@ cp /Atina/files/hosts /etc/
 # FINALIZING INSTALLATION #
 ###########################
 
+cd /home/$username/.config/ ; mkdir alacritty
+cp /Atina/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
+
 rm -rf /home/$username/.bashrc
 cp /Atina/files/bashrc /home/$username/
 mv /home/$username/bashrc /home/$username/.bashrc

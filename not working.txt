@@ -6,10 +6,6 @@ Permissions for /note/ dir are not right.
 
 timedatectl set-ntp true ; not working in script?
 
-Add alacritty dot file in /files/ and add it to 'summon.sh' script.
-
-Deploy TESTING FILES into new hidden github repo. This will be used for testing apps.
-
 Test AtinaOS on your PC again. Then you can call it Beta version.
 
 Compare laptop programlist with AtinaOS programlist. If everything is cool (and without video games), you can use it as your new OS. After this is done, make full, upgraded version of 'dwm' and 'st'. dmenu is good without any config (still use yours from AIFAL.git). slstatus will be replaced with configured polybar. Then your work is done...
