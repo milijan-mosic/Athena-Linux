@@ -1,0 +1,22 @@
+1. Two editions >
+        Mine AKA Linux expert/Dev build;
+        Normie build.
+
+2. Choose package groups, like layers. Also, choose DE.
+
+3. Encryption + LVM is by default and must have!
+
+4. Blocks stupid contents with child protection in mind (insert 'block IP' file here). No: porn, gambling, ads, notification spam tornado, etc.
+        Search engines: Searx, SwissCow, DuckDuckGO + addons on LibreWolf. Also, make a cool start splash page for browser.
+
+5. Antivirus and RootkitFinder installed as default.
+
+6. Borg system mirror file creating working in background, leaving files (mirrors) from the last 3 days. Always.
+
+7. No dual booting. You can do it by yourself.
+
+8. Games can be implemented/installed, but not advised. If you must do that, you can install wine... ugh.
+
+9. There should be 'AtinaOS library' website where people can find/share interesting resources for learning. Free stuff.
+
+10. Make a good eco-system. But allow people to rice it on their own. (No background scripts ruining this process for them).

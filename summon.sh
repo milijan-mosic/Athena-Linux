@@ -40,7 +40,7 @@ timedatectl set-timezone Europe/Belgrade
 systemctl enable --now NetworkManager
 systemctl enable --now nftables.service
 systemctl enable --now paccache.timer
-systemctl enable lightdm
+#systemctl enable lightdm
 
 ######################################
 # CREATING USER & CHANGING PASSWORDS #

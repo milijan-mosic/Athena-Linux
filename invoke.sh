@@ -35,8 +35,9 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; echo "Type in password for root:" ; echo " "
-                echo ">" ; read -s rootpwd ; echo "<"
+                echo " " ; echo " " ; echo " "
+                echo "Type in password for root:" ; echo " "
+                echo ">" ; read -s rootpwd ; echo " " ; echo "<"
 
                 lenght=${#rootpwd}
 
@@ -52,7 +53,8 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; echo "Type in desired username:" ; echo " "
+                echo " " ; echo " " ; echo " "
+                echo "Type in desired username:" ; echo " "
                 read username
 
                 lenght=${#username}
@@ -69,7 +71,8 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; ls /sys/firmware/efi/efivars
+                echo " " ; echo " " ; echo " "
+                ls /sys/firmware/efi/efivars
                 echo " " ; echo "Is this an EFI or BIOS motherboard? ('0' for BIOS, '1' for EFI) (If no directory is found, it's BIOS)" ; echo " "
                 read efi
 
@@ -87,7 +90,8 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; echo "Which CPU is this PC using? (Type '0' for AMD, '1' for Intel)" ; echo " "
+                echo " " ; echo " " ; echo " "
+                echo "Which CPU is this PC using? (Type '0' for AMD, '1' for Intel)" ; echo " "
                 read cpu_choice
 
                 if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ]
@@ -102,7 +106,8 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; echo "Which GPU is this PC using? (Type '0' for AMD, '1' for Intel, and '2' for nVidia)" ; echo " "
+                echo " " ; echo " " ; echo " "
+                echo "Which GPU is this PC using? (Type '0' for AMD, '1' for Intel, and '2' for nVidia)" ; echo " "
                 read gpu_choice
 
                 if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ]
@@ -117,7 +122,8 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; echo "Are you sure that this info you entered is correct? Do you want to continue with installation? (Type '0' to continue, '1' to enter all information again):" ; echo " "
+                echo " " ; echo " " ; echo " "
+                echo "Are you sure that this info you entered is correct? Do you want to continue with installation? (Type '0' to continue, '1' to enter all information again):" ; echo " "
                 read flag
 
                 if [ $flag != 1 ] && [ $flag != 0 ]
