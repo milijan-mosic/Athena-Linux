@@ -1,0 +1,15 @@
+Sort apps in the better package groups. Rename them?
+
+Read '~/Comparrison.txt' and follow instructions. 
+        #.Xauthority ; 'no screens found' xorg
+
+Format README.md better.
+
+
+
+Make full, upgraded version of 'dwm' and 'st'. 
+        'dmenu' is good without any config (compare theirs from site with yours from 'AIFAL.git').
+'slstatus' will be replaced with configured polybar. 
+
+Then your work is done...
+...and you can start with making art for your OS.

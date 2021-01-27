@@ -10,6 +10,20 @@ makepkg -sic --noconfirm
 
 cd ~/
 git clone https://github.com/windwalk-bushido/AIFAL.git
+git clone https://github.com/windwalk-bushido/Atina.git
+
+cd ~/AIFAL/scrollbook/
+cp search.sh ~/.atina/scrollbook/
+cp yay.sh ~/.atina/scrollbook/
+cp mount-dvd.sh ~/.atina/scrollbook/
+cp unmount-dvd.sh ~/.atina/scrollbook/
+cd ~/
+
+rm -rf ~/.bashrc
+cp ~/Atina/files/bashrc-superuser ~/
+mv ~/bashrc-superuser ~/.bashrc
+
+cd ~/ ; rm -rf ~/AIFAL ; rm -rf ~/Atina
 
 yay -S ttf-iosevka gedit-latex cherrytree labyrinth peaclock --noconfirm
 

@@ -10,11 +10,17 @@
 # userpwd=cat /note/userpwd.txt
 # username=cat /note/username.txt
 
-ssd="/dev/sda"
-efi=0
-rootpwd=11111
-username="windwalk"
-userpwd=$rootpwd
+# ssd="/dev/sda"
+# efi=0
+# rootpwd=11111
+# username="windwalk"
+# userpwd=$rootpwd
+
+ssd=$(</note/ssd.txt)
+efi=$(</note/efi.txt)
+rootpwd=$(</note/rootpwd.txt)
+userpwd=$(</note/userpwd.txt)
+username=$(</note/username.txt)
 
 set -o pipefail
 
@@ -123,9 +129,9 @@ sudo pacman -Scc --noconfirm
 cd /home/$username/ ; mkdir .atina
 cp -r /Atina/scrollbook/ /home/$username/.atina/
 
-chmod ugo+rwx /Atina/wallpaper/sand_dune.jpg
-cp /Atina/wallpaper/sand_dune.jpg /home/$username/
-chmod ugo+rwx /home/$username/sand_dune.jpg
+# chmod ugo+rwx /Atina/wallpaper/sand_dune.jpg
+# cp /Atina/wallpaper/sand_dune.jpg /home/$username/
+# chmod ugo+rwx /home/$username/sand_dune.jpg
 
 rm -rf /note/
 rm -rf /Atina/

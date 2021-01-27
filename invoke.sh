@@ -13,9 +13,9 @@ clear
 
 while [ $flag == 1 ]
 do
-        choice=1
+        pass=1
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; lsblk
                 echo " " ; echo "Where do you want to install Atina?" ; echo " "
@@ -27,13 +27,13 @@ do
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                 fi
         done
 
-        choice=1
+        pass=1
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; echo "Type in password for root:" ; echo " "
                 echo ">" ; read -s rootpwd ; echo "<"
@@ -44,13 +44,13 @@ do
                 then
                         echo " " ; echo "Password is too small... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                 fi
         done
 
-        choice=1
+        pass=1
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; echo "Type in desired username:" ; echo " "
                 read username
@@ -61,13 +61,13 @@ do
                 then
                         echo " " ; echo "Username is too small... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                 fi
         done
 
-        choice=1
+        pass=1
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; ls /sys/firmware/efi/efivars
                 echo " " ; echo "Is this an EFI or BIOS motherboard? ('0' for BIOS, '1' for EFI) (If no directory is found, it's BIOS)" ; echo " "
@@ -77,15 +77,15 @@ do
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                 fi
         done
 
-        choice=1
+        pass=1
 
         userpwd=$rootpwd
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; echo "Which CPU is this PC using? (Type '0' for AMD, '1' for Intel)" ; echo " "
                 read cpu_choice
@@ -94,13 +94,13 @@ do
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                 fi
         done
 
-        choice=1
+        pass=1
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; echo "Which GPU is this PC using? (Type '0' for AMD, '1' for Intel, and '2' for nVidia)" ; echo " "
                 read gpu_choice
@@ -109,13 +109,13 @@ do
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                 fi
         done
 
-        choice=1
+        pass=1
 
-        while [ $choice == 1 ]
+        while [ $pass == 1 ]
         do
                 echo " " ; echo "Are you sure that this info you entered is correct? Do you want to continue with installation? (Type '0' to continue, '1' to enter all information again):" ; echo " "
                 read flag
@@ -124,7 +124,7 @@ do
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
-                        choice=0
+                        pass=0
                         clear
                 fi
         done
@@ -258,10 +258,10 @@ fi
 # INSTALLATION #
 ################
 
-apps="arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+apps="arandr borg units firefox transmission-gtk ciano kapackagelisto kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
 internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
-utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened  neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
+utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
 text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
 extra=" sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa"
 misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
@@ -279,52 +279,57 @@ gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"
 gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_nvidia=" nvidia nvidia-utils"
 
+musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
+
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
-        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_amd$gpu_amd"
+        drivers="$gpu_amd$cpu_amd"
 else
         something=1
 fi
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 1 ]
 then
-        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_intel$gpu_amd"
+        drivers="$gpu_amd$cpu_intel"
 else
         something=1
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 0 ]
 then
-        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_amd$gpu_intel"
+        drivers="$gpu_intel$cpu_amd"
 else
         something=1
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 1 ]
 then
-        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_intel$gpu_intel"
+        drivers="$gpu_intel$cpu_intel"
 else
         something=1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
 then
-        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_amd$gpu_nvidia"
+        drivers="$gpu_nvidia$cpu_amd"
 else
         something=1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
 then
-        mos="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$cpu_intel$gpu_nvidia"
+        drivers="$gpu_nvidia$cpu_intel"
 else
         something=1
 fi
 
-pacstrap /mnt $mos
+packagelist="$musthave$drivers"
+pacstrap /mnt $packagelist
 
+pwd > dest.txt
+curr_dest=$(<dest.txt)
 cd /mnt
-git clone https://github.com/windwalk-bushido/Atina.git
+git clone https://github.com/windwalk-bushido/Atina.git ; cd $curr_dest
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -337,7 +342,5 @@ echo $username > /mnt/note/username.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 
 chmod ugo+rwx /mnt/note
-# Change permissions of the whole note directory!
-# CURRENTLY NOT WORKING
 
 arch-chroot /mnt

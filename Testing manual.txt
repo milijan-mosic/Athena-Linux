@@ -1,0 +1,79 @@
+# Write down commands to type or things to do so you can check if everything is OK post-install. #
+>>>
+
+        GRUB loading is instant.
+
+        OS boots.
+
+        You can log in as root as well as a new user.
+
+lsblk ; sudo fdisk $ssd         # (e.g. /dev/sda)
+        Proper partition list scheme with their types and sizes set properly.
+
+programlist
+        Proper CPU + GPU packages and/or 'efibootmgr' installed?
+
+timedatectl status
+        Proper timezone. NTP sync ON?
+
+systemctl status NetworkManager
+systemctl status nftables
+        It should be green (and thus enabled/activeted).
+
+cd /etc/
+        vim into:
+                fstab
+                locale.conf
+                locale.gen
+                hostname
+                hosts
+                pacman.conf
+                sudoers
+cd /etc/lightdm/
+        'lightdm.conf' Is there, with proper content?
+
+cd ~/
+        There should be no 'Atina' folder.
+
+        .bashrc
+        .xinitrc
+                Are there, with proper contents?
+
+cd ~/.config/alacritty/
+        'alacritty.yml' Is there, with proper content?
+
+cd ~/.atina/
+        There is 'scrollbook' folder with scripts in it?
+
+alsamixer
+        Auto-Mute Mode = Disabled?
+
+cd /
+        There should be no 'note' nor 'Atina' folders.
+
+size
+        How much OS weights?
+
+sudo pacman -Qeq | grep xfce4-terminal
+        Should return nothing.
+
+cd ~/ ; deploy ; ls
+        Are there deployed folders? Check '~/.atina/scrollbook/deploy-folders.sh' for info.
+
+# SUPERUSER TESTING #
+
+        New packages are installed.
+
+cd ~/ ; ls
+        There should be no 'Atina' or 'AIFAL' folders.
+
+cd ~/.myconfig/
+        There should be 'yay' folder with content.
+cd ~/.atina/scrollbook/
+        Are there new scripts?
+
+vim ~/.bashrc
+        Updated 'bashrc' file?
+
+size
+        How much OS weights now?

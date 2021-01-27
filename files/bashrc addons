@@ -1,8 +1,0 @@
-alias s='bash ~/AIFAL/scrollbook/search.sh'
-alias y='bash ~/AIFAL/scrollbook/yay.sh'
-
-alias smount='bash ~/AIFAL/scrollbook/mount-dvd.sh'
-alias umount='bash ~/AIFAL/scrollbook/unmount-dvd.sh'
-
-alias r='ranger'
-alias n='neofetch'

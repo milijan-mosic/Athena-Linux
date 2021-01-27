@@ -1,0 +1,7 @@
+Configure picom. Or don't.
+
+Permissions for '/note/' dir are not right. # FIXED ?
+
+timedatectl set-ntp true ; not working in script?
+
+Test AtinaOS on your PC until everything from 'Issues.txt' is fixed. Then you can call it Alpha version.
