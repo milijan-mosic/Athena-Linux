@@ -331,9 +331,9 @@ fi
 
 if [ $efi == 1 ]
 then
-        packagelist="$musthave$drivers$efi_package"
+        packagelist="$musthave$efi_package" # drivers deleted.
 else
-        packagelist="$musthave$drivers"
+        packagelist="$musthave"
 fi
 
 pacstrap /mnt $packagelist

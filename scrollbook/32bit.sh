@@ -28,4 +28,4 @@ else
         something=1
 fi
 
-sudo pacman -S $packagelist --noconfirm
+sudo pacman -S $musthave --noconfirm #packagelist

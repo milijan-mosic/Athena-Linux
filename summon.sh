@@ -64,7 +64,7 @@ cp /Atina/files/hosts /etc/
 # FINALIZING INSTALLATION #
 ###########################
 
-cd /home/$username/ ; mkdir .config
+cd /home/$username/ ; mkdir .config ; chmod ugo+rwx /home/$username/.config/
 cd /home/$username/.config/ ; mkdir alacritty
 cp /Atina/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
 
