@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# gpu_choice=cat /note/gpu_choice.txt
-
-# gpu_choice=2
-
 gpu_choice=$(</note/gpu_choice.txt)
 
 musthave="lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama lib32-mesa"

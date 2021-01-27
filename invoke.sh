@@ -269,7 +269,7 @@ internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk 
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
 text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
-extra=" sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa"
+extra=" xorg sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa"
 misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 
@@ -329,7 +329,13 @@ else
         something=1
 fi
 
-packagelist="$musthave$drivers"
+if [ $efi == 1 ]
+then
+        packagelist="$musthave$drivers$efi_package"
+else
+        packagelist="$musthave$drivers"
+fi
+
 pacstrap /mnt $packagelist
 
 pwd > dest.txt

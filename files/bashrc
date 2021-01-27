@@ -15,5 +15,6 @@ alias programlist='sudo pacman -Qeq'
 alias audio='bash ~/.atina/scrollbook/ytdl-audio.sh'
 alias video='bash ~/.atina/scrollbook/ytdl-video.sh'
 alias deploy='bash ~/.atina/scrollbook/deploy-folders.sh'
+alias activate_superuser='bash ~/.atina/scrollbook/superuser.sh'
 
 PS1='[\u@\h \W]\$ '

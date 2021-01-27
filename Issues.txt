@@ -1,6 +1,8 @@
 Configure picom. Or don't.
 
-Permissions for '/note/' dir are not right. # FIXED ?
+Alacritty dot file is not deployed.
+
+There are no new scripts in the 'scrollbook' folder.
 
 timedatectl set-ntp true ; not working in script?
 

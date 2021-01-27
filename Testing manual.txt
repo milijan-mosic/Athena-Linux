@@ -52,7 +52,7 @@ cd /
         There should be no 'note' nor 'Atina' folders.
 
 size
-        How much OS weights?
+        How much OS weights?                    # 9.4 GB
 
 sudo pacman -Qeq | grep xfce4-terminal
         Should return nothing.
@@ -76,4 +76,4 @@ vim ~/.bashrc
         Updated 'bashrc' file?
 
 size
-        How much OS weights now?
+        How much OS weights now?                # 13 GB

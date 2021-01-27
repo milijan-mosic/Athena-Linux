@@ -4,18 +4,6 @@
 # PREPARATION #
 ###############
 
-# ssd=cat /note/ssd.txt
-# efi=cat /note/efi.txt
-# rootpwd=cat /note/rootpwd.txt
-# userpwd=cat /note/userpwd.txt
-# username=cat /note/username.txt
-
-# ssd="/dev/sda"
-# efi=0
-# rootpwd=11111
-# username="windwalk"
-# userpwd=$rootpwd
-
 ssd=$(</note/ssd.txt)
 efi=$(</note/efi.txt)
 rootpwd=$(</note/rootpwd.txt)
@@ -76,6 +64,7 @@ cp /Atina/files/hosts /etc/
 # FINALIZING INSTALLATION #
 ###########################
 
+cd /home/$username/ ; mkdir .config
 cd /home/$username/.config/ ; mkdir alacritty
 cp /Atina/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
 
@@ -93,14 +82,6 @@ rm -rf /etc/lightdm/lightdm.conf
 cp /Atina/files/lightdm.conf /etc/lightdm/
 
 pacman -Sy
-
-if [ $efi == 1 ]
-then
-        sudo pacman -S efibootmgr --noconfirm
-else
-        something=1
-fi
-
 bash /Atina/scrollbook/32bit.sh
 
 ###########################
@@ -128,10 +109,6 @@ sudo pacman -Scc --noconfirm
 
 cd /home/$username/ ; mkdir .atina
 cp -r /Atina/scrollbook/ /home/$username/.atina/
-
-# chmod ugo+rwx /Atina/wallpaper/sand_dune.jpg
-# cp /Atina/wallpaper/sand_dune.jpg /home/$username/
-# chmod ugo+rwx /home/$username/sand_dune.jpg
 
 rm -rf /note/
 rm -rf /Atina/
