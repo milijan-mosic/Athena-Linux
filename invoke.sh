@@ -270,7 +270,7 @@ codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr s
 efi_package=" efibootmgr"
 
 essential=" base base-devel linux linux-firmware"
-desktopenv=" xfce4" # lightdm lightdm-gtk-greeter" # [?] xfce4-goodies alacarte
+desktopenv=" xfce4 lightdm lightdm-gtk-greeter" # [?] xfce4-goodies alacarte
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"
