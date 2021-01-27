@@ -28,7 +28,7 @@ timedatectl set-timezone Europe/Belgrade
 systemctl enable --now NetworkManager
 systemctl enable --now nftables.service
 systemctl enable --now paccache.timer
-#systemctl enable lightdm
+systemctl enable lightdm
 
 ######################################
 # CREATING USER & CHANGING PASSWORDS #
@@ -107,7 +107,7 @@ sudo alsactl store
 sudo pacman -Rns xfce4-terminal --noconfirm
 sudo pacman -Scc --noconfirm
 
-cd /home/$username/ ; mkdir .atina
+cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
 cp -r /Atina/scrollbook/ /home/$username/.atina/
 
 rm -rf /note/

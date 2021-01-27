@@ -317,21 +317,21 @@ fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_nvidia$cpu_amd"
+        drivers="$cpu_amd"
 else
         something=1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_nvidia$cpu_intel"
+        drivers="$cpu_intel"
 else
         something=1
 fi
 
 if [ $efi == 1 ]
 then
-        packagelist="$musthave$efi_package" # drivers deleted.
+        packagelist="$musthave$drivers$efi_package"
 else
         packagelist="$musthave"
 fi

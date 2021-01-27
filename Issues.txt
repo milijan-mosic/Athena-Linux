@@ -1,8 +1,6 @@
 Configure picom. Or don't.
 
-Alacritty dot file is not deployed.
-
-There are no new scripts in the 'scrollbook' folder.
+There are no new scripts in the 'scrollbook' folder. # FIXED ?
 
 timedatectl set-ntp true ; not working in script?
 

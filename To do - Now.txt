@@ -1,11 +1,15 @@
 Make 'green blocks' more descriptive.
 
+Make new testing manual?
+
+Add alacritty.yml for them and for superuser. Difference is 'ttf-iosevka'.
+
 Test user input properly and beautify printing questions.
 
 Sort apps in the better package groups. Rename them?
 
 Read '~/Comparrison.txt' and follow instructions. 
-        #.Xauthority ; 'no screens found' xorg
+        #.Xauthority ; 'no screens found' xorg # DRIVERS PROBLEM, NVIDIA
 
 Format README.md better.
 
