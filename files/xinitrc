@@ -1,3 +1,3 @@
 numlockx &
 
-exec startxfce4
+exec startplasma-x11
