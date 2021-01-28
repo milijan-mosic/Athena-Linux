@@ -104,7 +104,7 @@ fi
 sudo amixer sset "Auto-Mute Mode" Disabled
 sudo alsactl store
 
-sudo pacman -Rns xfce4-terminal --noconfirm
+#sudo pacman -Rns xfce4-terminal --noconfirm
 sudo pacman -Scc --noconfirm
 
 cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/

@@ -268,7 +268,7 @@ apps="arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoa
 internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
-text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome gnu-free-fonts vim"
+text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts vim"
 extra=" opendoas pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa" # sudo
 misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
@@ -317,14 +317,14 @@ fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$cpu_amd"
+        drivers="$cpu_amd" # gpu_nvidia
 else
         something=1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$cpu_intel"
+        drivers="$cpu_intel" # gpu_nvidia
 else
         something=1
 fi
@@ -333,7 +333,7 @@ if [ $efi == 1 ]
 then
         packagelist="$musthave$drivers$efi_package"
 else
-        packagelist="$musthave"
+        packagelist="$musthave$drivers"
 fi
 
 pacstrap /mnt $packagelist
