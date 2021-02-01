@@ -1,7 +1,5 @@
 Configure picom. Or don't.
 
-AMD CPU drivers are not installed. Is this on purpose? # FIXED ?
-
 There are no new scripts in the 'scrollbook' folder. # FIXED ?
 
 timedatectl set-ntp true ; not working in script?
