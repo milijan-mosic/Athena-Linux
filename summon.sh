@@ -105,6 +105,7 @@ sudo amixer sset "Auto-Mute Mode" Disabled
 sudo alsactl store
 
 #sudo pacman -Rns xfce4-terminal --noconfirm
+sudo pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm # lrf-viewer lximage screenshot screengrab
 sudo pacman -Scc --noconfirm
 
 cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
