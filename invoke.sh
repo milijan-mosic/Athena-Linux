@@ -138,6 +138,8 @@ do
                         fi
                 done
 
+                pass=1
+
                 if [ $superuser == 1 ]
                 do
                         echo " " ; echo " " ; echo " "
@@ -327,7 +329,7 @@ do
 
         if [ $superuser == 1 ]
         then
-                musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv$superuserpack"
+                musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$superuserpack"
         else
                 musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
         fi
@@ -417,6 +419,13 @@ do
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
                         reinstall=1
+
+                        umount -R /mnt
+                        temp="$ssd$three"
+                        swapoff $temp
+
+                        # Format (wipe) whole SSD/Hard disk.
+                        
                         clear
                 fi
         done
