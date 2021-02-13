@@ -1,8 +1,8 @@
 #!/bin/bash
 
-###############
-# PREPARATION #
-###############
+#########
+# SETUP #
+#########
 
 ssd=$(</note/ssd.txt)
 efi=$(</note/efi.txt)
@@ -181,7 +181,7 @@ then
 
         cd /home/$username/ ; rm -rf /home/$username/AIFAL ; rm -rf /home/$username/Atina
 
-        yay -S ttf-iosevka gedit-latex cherrytree labyrinth peaclock --noconfirm
+        yay -S ttf-iosevka gedit-latex cherrytree labyrinth peaclock aften openjpeg davs2 daala-git balena-etcher spotify --noconfirm
 
         yay -Scc --noconfirm
         sudo pacman -Scc --noconfirm

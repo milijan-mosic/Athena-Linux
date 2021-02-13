@@ -1,17 +1,13 @@
 #!/bin/bash
 
-###############
-# PREPARATION #
-###############
+##############
+# USER INPUT #
+##############
 
 resurrect=0
 reinstall=0
 flag=0
 clear
-
-##############
-# USER INPUT #
-##############
 
 while [ $resurrect == 0 ]
 do
@@ -207,6 +203,7 @@ do
                 home_n="4"
                 home_type="8302"
 
+                # Input line where it creates new GPT table scheme.
                 sgdisk -p $ssd
                 sgdisk -o $ssd
                 sgdisk -n $boot_n:0G:$boot_size -t $boot_n:$boot_type -g $ssd
@@ -229,6 +226,7 @@ do
                 home_n="4"
                 home_type="8302"
 
+                # Input line where it creates new GPT table scheme.
                 sgdisk -p $ssd
                 sgdisk -o $ssd
                 sgdisk -n $bios_boot_n:0:$bios_boot_size -t $bios_boot_n:$bios_boot_type -g $ssd
@@ -304,14 +302,14 @@ do
         # INSTALLATION #
         ################
 
-        apps="thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+        apps="veracrypt thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
         internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
         storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
         utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
         text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts vim"
         extra=" opendoas pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa" # sudo
         misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
-        codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
+        codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 
         efi_package=" efibootmgr"
 
@@ -325,7 +323,7 @@ do
         gpu_intel=" xf86-video-intel vulkan-intel"
         gpu_nvidia=" nvidia nvidia-utils"
 
-        superuserpack=" git vi man-db man-pages texinfo curl openssh wget gxkb kcron testdisk ardour code atom qtractor audacity flowblade gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper"
+        superuserpack=" git curl vi man-db man-pages texinfo openssh wget gxkb kcron testdisk ardour code atom qtractor audacity flowblade gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper termdown"
 
         if [ $superuser == 1 ]
         then
@@ -406,8 +404,6 @@ do
 
         chmod ugo+rwx /mnt/note
 
-        arch-chroot /mnt
-
         while [ $reinstall == 0 ]
         do
                 echo " " ; echo " " ; echo " "
@@ -418,15 +414,20 @@ do
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
-                        reinstall=1
+                        if [ $resurrect == 1 ]
+                        then
+                                arch-chroot /mnt
+                        else
+                                reinstall=1
 
-                        umount -R /mnt
-                        temp="$ssd$three"
-                        swapoff $temp
+                                umount -R /mnt
+                                temp="$ssd$three"
+                                swapoff $temp
 
-                        # Format (wipe) whole SSD/Hard disk.
-                        
-                        clear
+                                # Format (wipe) whole SSD/Hard disk.
+
+                                clear
+                        fi
                 fi
         done
 done

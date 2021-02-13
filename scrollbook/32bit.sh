@@ -14,7 +14,7 @@ fi
 
 if [ $gpu_choice == 1 ]
 then
-        drivers=" lib32-vulkan-intel"                   # Intel
+        drivers=" lib32-vulkan-intel lib32-vulkan-icd-loader"                   # Intel
         packagelist="$musthave$drivers"
 else
         something=1
