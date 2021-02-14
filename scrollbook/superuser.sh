@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo pacman -S git vi man-db man-pages texinfo curl openssh wget gxkb kcron testdisk ardour code atom qtractor audacity flowblade gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper --noconfirm
-
 cd ~/ ; mkdir .myconfig
 cd ~/.myconfig
 git clone https://aur.archlinux.org/yay.git
@@ -18,9 +16,9 @@ cp ~/AIFAL/scrollbook/mount-dvd.sh ~/.atina/scrollbook/
 cp ~/AIFAL/scrollbook/unmount-dvd.sh ~/.atina/scrollbook/
 cd ~/
 
-rm -rf ~/.bashrc
-cp ~/Atina/files/bashrc-superuser ~/
-mv ~/bashrc-superuser ~/.bashrc
+#rm -rf ~/.bashrc
+#cp ~/Atina/files/bashrc-superuser ~/
+#mv ~/bashrc-superuser ~/.bashrc
 
 cd ~/ ; rm -rf ~/AIFAL ; rm -rf ~/Atina
 

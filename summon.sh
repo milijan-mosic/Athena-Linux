@@ -103,9 +103,6 @@ else
         mv /home/$username/xinitrc /home/$username/.xinitrc
 fi
 
-#cp /Atina/files/xinitrc /home/$username/
-#mv /home/$username/xinitrc /home/$username/.xinitrc
-
 rm -rf /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
 
@@ -116,9 +113,6 @@ else
         rm -rf /etc/lightdm/lightdm.conf
         cp /Atina/files/lightdm.conf /etc/lightdm/
 fi
-
-#rm -rf /etc/lightdm/lightdm.conf
-#cp /Atina/files/lightdm.conf /etc/lightdm/
 
 pacman -Sy
 bash /Atina/scrollbook/32bit.sh
@@ -147,47 +141,13 @@ if [ $superuser == 1 ]
 then
         goo=1
 else
-        sudo pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm # lrf-viewer lximage screenshot screengrab
+        sudo pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm
 fi
 
 sudo pacman -Scc --noconfirm
 
 cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
 cp -r /Atina/scrollbook/ /home/$username/.atina/
-
-if [ $superuser == 1 ]
-then
-        cd /home/$username/ ; mkdir .myconfig
-        cd /home/$username/.myconfig
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -sic --noconfirm
-
-        cd ~/
-        git clone https://github.com/windwalk-bushido/AIFAL.git
-        git clone https://github.com/windwalk-bushido/Atina.git
-
-        cp /home/$username/AIFAL/scrollbook/search.sh ~/.atina/scrollbook/
-        cp /home/$username/AIFAL/scrollbook/yay.sh ~/.atina/scrollbook/
-        cp /home/$username/AIFAL/scrollbook/mount-dvd.sh ~/.atina/scrollbook/
-        cp /home/$username/AIFAL/scrollbook/unmount-dvd.sh ~/.atina/scrollbook/
-        cd /home/$username/
-
-        chmod ugo+rwx /home/$username/.atina/scrollbook/
-
-        rm -rf /home/$username/.bashrc
-        cp /home/$username/Atina/files/bashrc-superuser /home/$username/
-        mv /home/$username/bashrc-superuser /home/$username/.bashrc
-
-        cd /home/$username/ ; rm -rf /home/$username/AIFAL ; rm -rf /home/$username/Atina
-
-        yay -S ttf-iosevka gedit-latex cherrytree labyrinth peaclock aften openjpeg davs2 daala-git balena-etcher spotify --noconfirm
-
-        yay -Scc --noconfirm
-        sudo pacman -Scc --noconfirm
-else
-        goo=1
-fi
 
 cp /note/superuser.txt /home/$username/
 rm -rf /note/

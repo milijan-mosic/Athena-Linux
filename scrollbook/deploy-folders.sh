@@ -21,7 +21,6 @@ then
         sudo make clean install
 
         cd ~/ ; rm -rf AIFAL
-        rm ~/superuser.txt
 else
         goo=1
 fi
