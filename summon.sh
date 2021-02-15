@@ -4,6 +4,8 @@
 # SETUP #
 #########
 
+timedatectl set-ntp true
+
 ssd=$(</note/ssd.txt)
 efi=$(</note/efi.txt)
 hostname=$(</note/hostname.txt)
@@ -16,7 +18,7 @@ set -o pipefail
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
-timedatectl set-ntp true
+
 
 #######################
 # SETTING UP TIMEZONE #
@@ -25,6 +27,8 @@ timedatectl set-ntp true
 ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
 timedatectl set-timezone Europe/Belgrade
 
+
+
 #############################
 # ENABLING SYSTEMD SERVICES #
 #############################
@@ -32,12 +36,15 @@ timedatectl set-timezone Europe/Belgrade
 systemctl enable --now NetworkManager
 systemctl enable --now nftables.service
 systemctl enable --now paccache.timer
+
 if [ $superuser == 1 ]
 then
         goo=1
 else
         systemctl enable lightdm
 fi
+
+
 
 ######################################
 # CREATING USER & CHANGING PASSWORDS #
@@ -52,6 +59,8 @@ echo -e "$userpwd\n$userpwd" | passwd $username
 rm -rf /etc/sudoers
 cp /Atina/files/sudoers /etc/
 
+
+
 #####################################
 # SETTING UP LANGUAGES AND KEYBOARD #
 #####################################
@@ -59,28 +68,24 @@ cp /Atina/files/sudoers /etc/
 rm -rf /etc/locale.gen
 cp /Atina/files/locale.gen /etc/
 locale-gen
-localeconf="LANG=en_US.UTF-8"
-$localeconf > /etc/locale.conf
+
+cd /etc/ ; set_lang="LANG=en_US.UTF-8"
+echo $set_lang > locale.conf ; cd /
+
+
 
 ############################################
 # SETTING UP HOSTNAME AND NETWORK SETTINGS #
 ############################################
 
-$hostname > /etc/hostname
-$base_hostname="# Static table lookup for hostnames.
-# See hosts(5) for details.
+cd /etc/ ; echo $hostname > hostname
 
-127.0.0.1	localhost
-::1		localhost
-127.0.1.1	"
-plus="" ; plus="$hostname"
+cp /home/windwalk/Atina/files/hosts /etc/
 ext=".localdomain $hostname"
-$base_hostname="$plus$ext"
-$base_hostname > /etc/hosts
+base_hostname="$hostname$ext"
+echo $base_hostname >> hosts ; cd /
 
-#cp /Atina/files/hostname /etc/
-#rm -rf /etc/hosts
-#cp /Atina/files/hosts /etc/
+
 
 ###########################
 # FINALIZING INSTALLATION #
@@ -90,9 +95,11 @@ cd /home/$username/ ; mkdir .config ; chmod ugo+rwx /home/$username/.config/
 cd /home/$username/.config/ ; mkdir alacritty
 cp /Atina/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
 
+
 rm -rf /home/$username/.bashrc
 cp /Atina/files/bashrc /home/$username/
 mv /home/$username/bashrc /home/$username/.bashrc
+
 
 if [ $superuser == 1 ]
 then
@@ -103,8 +110,10 @@ else
         mv /home/$username/xinitrc /home/$username/.xinitrc
 fi
 
+
 rm -rf /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
+
 
 if [ $superuser == 1 ]
 then
@@ -114,8 +123,11 @@ else
         cp /Atina/files/lightdm.conf /etc/lightdm/
 fi
 
+
 pacman -Sy
 bash /Atina/scrollbook/32bit.sh
+
+
 
 ###########################
 # SETTING UP A BOOTLOADER #
@@ -130,12 +142,16 @@ else
         grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
+sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg
+
+
 #####################################
 # ENABLING AUDIO AND CLEANING CACHE #
 #####################################
 
 sudo amixer sset "Auto-Mute Mode" Disabled
 sudo alsactl store
+
 
 if [ $superuser == 1 ]
 then
@@ -146,8 +162,10 @@ fi
 
 sudo pacman -Scc --noconfirm
 
+
 cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
 cp -r /Atina/scrollbook/ /home/$username/.atina/
+
 
 cp /note/superuser.txt /home/$username/
 rm -rf /note/

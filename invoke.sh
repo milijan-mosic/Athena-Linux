@@ -6,6 +6,7 @@
 
 flag=0
 clear
+echo " " ; echo "FRIENDLY REMINDER: IF YOU ENTERED WRONG INFO, STICK TO THE END. YOU'LL BE ASKED TO ENTER ALL INFO AGAIN." echo " " ; echo " "
 
 while [ $flag == 0 ]
 do
@@ -13,12 +14,14 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; lsblk
-                echo " " ; echo "Where do you want to install Atina?" ; echo " "
+                echo " " ; lsblk ; echo " "
+                echo "Where do you want to install Atina?" 
+                echo "Type in SSD/hard disk name:" ; echo " "
                 read ssd
 
                 lenght=${#ssd}
 
+                # Add additional condition for lenght != number, nor int nor float
                 if [ $lenght != 8 ] || [ -z ssd ]
                 then
                         echo " " ; echo "Input is not equal to 8 characters or empty input... try again." ; echo " "
@@ -27,16 +30,19 @@ do
                 fi
         done
 
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                ls /sys/firmware/efi/efivars
-                echo " " ; echo "Is this an EFI or BIOS motherboard? ('0' for BIOS, '1' for EFI) (If no directory is found, it's BIOS)" ; echo " "
-                read efi
+                ls /sys/firmware/efi/efivars ; echo " "
+                echo "Is this an UEFI or BIOS motherboard?"
+                echo "   (Type '0' for BIOS and '1' for UEFI)" ; echo " " 
+                echo "   (If 'no directory is found' error is above this line, it's BIOS)" ; echo " "
+                read uefi
 
-                if [ $efi != 1 ] && [ $efi != 0 ]
+                if [ $uefi != 1 ] && [ $uefi != 0 ]
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
@@ -44,16 +50,19 @@ do
                 fi
         done
 
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Type in desired name for a computer:" ; echo " "
+                echo "Type in desired name for computer:"
+                echo "   (minimum 3 characters of lenght)" ; echo " "
                 read hostname
 
                 lenght=${#hostname}
 
+                # Add additional condition for lenght != number, nor int nor float
                 if [ $lenght -lt 3 ] || [ -z hostname ]
                 then
                         echo " " ; echo "Hostname is too small or empty input... try again." ; echo " "
@@ -62,12 +71,14 @@ do
                 fi
         done
 
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in password for root:" ; echo " "
+                echo "   (minimum 5 characters of lenght)" ; echo " "
                 echo ">" ; read -s rootpwd ; echo " " ; echo "<"
 
                 lenght=${#rootpwd}
@@ -80,17 +91,20 @@ do
                 fi
         done
 
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in desired username:" ; echo " "
+                echo "   (minimum 3 characters of lenght)" ; echo " "
                 read username
 
                 lenght=${#username}
 
-                if [ $lenght -lt 3 ] || [ -z rootpwd ]
+                # Add additional condition for lenght != number, nor int nor float
+                if [ $lenght -lt 3 ] || [ -z username ]
                 then
                         echo " " ; echo "Username is too small or empty input... try again." ; echo " "
                 else
@@ -98,17 +112,17 @@ do
                 fi
         done
 
-        pass=1
 
-        userpwd=$rootpwd
+        pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Are you a superuser? (Type '1' for Yes, '0' for No)" ; echo " "
+                echo "Are you a superuser?" ; echo " "
+                echo "   (Type '1' for Yes and '0' for No)" ; echo " "
                 read superuser
 
-                if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ]
+                if [ $superuser != 1 ] && [ $superuser != 0 ]
                 then
                         echo " " ; echo "Wrong answer... try again." ; echo " "
                 else
@@ -116,12 +130,36 @@ do
                 fi
         done
 
+
+        pass=1
+
+        if [ $superuser == 1 ]
+        then
+                echo " " ; echo " " ; echo " "
+                echo "Type in password for new user:" ; echo " "
+                echo "   (minimum 5 characters of lenght)" ; echo " "
+                echo ">" ; read -s userpwd ; echo " " ; echo "<"
+
+                lenght=${#userpwd}
+
+                if [ $lenght -lt 5 ] || [ -z userpwd ]
+                then
+                        echo " " ; echo "Password is too small or empty input... try again." ; echo " "
+                else
+                        pass=0
+                fi
+        else
+                userpwd=$rootpwd
+        fi
+
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Which CPU is this PC using? (Type '0' for AMD, '1' for Intel)" ; echo " "
+                echo "Which CPU is this PC using?" ; echo " " 
+                echo "   (Type '0' for AMD and '1' for Intel)" ; echo " "
                 read cpu_choice
 
                 if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ]
@@ -132,12 +170,14 @@ do
                 fi
         done
 
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Which GPU is this PC using? (Type '0' for AMD, '1' for Intel, and '2' for nVidia)" ; echo " "
+                echo "Which GPU is this PC using?" ; echo " " 
+                echo "   (Type '0' for AMD, '1' for Intel and '2' for nVidia)" ; echo " "
                 read gpu_choice
 
                 if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ]
@@ -148,12 +188,15 @@ do
                 fi
         done
 
+
         pass=1
 
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Are you sure that this info you entered is correct? Do you want to continue with installation? (Type '1' to continue, '0' to enter all information again):" ; echo " "
+                echo "Are you sure that this info you entered is correct?" 
+                echo "Do you want to continue with installation?" ; echo " "
+                echo "   (Type '1' to continue and '0' to enter all information again)" ; echo " "
                 read flag
 
                 if [ $flag != 1 ] && [ $flag != 0 ]
@@ -166,23 +209,26 @@ do
         done
 done
 
+
+
 #########
 # SETUP #
 #########
 
+timedatectl set-ntp true
+ 
 set -o pipefail
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
-
 sudo pacman -Syy --noconfirm
 
-timedatectl set-ntp true
+
 
 ################
 # PARTITIONING #
 ################
 
-if [ $efi == 1 ]
+if [ $uefi == 1 ]
 then
         boot_n="1"
         boot_size="+512M"
@@ -231,6 +277,8 @@ else
         sgdisk -n $home_n:0G -t $home_n:$home_type -g $ssd
 fi
 
+
+
 ###################
 # FORMATTING DISK #
 ###################
@@ -241,7 +289,7 @@ three="3"
 four="4"
 five="5"
 
-if [ $efi == 1 ]
+if [ $uefi == 1 ]
 then
         temp="$ssd$one"
         mkfs.fat -F32 $temp
@@ -294,6 +342,8 @@ else
         mount $temp /mnt/home
 fi
 
+
+
 ################
 # INSTALLATION #
 ################
@@ -307,10 +357,10 @@ extra=" opendoas pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa" 
 misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 
-efi_package=" efibootmgr"
+uefi_package=" efibootmgr"
 
 essential=" base base-devel linux linux-firmware"
-desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons" # plasma-desktop
+desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons" # or: plasma-desktop
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"
@@ -320,6 +370,8 @@ gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_nvidia=" xf86-video-nouveau"
 
 superuserpack=" git curl vi man-db man-pages texinfo openssh wget gxkb kcron testdisk ardour code atom qtractor audacity gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper termdown"
+
+
 
 if [ $superuser == 1 ]
 then
@@ -370,40 +422,56 @@ else
         something=1
 fi
 
-if [ $efi == 1 ]
+if [ $uefi == 1 ]
 then
-        packagelist="$musthave$drivers$efi_package"
+        packagelist="$musthave$drivers$uefi_package"
 else
         packagelist="$musthave$drivers"
 fi
 
 pacstrap /mnt $packagelist
 
+
+
+##############
+# FINALIZING #
+##############
+
+# Wasn't sure of the current location while OS installs but I wanted to return to it after I clone OS repo.
 pwd > dest.txt
 curr_dest=$(<dest.txt)
+
 cd /mnt
-git clone https://github.com/windwalk-bushido/Atina.git ; cd $curr_dest ; rm dest.txt
+git clone https://github.com/windwalk-bushido/Atina.git
+cd $curr_dest ; rm dest.txt
+
+
 
 genfstab -U /mnt > /mnt/etc/fstab
 
+
+
 mkdir /mnt/note
 echo $ssd > /mnt/note/ssd.txt
-echo $efi > /mnt/note/efi.txt
+echo $uefi > /mnt/note/uefi.txt
 echo $hostname > /mnt/note/hostname.txt
 echo $rootpwd > /mnt/note/rootpwd.txt
 echo $username > /mnt/note/username.txt
 echo $userpwd > /mnt/note/userpwd.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 echo $superuser > /mnt/note/superuser.txt
-
 chmod ugo+rwx /mnt/note
+
+
 
 reinstall=0
 
 while [ $reinstall == 0 ]
 do
         echo " " ; echo " " ; echo " "
-        echo "Are you sure that the OS is installed properly? If you are an experienced user, see if there's any errors (Type '1' for 'Yes, continue', '0' for 'No, start installation again.'):" ; echo " "
+        echo "Are you sure that the OS is installed properly?" ; echo " "
+        echo "If you are an experienced user, see if there's any errors" ; echo " "
+        echo "   (Type '1' for 'Yes, continue' and '0' for 'No, start installation again.')" ; echo " "
         read resurrect
 
         if [ $resurrect != 1 ] && [ $resurrect != 0 ]

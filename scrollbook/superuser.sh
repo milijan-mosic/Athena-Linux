@@ -15,10 +15,11 @@ cp ~/AIFAL/scrollbook/yay.sh ~/.atina/scrollbook/
 cp ~/AIFAL/scrollbook/mount-dvd.sh ~/.atina/scrollbook/
 cp ~/AIFAL/scrollbook/unmount-dvd.sh ~/.atina/scrollbook/
 cd ~/
+chmod ugo+rwx ~/.atina/scrollbook/
 
-#rm -rf ~/.bashrc
-#cp ~/Atina/files/bashrc-superuser ~/
-#mv ~/bashrc-superuser ~/.bashrc
+rm -rf ~/.bashrc
+cp ~/Atina/files/bashrc-superuser ~/
+mv ~/bashrc-superuser ~/.bashrc
 
 cd ~/ ; rm -rf ~/AIFAL ; rm -rf ~/Atina
 

@@ -54,9 +54,6 @@ cd /
 size
         How much OS weights?                    # 9.3 GB
 
-sudo pacman -Qeq | grep xfce4-terminal
-        Should return nothing.
-
 cd ~/ ; deploy ; ls
         Are there deployed folders? Check '~/.atina/scrollbook/deploy-folders.sh' for info.
 
