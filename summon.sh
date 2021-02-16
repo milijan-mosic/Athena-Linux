@@ -7,7 +7,7 @@
 timedatectl set-ntp true
 
 ssd=$(</note/ssd.txt)
-efi=$(</note/efi.txt)
+uefi=$(</note/uefi.txt)
 hostname=$(</note/hostname.txt)
 rootpwd=$(</note/rootpwd.txt)
 username=$(</note/username.txt)
@@ -80,7 +80,7 @@ echo $set_lang > locale.conf ; cd /
 
 cd /etc/ ; echo $hostname > hostname
 
-cp /home/windwalk/Atina/files/hosts /etc/
+cp /Atina/files/hosts /etc/
 ext=".localdomain $hostname"
 base_hostname="$hostname$ext"
 echo $base_hostname >> hosts ; cd /
@@ -133,7 +133,7 @@ bash /Atina/scrollbook/32bit.sh
 # SETTING UP A BOOTLOADER #
 ###########################
 
-if [ $efi == 1 ]
+if [ $uefi == 1 ]
 then
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
         grub-mkconfig -o /boot/grub/grub.cfg

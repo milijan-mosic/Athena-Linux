@@ -6,7 +6,7 @@
 
 flag=0
 clear
-echo " " ; echo "FRIENDLY REMINDER: IF YOU ENTERED WRONG INFO, STICK TO THE END. YOU'LL BE ASKED TO ENTER ALL INFO AGAIN." echo " " ; echo " "
+echo " " ; echo "FRIENDLY REMINDER: IF YOU ENTERED WRONG INFO, STICK TO THE END. YOU'LL BE ASKED TO ENTER ALL INFO AGAIN." ; echo " " ; echo " "
 
 while [ $flag == 0 ]
 do
@@ -14,9 +14,10 @@ do
 
         while [ $pass == 1 ]
         do
-                echo " " ; lsblk ; echo " "
+                echo " " ; lsblk ; echo " " ; echo " "
                 echo "Where do you want to install Atina?" 
                 echo "Type in SSD/hard disk name:" ; echo " "
+                echo "(e.g. '/dev/sda')" ; echo " "
                 read ssd
 
                 lenght=${#ssd}
@@ -38,8 +39,8 @@ do
                 echo " " ; echo " " ; echo " "
                 ls /sys/firmware/efi/efivars ; echo " "
                 echo "Is this an UEFI or BIOS motherboard?"
-                echo "   (Type '0' for BIOS and '1' for UEFI)" ; echo " " 
-                echo "   (If 'no directory is found' error is above this line, it's BIOS)" ; echo " "
+                echo "(Type '0' for BIOS and '1' for UEFI)" ; echo " " 
+                echo "(If 'no directory is found' error is above this line, it's BIOS)" ; echo " "
                 read uefi
 
                 if [ $uefi != 1 ] && [ $uefi != 0 ]
@@ -57,7 +58,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in desired name for computer:"
-                echo "   (minimum 3 characters of lenght)" ; echo " "
+                echo "(minimum 3 characters of lenght)" ; echo " "
                 read hostname
 
                 lenght=${#hostname}
@@ -78,7 +79,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in password for root:" ; echo " "
-                echo "   (minimum 5 characters of lenght)" ; echo " "
+                echo "(minimum 5 characters of lenght)" ; echo " "
                 echo ">" ; read -s rootpwd ; echo " " ; echo "<"
 
                 lenght=${#rootpwd}
@@ -98,7 +99,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in desired username:" ; echo " "
-                echo "   (minimum 3 characters of lenght)" ; echo " "
+                echo "(minimum 3 characters of lenght)" ; echo " "
                 read username
 
                 lenght=${#username}
@@ -119,7 +120,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Are you a superuser?" ; echo " "
-                echo "   (Type '1' for Yes and '0' for No)" ; echo " "
+                echo "(Type '1' for Yes and '0' for No)" ; echo " "
                 read superuser
 
                 if [ $superuser != 1 ] && [ $superuser != 0 ]
@@ -137,7 +138,7 @@ do
         then
                 echo " " ; echo " " ; echo " "
                 echo "Type in password for new user:" ; echo " "
-                echo "   (minimum 5 characters of lenght)" ; echo " "
+                echo "(minimum 5 characters of lenght)" ; echo " "
                 echo ">" ; read -s userpwd ; echo " " ; echo "<"
 
                 lenght=${#userpwd}
@@ -159,7 +160,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Which CPU is this PC using?" ; echo " " 
-                echo "   (Type '0' for AMD and '1' for Intel)" ; echo " "
+                echo "(Type '0' for AMD and '1' for Intel)" ; echo " "
                 read cpu_choice
 
                 if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ]
@@ -177,7 +178,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Which GPU is this PC using?" ; echo " " 
-                echo "   (Type '0' for AMD, '1' for Intel and '2' for nVidia)" ; echo " "
+                echo "(Type '0' for AMD, '1' for Intel and '2' for nVidia)" ; echo " "
                 read gpu_choice
 
                 if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ]
@@ -196,7 +197,7 @@ do
                 echo " " ; echo " " ; echo " "
                 echo "Are you sure that this info you entered is correct?" 
                 echo "Do you want to continue with installation?" ; echo " "
-                echo "   (Type '1' to continue and '0' to enter all information again)" ; echo " "
+                echo "(Type '1' to continue and '0' to enter all information again)" ; echo " "
                 read flag
 
                 if [ $flag != 1 ] && [ $flag != 0 ]

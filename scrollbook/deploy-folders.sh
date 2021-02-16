@@ -2,35 +2,42 @@
 
 superuser=$(<~/superuser.txt)
 
+echo " " ; echo "Deploying folders..." ; echo " "
+
 if [ $superuser == 1 ]
 then
         cd ~/
         git clone https://github.com/windwalk-bushido/AIFAL.git
         cp ~/AIFAL/sucklessoftware/ ~/
+        mv sucklessoftware .sucklessoftware
 
-        cd /sucklessoftware/st/
+        cd ~/.sucklessoftware/st/
         sudo make clean install
 
-        cd /sucklessoftware/dwm/
+        cd ~/.sucklessoftware/dwm/
         sudo make clean install
 
-        cd /sucklessoftware/slstatus/
+        cd ~/.sucklessoftware/slstatus/
         sudo make clean install
 
-        cd /sucklessoftware/dmenu/
+        cd ~/.sucklessoftware/dmenu/
         sudo make clean install
 
-        cd ~/ ; rm -rf AIFAL
+        cd ~/
+        mkdir Songs
+        mkdir Videos
+        mkdir Documents
+        mkdir Pictures
+        mkdir Downloads
+        mkdir Desktop
+
+        rm -rf AIFAL
 else
-        goo=1
+        cd ~/
+        mv Music Songs
+        rm -r Public
+        rm -r Templates
 fi
 
-echo " " ; echo "Deploying folders..." ; echo " "
-cd ~/
-mkdir Songs
-mkdir Videos
-mkdir Documents
-mkdir Pictures
-mkdir Downloads
-mkdir Desktop
+rm superuser.txt
 echo "DONE!" ; echo " "
