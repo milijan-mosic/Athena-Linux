@@ -17,7 +17,7 @@ do
                 echo " " ; lsblk ; echo " " ; echo " "
                 echo "Where do you want to install Atina?" 
                 echo "Type in SSD/hard disk name:" ; echo " "
-                echo "(e.g. '/dev/sda')" ; echo " "
+                echo "(e.g. '/dev/sda')" ; echo ">>> "
                 read ssd
 
                 lenght=${#ssd}
@@ -25,7 +25,7 @@ do
                 # Add additional condition for lenght != number, nor int nor float
                 if [ $lenght != 8 ] || [ -z ssd ]
                 then
-                        echo " " ; echo "Input is not equal to 8 characters or empty input... try again." ; echo " "
+                        echo " " ; echo "Input is not equal to 8 characters or empty input... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -40,12 +40,12 @@ do
                 ls /sys/firmware/efi/efivars ; echo " "
                 echo "Is this an UEFI or BIOS motherboard?"
                 echo "(Type '0' for BIOS and '1' for UEFI)" ; echo " " 
-                echo "(If 'no directory is found' error is above this line, it's BIOS)" ; echo " "
+                echo "(If 'no directory is found' error is above this line, it's BIOS)" ; echo ">>> "
                 read uefi
 
                 if [ $uefi != 1 ] && [ $uefi != 0 ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo " "
+                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -58,7 +58,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in desired name for computer:"
-                echo "(minimum 3 characters of lenght)" ; echo " "
+                echo "(minimum 3 characters of lenght)" ; echo ">>> "
                 read hostname
 
                 lenght=${#hostname}
@@ -66,7 +66,7 @@ do
                 # Add additional condition for lenght != number, nor int nor float
                 if [ $lenght -lt 3 ] || [ -z hostname ]
                 then
-                        echo " " ; echo "Hostname is too small or empty input... try again." ; echo " "
+                        echo " " ; echo "Hostname is too small or empty input... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -80,13 +80,13 @@ do
                 echo " " ; echo " " ; echo " "
                 echo "Type in password for root:" ; echo " "
                 echo "(minimum 5 characters of lenght)" ; echo " "
-                echo ">" ; read -s rootpwd ; echo " " ; echo "<"
+                echo ">>> " ; read -s rootpwd
 
                 lenght=${#rootpwd}
 
                 if [ $lenght -lt 5 ] || [ -z rootpwd ]
                 then
-                        echo " " ; echo "Password is too small or empty input... try again." ; echo " "
+                        echo " " ; echo "Password is too small or empty input... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -99,7 +99,7 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Type in desired username:" ; echo " "
-                echo "(minimum 3 characters of lenght)" ; echo " "
+                echo "(minimum 3 characters of lenght)" ; echo ">>> "
                 read username
 
                 lenght=${#username}
@@ -107,7 +107,7 @@ do
                 # Add additional condition for lenght != number, nor int nor float
                 if [ $lenght -lt 3 ] || [ -z username ]
                 then
-                        echo " " ; echo "Username is too small or empty input... try again." ; echo " "
+                        echo " " ; echo "Username is too small or empty input... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -120,12 +120,12 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Are you a superuser?" ; echo " "
-                echo "(Type '1' for Yes and '0' for No)" ; echo " "
+                echo "(Type '1' for Yes and '0' for No)" ; echo ">>> "
                 read superuser
 
                 if [ $superuser != 1 ] && [ $superuser != 0 ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo " "
+                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -139,13 +139,13 @@ do
                 echo " " ; echo " " ; echo " "
                 echo "Type in password for new user:" ; echo " "
                 echo "(minimum 5 characters of lenght)" ; echo " "
-                echo ">" ; read -s userpwd ; echo " " ; echo "<"
+                echo ">>> " ; read -s userpwd
 
                 lenght=${#userpwd}
 
                 if [ $lenght -lt 5 ] || [ -z userpwd ]
                 then
-                        echo " " ; echo "Password is too small or empty input... try again." ; echo " "
+                        echo " " ; echo "Password is too small or empty input... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -160,12 +160,12 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Which CPU is this PC using?" ; echo " " 
-                echo "(Type '0' for AMD and '1' for Intel)" ; echo " "
+                echo "(Type '0' for AMD and '1' for Intel)" ; echo ">>> "
                 read cpu_choice
 
                 if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo " "
+                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -178,12 +178,12 @@ do
         do
                 echo " " ; echo " " ; echo " "
                 echo "Which GPU is this PC using?" ; echo " " 
-                echo "(Type '0' for AMD, '1' for Intel and '2' for nVidia)" ; echo " "
+                echo "(Type '0' for AMD, '1' for Intel and '2' for nVidia)" ; echo ">>> "
                 read gpu_choice
 
                 if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo " "
+                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
                 else
                         pass=0
                 fi
@@ -197,12 +197,12 @@ do
                 echo " " ; echo " " ; echo " "
                 echo "Are you sure that this info you entered is correct?" 
                 echo "Do you want to continue with installation?" ; echo " "
-                echo "(Type '1' to continue and '0' to enter all information again)" ; echo " "
+                echo "(Type '1' to continue and '0' to enter all information again)" ; echo ">>> "
                 read flag
 
                 if [ $flag != 1 ] && [ $flag != 0 ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo " "
+                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
                 else
                         pass=0
                         clear
@@ -237,10 +237,12 @@ then
 
         swap_n="2"
         swap_size="+8192M"
-        swap_type="8200"
+        #swap_size="+2048M" VM Testing purposes...
+	swap_type="8200"
 
         root_n="3"
         root_size="+30G"
+        #root_size="+15G" VM Testing purposes.
         root_type="8304"
 
         home_n="4"
@@ -260,10 +262,12 @@ else
 
         swap_n="2"
         swap_size="+8192M"
+        #swap_size="+2048M" VM Testing purposes...
         swap_type="8200"
 
         root_n="3"
         root_size="+30G"
+        #root_size="+15G" VM Testing purposes.
         root_type="8304"
 
         home_n="4"
@@ -483,8 +487,6 @@ do
                 then
                         arch-chroot /mnt
                 else
-                        reinstall=1
-
                         umount -R /mnt
                         temp="$ssd$three"
                         swapoff $temp
@@ -494,5 +496,6 @@ do
 
                         clear
                 fi
+		reinstall=1
         fi
 done
