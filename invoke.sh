@@ -408,7 +408,7 @@ codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr s
 uefi_package=" efibootmgr"
 
 essential=" base base-devel linux linux-firmware"
-desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons"
+desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons papirus-icon-theme deepin-icon-theme"
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"

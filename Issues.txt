@@ -1,5 +1,3 @@
-Configure picom for background usage on startup. # Systemd service
-
 There are no new scripts in the 'scrollbook' folder. # Only for superuser.
 
 timedatectl set-ntp true ; not working in script
