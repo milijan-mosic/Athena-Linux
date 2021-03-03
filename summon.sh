@@ -50,6 +50,7 @@ echo -e "$rootpwd\n$rootpwd" | passwd root
 useradd -m -G wheel -s /bin/bash $username
 gpasswd -a $username optical
 gpasswd -a $username storage
+gpasswd -a $username rfkill
 echo -e "$userpwd\n$userpwd" | passwd $username
 
 
@@ -149,12 +150,19 @@ sudo pacman -Scc --noconfirm
 
 
 cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
-cp -r /Atina/scrollbook/ /home/$username/.atina/
+cp -r /Atina/scrollbook/ /home/$username/.atina/ ; cd /
 
 
-rm /home/$username/.config/lxqt/panel.conf
-cp /Atina/files/lxqt/panel.conf /home/$username/.config/lxqt/
+mkdir /Configs/ ; cd /Configs/
+git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
+rm -rf /home/$username/.config/lxqt
+cp -r /Configs/lxqt /home/$username/.config/
+
+cd /etc/ ; mkdir my_configs
+cd my_configs ; mkdir menu_icon
+cd menu_icon/ ; cp /Configs/helmet.svg . ; cd /
 
 
 rm -rf /note/
 rm -rf /Atina/
+rm -rf /Configs/
