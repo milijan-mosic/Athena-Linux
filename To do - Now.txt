@@ -1,57 +1,64 @@
-Make 'green blocks' more descriptive.
+Test user input properly and beautify printing questions. # FIXED?
 
-Make new testing manual?
 
-Add alacritty.yml for them and for superuser. Difference is 'ttf-iosevka'.
+Sort apps in the better package groups. Rename them!
 
-Test user input properly and beautify printing questions.
 
-Sort apps in the better package groups. Rename them?
+Reduce files in /files/ folder by using 'sed'. 
+        > 'locale.gen' and 'pacman.conf'
+
 
 Read '~/Comparrison.txt' and follow instructions. 
-        #.Xauthority ; 'no screens found' xorg # DRIVERS PROBLEM, NVIDIA
 
-Format README.md better.
-
-Ask a user for creating multiple user accounts... rather that only root and e.g. windwalk.
 
 Create systemd service for updateNclean script.
-Update same script to run reflector before update, for faster download time.
+Make script to run reflector before update, for faster download time. (Once per week)
+
+
+Napravi novi raspored pitanja u 'invoke.sh' po uzoru na druge distroe.
+
 
 Make a list of apps that doesn't require configuring. AKA good defaults.
+OR
+Configure them and deploy dot files...
+
 
 GUI: 
         Create a new user.
         Welcome splash screen.
 
+
 'deploy' should be done automatically.
 
-Be sure to give only necesseary permissions.
 
 Luke Smith's like installer.
 See also ZEN installer.
 
-Tweak AtinaOS for performance.
 
-See other OS's, their programs... and, see possible file types that they would like to convert to.
+Tweak Athena Linux for performance and security.
 
-Add AtinaOS Manual... helping new users out to use all of it's potential.
+
+See other OS's, their programs...
+
 
 Add some cloud app?
 
-Add option to choose whether to install 32 or 64bit ArchLinux.
+
+Add option to choose whether to install Arch Linux or Artix.
+
 
 Make full, upgraded version of 'dwm' and 'st'. 
         'dmenu' is good without any config (compare theirs from site with yours from 'AIFAL.git').
 'slstatus' will be replaced with configured polybar. 
+
 
 Then your work is done...
 ...and you can start with making art for your OS.
 
 
 
+
 32bit Arch:
 
-nVidia drivers should be open-source.
 'linux-hardened' packages does'nt exists.
 Don't touch the pacman.conf...

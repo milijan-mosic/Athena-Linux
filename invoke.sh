@@ -1,214 +1,229 @@
 #!/bin/bash
 
+
+
 ##############
 # USER INPUT #
 ##############
 
-flag=0
 clear
-echo " " ; echo "FRIENDLY REMINDER: IF YOU ENTERED WRONG INFO, STICK TO THE END. YOU'LL BE ASKED TO ENTER ALL INFO AGAIN." ; echo " " ; echo " "
+echo " " ; echo "WELCOME TO ATHENA LINUX! DOWN BELOW YOU'LL BE PROMPTED TO ENTER SOME ESSENTIAL INFO REQUIRED TO INSTALL THE OS." ; echo " "
+echo "FRIENDLY REMINDER: IF YOU ENTERED WRONG INFO, STICK TO THE END. YOU'LL BE PROMPTED TO ENTER ALL INFO AGAIN :)" ; echo " " ; echo " "
 
+flag=0
 while [ $flag == 0 ]
 do
         pass=1
-
         while [ $pass == 1 ]
         do
-                echo " " ; lsblk ; echo " " ; echo " "
-                echo "Where do you want to install Atina?" 
-                echo "Type in SSD/hard disk name:" ; echo " "
-                echo "(e.g. '/dev/sda')" ; echo ">>> "
+                echo " " ; lsblk ; echo " " ; echo " " ; echo " "
+                echo "Where do you want to install Athena?" ; echo " "
+                echo "Type in SSD/hard disk device name."
+                echo "(e.g. '/dev/sda' or '/dev/sdb' etc.)" ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read ssd
 
                 lenght=${#ssd}
 
                 # Add additional condition for lenght != number, nor int nor float
-                if [ $lenght != 8 ] || [ -z ssd ]
+                if [ $lenght -lt 8 ] || [ -z ssd ]
                 then
-                        echo " " ; echo "Input is not equal to 8 characters or empty input... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Input is not equal to 8 characters or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
+                        clear
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
-                echo " " ; echo " " ; echo " "
-                ls /sys/firmware/efi/efivars ; echo " "
-                echo "Is this an UEFI or BIOS motherboard?"
-                echo "(Type '0' for BIOS and '1' for UEFI)" ; echo " " 
-                echo "(If 'no directory is found' error is above this line, it's BIOS)" ; echo ">>> "
+                echo " " ; ls /sys/firmware/efi/efivars ; echo " " ; echo " " ; echo " "
+                echo "Is this an UEFI or BIOS motherboard?" ; echo " "
+                echo "Type '0' for BIOS or '1' for UEFI."
+                echo "(if 'no directory is found' error is above, it's BIOS)" ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read uefi
 
-                if [ $uefi != 1 ] && [ $uefi != 0 ]
+                if [ $uefi != 1 ] && [ $uefi != 0 ] || [ -z uefi ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Wrong answer or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
+                        clear
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Type in desired name for computer:"
-                echo "(minimum 3 characters of lenght)" ; echo ">>> "
+                echo "Type in desired name for computer/laptop:"
+                echo "(minimum 3 characters of lenght)" ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read hostname
 
                 lenght=${#hostname}
 
                 # Add additional condition for lenght != number, nor int nor float
+                # What's the maximum lenght of a hostname?
                 if [ $lenght -lt 3 ] || [ -z hostname ]
                 then
-                        echo " " ; echo "Hostname is too small or empty input... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Hostname is too small or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
+                        clear
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
+                rootpwd=""
                 echo " " ; echo " " ; echo " "
-                echo "Type in password for root:" ; echo " "
-                echo "(minimum 5 characters of lenght)" ; echo " "
-                echo ">>> " ; read -s rootpwd
+                echo "Type in password for root:"
+                echo "(minimum 5 characters of lenght | please use strong password)" ; echo " " ; echo " " ; echo " " ; echo ">>> "
+                read -s rootpwd1
+                echo " " ; echo "Type it again >>> "
+                read -s rootpwd2
 
-                lenght=${#rootpwd}
-
-                if [ $lenght -lt 5 ] || [ -z rootpwd ]
+                if [ $rootpwd1 != $rootpwd2 ] || [ -z rootpwd1 ] || [ -z rootpwd2 ]
                 then
-                        echo " " ; echo "Password is too small or empty input... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Password is too small, or empty input or passwords does'nt match... try again." ; echo " " ; echo " "
                 else
-                        pass=0
+                        lenght=${#rootpwd1}
+
+                        # What's the maximum lenght of a password?
+                        if [ $lenght -lt 5 ]
+                        then
+                                clear
+                                echo " " ; echo "Password is too small, or empty input or passwords does'nt match... try again." ; echo " " ; echo " "
+                        else
+                                pass=0
+                                rootpwd="$rootpwd1"
+                                clear
+                        fi
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Type in desired username:" ; echo " "
-                echo "(minimum 3 characters of lenght)" ; echo ">>> "
+                echo "Type in desired username for main user account:" ; echo " "
+                echo "(minimum 3 characters of lenght)" ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read username
 
                 lenght=${#username}
 
                 # Add additional condition for lenght != number, nor int nor float
+                # What's the maximum lenght of a username?
                 if [ $lenght -lt 3 ] || [ -z username ]
                 then
-                        echo " " ; echo "Username is too small or empty input... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Username is too small or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
+                        clear
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
+                userpwd=""
                 echo " " ; echo " " ; echo " "
-                echo "Are you a superuser?" ; echo " "
-                echo "(Type '1' for Yes and '0' for No)" ; echo ">>> "
-                read superuser
+                echo "Type in password for new user:"
+                echo "(minimum 5 characters of lenght | please use strong password)" ; echo " " ; echo " " ; echo " " ; echo ">>> "
+                read -s userpwd1
+                echo " " ; echo "Type it again >>> "
+                read -s userpwd2
 
-                if [ $superuser != 1 ] && [ $superuser != 0 ]
+                if [ $userpwd1 != $userpwd2 ] || [ -z userpwd1 ] || [ -z userpwd2 ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Password is too small, or empty input or passwords does'nt match... try again." ; echo " " ; echo " "
                 else
-                        pass=0
+                        lenght=${#userpwd1}
+
+                        # What's the maximum lenght of a password?
+                        if [ $lenght -lt 5 ]
+                        then
+                                clear
+                                echo " " ; echo "Password is too small, or empty input or passwords does'nt match... try again." ; echo " " ; echo " "
+                        else
+                                pass=0
+                                userpwd="$userpwd1"
+                                clear
+                        fi
                 fi
         done
 
 
         pass=1
-
-        if [ $superuser == 1 ]
-        then
-                echo " " ; echo " " ; echo " "
-                echo "Type in password for new user:" ; echo " "
-                echo "(minimum 5 characters of lenght)" ; echo " "
-                echo ">>> " ; read -s userpwd
-
-                lenght=${#userpwd}
-
-                if [ $lenght -lt 5 ] || [ -z userpwd ]
-                then
-                        echo " " ; echo "Password is too small or empty input... try again." ; echo ">>> "
-                else
-                        pass=0
-                fi
-        else
-                userpwd=$rootpwd
-        fi
-
-
-        pass=1
-
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Which CPU is this PC using?" ; echo " " 
-                echo "(Type '0' for AMD and '1' for Intel)" ; echo ">>> "
+                echo "Which CPU is this computer/laptop using?"
+                echo "Type '0' for AMD or '1' for Intel." ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read cpu_choice
 
-                if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ]
+                if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ] || [ -z cpu_choice ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Wrong answer or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
+                        clear
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Which GPU is this PC using?" ; echo " " 
-                echo "(Type '0' for AMD, '1' for Intel and '2' for nVidia)" ; echo ">>> "
+                echo "Which GPU is this computer/laptop using?"
+                echo "Type '0' for AMD, '1' for Intel or '2' for nVidia." ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read gpu_choice
 
-                if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ]
+                if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ] || [ -z gpu_choice ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Wrong answer or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
+                        clear
                 fi
         done
 
 
         pass=1
-
         while [ $pass == 1 ]
         do
                 echo " " ; echo " " ; echo " "
-                echo "Are you sure that this info you entered is correct?" 
-                echo "Do you want to continue with installation?" ; echo " "
-                echo "(Type '1' to continue and '0' to enter all information again)" ; echo ">>> "
+                echo "Are you sure that this info you entered is correct?" ; echo " "
+                echo "Do you want to continue with installation?"
+                echo "Type '1' to continue or '0' to enter all information again." ; echo " " ; echo " " ; echo " " ; echo ">>> "
                 read flag
 
-                if [ $flag != 1 ] && [ $flag != 0 ]
+                if [ $flag != 1 ] && [ $flag != 0 ] || [ -z flag ]
                 then
-                        echo " " ; echo "Wrong answer... try again." ; echo ">>> "
+                        clear
+                        echo " " ; echo "Wrong answer or empty input... try again." ; echo " " ; echo " "
                 else
                         pass=0
                         clear
                 fi
         done
 done
+# PROMPT A USER FOR ENTERING A PASSPHRASE... TWICE
 
 
 
@@ -225,6 +240,13 @@ sudo pacman -Syy --noconfirm
 
 
 
+# Command where it wipes SSD/hard disk clean...
+#modprobe dm-crypt
+#modprobe dm-mod
+#cryptsetup luksFormat -v -s 512 -h sha512 /dev/sda2
+
+
+
 ################
 # PARTITIONING #
 ################
@@ -237,12 +259,12 @@ then
 
         swap_n="2"
         swap_size="+8192M"
-        #swap_size="+2048M" VM Testing purposes...
+        #swap_size="+2048M" # VM Testing purposes...
 	swap_type="8200"
 
         root_n="3"
         root_size="+30G"
-        #root_size="+15G" VM Testing purposes.
+        #root_size="+15G" # VM Testing purposes...
         root_type="8304"
 
         home_n="4"
@@ -262,12 +284,12 @@ else
 
         swap_n="2"
         swap_size="+8192M"
-        #swap_size="+2048M" VM Testing purposes...
+        #swap_size="+2048M" # VM Testing purposes...
         swap_type="8200"
 
         root_n="3"
         root_size="+30G"
-        #root_size="+15G" VM Testing purposes.
+        #root_size="+15G" # VM Testing purposes...
         root_type="8304"
 
         home_n="4"
@@ -284,15 +306,26 @@ fi
 
 
 
-###################
-# FORMATTING DISK #
-###################
+#modprobe dm-crypt
+#modprobe dm-mod
+
+#three="3"
+#four="4"
+#encrypted_disk="$ssd$three"
+
+#cryptsetup luksFormat -v -s 512 -h sha512 $encrypted_disk
+#cryptsetup open $encrypted_disk encrypted_root # $passphrase
+
+
+
+##############
+# FORMATTING #
+##############
 
 one="1"
 two="2"
 three="3"
 four="4"
-five="5"
 
 if [ $uefi == 1 ]
 then
@@ -306,14 +339,17 @@ then
         temp=""
 
         temp="$ssd$three"
+        #temp="/dev/mapper/encrypted_root"
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$four"
+        #temp="/dev/mapper/encrypted_home"
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$three"
+        #temp="/dev/mapper/encrypted_root"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
@@ -323,7 +359,9 @@ then
         temp=""
 
         temp="$ssd$four"
+        #temp="/dev/mapper/encrypted_home"
         mount $temp /mnt/home
+        temp=""
 else
         temp="$ssd$two"
         mkswap $temp
@@ -331,20 +369,25 @@ else
         temp=""
 
         temp="$ssd$three"
+        #temp="/dev/mapper/encrypted_root"
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$four"
+        #temp="/dev/mapper/encrypted_home"
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$three"
+        #temp="/dev/mapper/encrypted_root"
         mount $temp /mnt
         mkdir /mnt/home
         temp=""
 
         temp="$ssd$four"
+        #temp="/dev/mapper/encrypted_home"
         mount $temp /mnt/home
+        temp=""
 fi
 
 
@@ -365,7 +408,7 @@ codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr s
 uefi_package=" efibootmgr"
 
 essential=" base base-devel linux linux-firmware"
-desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons" # or: plasma-desktop
+desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons"
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"
@@ -374,16 +417,9 @@ gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"
 gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_nvidia=" xf86-video-nouveau"
 
-superuserpack=" git curl vi man-db man-pages texinfo openssh wget gxkb kcron testdisk ardour code atom qtractor audacity gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper termdown"
 
 
-
-if [ $superuser == 1 ]
-then
-        musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$superuserpack"
-else
-        musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
-fi
+musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
@@ -447,7 +483,8 @@ pwd > dest.txt
 curr_dest=$(<dest.txt)
 
 cd /mnt
-git clone https://github.com/windwalk-bushido/Atina.git
+git clone https://github.com/windwalk-bushido/Athena-Linux.git
+mv Athena-Linux Atina
 cd $curr_dest ; rm dest.txt
 
 
@@ -464,38 +501,8 @@ echo $rootpwd > /mnt/note/rootpwd.txt
 echo $username > /mnt/note/username.txt
 echo $userpwd > /mnt/note/userpwd.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
-echo $superuser > /mnt/note/superuser.txt
 chmod ugo+rwx /mnt/note
 
 
 
-reinstall=0
-
-while [ $reinstall == 0 ]
-do
-        echo " " ; echo " " ; echo " "
-        echo "Are you sure that the OS is installed properly?" ; echo " "
-        echo "If you are an experienced user, see if there's any errors" ; echo " "
-        echo "   (Type '1' for 'Yes, continue' and '0' for 'No, start installation again.')" ; echo " "
-        read resurrect
-
-        if [ $resurrect != 1 ] && [ $resurrect != 0 ]
-        then
-                echo " " ; echo "Wrong answer... try again." ; echo " "
-        else
-                if [ $resurrect == 1 ]
-                then
-                        arch-chroot /mnt
-                else
-                        umount -R /mnt
-                        temp="$ssd$three"
-                        swapoff $temp
-                        temp=""
-
-                        # Format (wipe) whole SSD/Hard disk.
-
-                        clear
-                fi
-		reinstall=1
-        fi
-done
+arch-chroot /mnt

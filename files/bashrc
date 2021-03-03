@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 alias update='bash ~/.atina/scrollbook/updateNclean.sh'
 alias wifi='nmtui'
-alias bat='acpi'
+alias battery='acpi'
 alias h='htop'
 alias size='df -h'
 alias programlist='sudo pacman -Qeq'

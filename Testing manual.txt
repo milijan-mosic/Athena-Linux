@@ -5,13 +5,15 @@
 
         OS boots.
 
+        Lightdm greeter is loading properly.
+
         You can log in as root as well as a new user.
 
 lsblk ; sudo fdisk $ssd         # (e.g. /dev/sda)
         Proper partition list scheme with their types and sizes set properly.
 
 programlist
-        Proper CPU + GPU packages and/or 'efibootmgr' installed?
+        Proper CPU + GPU and other packages and/or 'efibootmgr' installed?
 
 timedatectl status
         Proper timezone. NTP sync ON?

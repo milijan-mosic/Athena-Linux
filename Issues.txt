@@ -1,7 +1,5 @@
-Configure picom. Or don't.
+Configure picom for background usage on startup. # Systemd service
 
-There are no new scripts in the 'scrollbook' folder. # FIXED ?
+There are no new scripts in the 'scrollbook' folder. # Only for superuser.
 
-timedatectl set-ntp true ; not working in script?
-
-Test AtinaOS on your PC until everything from 'Issues.txt' is fixed. Then you can call it Alpha version.
+timedatectl set-ntp true ; not working in script

@@ -1,10 +1,13 @@
 #!/bin/bash
 
+
+
 #########
 # SETUP #
 #########
 
 timedatectl set-ntp true
+hwclock --systohc # Check what's this
 
 ssd=$(</note/ssd.txt)
 uefi=$(</note/uefi.txt)
@@ -12,7 +15,6 @@ hostname=$(</note/hostname.txt)
 rootpwd=$(</note/rootpwd.txt)
 username=$(</note/username.txt)
 userpwd=$(</note/userpwd.txt)
-superuser=$(</note/superuser.txt)
 
 set -o pipefail
 
@@ -36,13 +38,7 @@ timedatectl set-timezone Europe/Belgrade
 systemctl enable --now NetworkManager
 systemctl enable --now nftables.service
 systemctl enable --now paccache.timer
-
-if [ $superuser == 1 ]
-then
-        goo=1
-else
-        systemctl enable lightdm
-fi
+systemctl enable lightdm
 
 
 
@@ -55,6 +51,7 @@ useradd -m -G wheel -s /bin/bash $username
 gpasswd -a $username optical
 gpasswd -a $username storage
 echo -e "$userpwd\n$userpwd" | passwd $username
+
 
 rm -rf /etc/sudoers
 cp /Atina/files/sudoers /etc/
@@ -69,6 +66,7 @@ rm -rf /etc/locale.gen
 cp /Atina/files/locale.gen /etc/
 locale-gen
 
+
 cd /etc/ ; set_lang="LANG=en_US.UTF-8"
 echo $set_lang > locale.conf ; cd /
 
@@ -79,6 +77,7 @@ echo $set_lang > locale.conf ; cd /
 ############################################
 
 cd /etc/ ; echo $hostname > hostname
+
 
 cp /Atina/files/hosts /etc/
 ext=".localdomain $hostname"
@@ -101,30 +100,19 @@ cp /Atina/files/bashrc /home/$username/
 mv /home/$username/bashrc /home/$username/.bashrc
 
 
-if [ $superuser == 1 ]
-then
-        cp /Atina/files/xinitrc-superuser /home/$username/
-        mv /home/$username/xinitrc-superuser /home/$username/.xinitrc
-else
-        cp /Atina/files/xinitrc /home/$username/
-        mv /home/$username/xinitrc /home/$username/.xinitrc
-fi
+cp /Atina/files/xinitrc /home/$username/
+mv /home/$username/xinitrc /home/$username/.xinitrc
 
 
 rm -rf /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
 
 
-if [ $superuser == 1 ]
-then
-        goo=1
-else
-        rm -rf /etc/lightdm/lightdm.conf
-        cp /Atina/files/lightdm.conf /etc/lightdm/
-fi
+rm -rf /etc/lightdm/lightdm.conf
+cp /Atina/files/lightdm.conf /etc/lightdm/
 
 
-pacman -Sy
+pacman -Syu --noconfirm
 bash /Atina/scrollbook/32bit.sh
 
 
@@ -142,7 +130,9 @@ else
         grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
+
 sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg
+
 
 
 #####################################
@@ -153,12 +143,7 @@ sudo amixer sset "Auto-Mute Mode" Disabled
 sudo alsactl store
 
 
-if [ $superuser == 1 ]
-then
-        goo=1
-else
-        sudo pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm
-fi
+sudo pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm
 
 sudo pacman -Scc --noconfirm
 
@@ -167,6 +152,9 @@ cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
 cp -r /Atina/scrollbook/ /home/$username/.atina/
 
 
-cp /note/superuser.txt /home/$username/
+rm /home/$username/.config/lxqt/panel.conf
+cp /Atina/files/lxqt/panel.conf /home/$username/.config/lxqt/
+
+
 rm -rf /note/
 rm -rf /Atina/

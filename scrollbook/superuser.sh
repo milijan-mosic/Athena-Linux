@@ -8,7 +8,8 @@ makepkg -sic --noconfirm
 
 cd ~/
 git clone https://github.com/windwalk-bushido/AIFAL.git
-git clone https://github.com/windwalk-bushido/Atina.git
+git clone https://github.com/windwalk-bushido/Athena-Linux.git
+mv Athena-Linux Atina
 
 cp ~/AIFAL/scrollbook/search.sh ~/.atina/scrollbook/
 cp ~/AIFAL/scrollbook/yay.sh ~/.atina/scrollbook/
