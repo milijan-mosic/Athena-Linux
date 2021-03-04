@@ -22,8 +22,8 @@ set -o pipefail
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 
-cp -r /Atina/scrollbook /etc/ ; chmod ugo+rwx /etc/scrollbook
-cp -r /Atina/scrollbook/my_systemd_services /usr/sbin/
+cp -r /Atina/scrollbook /etc/
+cp -r /Atina/scrollbook/my_systemd_services /etc/systemd/system/
 
 
 
@@ -53,6 +53,7 @@ systemctl enable clamav-daemon.service
 systemctl enable picom.service
 systemctl enable update-mirrors.service
 systemctl enable update-system.service
+systemctl enable set-wallpaper.service
 
 
 
@@ -141,6 +142,7 @@ mkdir /Configs/ ; cd /Configs/
 git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
 rm -rf /home/$username/.config/lxqt
 cp -r /Configs/lxqt /home/$username/.config/
+cp -r /Configs/wallpaper /etc/scrollbook/ ; chmod ugo+rwx /etc/scrollbook
 
 cd /etc/ ; mkdir my_configs
 cd my_configs ; mkdir menu_icon

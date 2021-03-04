@@ -1,0 +1,8 @@
+[Unit]
+Description=Setting default wallpaper
+OnFailure=failure-notification@%n
+[Service]
+Type=oneshot
+ExecStart=/etc/scrollbook/xwallpaper.sh
+[Install]
+WantedBy=multi-user.target
