@@ -345,14 +345,12 @@ then
 
         temp="$ssd$three"
         #temp="/dev/mapper/cryptroot"
-        mkfs.btrfs $temp # Since I can't find '--noconfirm' option for this, I must do it this way. Testing...
-        mkfs.ext4 $temp
+        mkfs.ext4 -F $temp
         temp=""
 
         temp="$ssd$four"
         #temp="/dev/mapper/crypthome"
-        mkfs.btrfs $temp
-        mkfs.ext4 $temp
+        mkfs.ext4 -F $temp
         temp=""
 
         temp="$ssd$three"
@@ -377,14 +375,12 @@ else
 
         temp="$ssd$three"
         #temp="/dev/mapper/cryptroot"
-        mkfs.btrfs $temp
-        mkfs.ext4 $temp
+        mkfs.ext4 -F $temp
         temp=""
 
         temp="$ssd$four"
         #temp="/dev/mapper/crypthome"
-        mkfs.btrfs $temp
-        mkfs.ext4 $temp
+        mkfs.ext4 -F $temp
         temp=""
 
         temp="$ssd$three"
