@@ -26,7 +26,7 @@
 
 
 
-#### Open alacritty and run
+#### Open Alacritty and run
         > deploy
 
 
@@ -34,12 +34,12 @@
 
 
 
-#### Notes:
+## Notes:
         These scripts are installing GPT partition table scheme, on both UEFI and BIOS motherboards.
 
         Filesystem: ext4. Currently without Encryption nor LVM.
 
-        Desktop Environment: XFCE4, because it's lightweight DE.
+        Desktop Environment: LXQT, because it's lightweight DE.
         
         This 'rice' is designed with two things in mind: No Windows/MacOS apps (therefore no wine package) + No dual boot. If you want to learn Linux you need to burn the bridges behind you and go in adventure!
 

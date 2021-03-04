@@ -7,7 +7,7 @@
 #########
 
 timedatectl set-ntp true
-hwclock --systohc # Check what's this
+hwclock -w # Check what's this
 
 ssd=$(</note/ssd.txt)
 uefi=$(</note/uefi.txt)
@@ -35,10 +35,12 @@ timedatectl set-timezone Europe/Belgrade
 # ENABLING SYSTEMD SERVICES #
 #############################
 
-systemctl enable --now NetworkManager
-systemctl enable --now nftables.service
-systemctl enable --now paccache.timer
+systemctl enable NetworkManager
+systemctl enable nftables.service
+systemctl enable paccache.timer
 systemctl enable lightdm
+systemctl enable clamav-freshclam.service
+systemctl enable clamav-daemon.service
 
 
 
@@ -83,7 +85,8 @@ cd /etc/ ; echo $hostname > hostname
 cp /Atina/files/hosts /etc/
 ext=".localdomain $hostname"
 base_hostname="$hostname$ext"
-echo $base_hostname >> hosts ; cd /
+echo $base_hostname >> hosts
+cat /Atina/files/block_ip_addresses >> hosts ; cd /
 
 
 
@@ -113,8 +116,29 @@ rm -rf /etc/lightdm/lightdm.conf
 cp /Atina/files/lightdm.conf /etc/lightdm/
 
 
+amixer sset "Auto-Mute Mode" Disabled
+alsactl store
+
+
+cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
+cp -r /Atina/scrollbook/ /home/$username/.atina/ ; cd /
+
+
+mkdir /Configs/ ; cd /Configs/
+git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
+rm -rf /home/$username/.config/lxqt
+cp -r /Configs/lxqt /home/$username/.config/
+
+cd /etc/ ; mkdir my_configs
+cd my_configs ; mkdir menu_icon
+cd menu_icon/ ; cp /Configs/helmet.svg . ; cd /
+
+
 pacman -Syu --noconfirm
 bash /Atina/scrollbook/32bit.sh
+
+pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm
+pacman -Scc --noconfirm
 
 
 
@@ -133,35 +157,6 @@ fi
 
 
 sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg
-
-
-
-#####################################
-# ENABLING AUDIO AND CLEANING CACHE #
-#####################################
-
-sudo amixer sset "Auto-Mute Mode" Disabled
-sudo alsactl store
-
-
-sudo pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm
-
-sudo pacman -Scc --noconfirm
-
-
-cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
-cp -r /Atina/scrollbook/ /home/$username/.atina/ ; cd /
-
-
-mkdir /Configs/ ; cd /Configs/
-git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
-rm -rf /home/$username/.config/lxqt
-cp -r /Configs/lxqt /home/$username/.config/
-
-cd /etc/ ; mkdir my_configs
-cd my_configs ; mkdir menu_icon
-cd menu_icon/ ; cp /Configs/helmet.svg . ; cd /
-
 
 rm -rf /note/
 rm -rf /Atina/

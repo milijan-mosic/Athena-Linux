@@ -236,7 +236,7 @@ timedatectl set-ntp true
 set -o pipefail
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
-sudo pacman -Syy --noconfirm
+pacman -Syy --noconfirm
 
 
 
@@ -340,11 +340,13 @@ then
 
         temp="$ssd$three"
         #temp="/dev/mapper/encrypted_root"
+        mkfs.btrfs $temp # Since I can't find '--noconfirm' option for this, I must do it this way. Testing...
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$four"
         #temp="/dev/mapper/encrypted_home"
+        mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
@@ -370,11 +372,13 @@ else
 
         temp="$ssd$three"
         #temp="/dev/mapper/encrypted_root"
+        mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
         temp="$ssd$four"
         #temp="/dev/mapper/encrypted_home"
+        mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
@@ -396,19 +400,20 @@ fi
 # INSTALLATION #
 ################
 
-apps="veracrypt thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+apps="veracrypt thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility clamav"
 internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
 text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts vim"
-extra=" opendoas pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa" # sudo
+extra=" sudo pulseaudio pulseaudio-alsa pulseaudio-bluetooth python-pyalsa" # opendoas -> needs manual config.
 misc=" alsa alsa-utils ffmpeg mpc mpd acpi alsa-lib alsa-plugins"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
+browser_addons=" firefox-ublock-origin firefox-extension-https-everywhere firefox-decentraleyes firefox-adblock-plus"
 
 uefi_package=" efibootmgr"
 
 essential=" base base-devel linux linux-firmware"
-desktopenv=" lightdm lightdm-gtk-greeter lxqt breeze-icons papirus-icon-theme deepin-icon-theme"
+desktop_env=" lightdm lightdm-gtk-greeter lxqt breeze-icons papirus-icon-theme deepin-icon-theme"
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"
@@ -419,7 +424,7 @@ gpu_nvidia=" xf86-video-nouveau"
 
 
 
-musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$essential$desktopenv"
+musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$browser_addons$essential$desktop_env"
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
