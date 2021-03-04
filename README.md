@@ -2,7 +2,7 @@
         Make sure you are connected to internet (via LAN cable preferred) since using 'iwctl' is not easy for normal users. Or give it a try :)
 
         > sudo pacman -Sy git glibc --noconfirm
-        > git clone https://github.com/windwalk-bushido/athena-linux.git
+        > git clone https://github.com/windwalk-bushido/Athena-Linux.git
         > bash /Atina/invoke.sh
 
 

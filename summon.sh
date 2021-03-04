@@ -7,7 +7,7 @@
 #########
 
 timedatectl set-ntp true
-hwclock -w # Check what's this
+hwclock -w
 
 ssd=$(</note/ssd.txt)
 uefi=$(</note/uefi.txt)
@@ -52,7 +52,7 @@ echo -e "$rootpwd\n$rootpwd" | passwd root
 useradd -m -G wheel -s /bin/bash $username
 gpasswd -a $username optical
 gpasswd -a $username storage
-gpasswd -a $username rfkill
+gpasswd -a $username rfkill # User could'nt change Bluetooth On/Off without this... weird.
 echo -e "$userpwd\n$userpwd" | passwd $username
 
 
