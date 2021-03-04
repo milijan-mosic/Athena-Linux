@@ -243,9 +243,9 @@ pacman -Syy --noconfirm
 # Command where it wipes SSD/hard disk clean... and fills it with random data, before encryption # AES-512
 # Can I have all advantages of /home partition without having to make it? I want to encrypt root with one passphrase and that's it.
 sgdisk -Z $ssd
-cryptsetup open --type plain -d /dev/urandom $ssd to_be_wiped
-dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
-cryptsetup close to_be_wiped
+#cryptsetup open --type plain -d /dev/urandom $ssd to_be_wiped
+#dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+#cryptsetup close to_be_wiped
 
 
 
@@ -313,15 +313,15 @@ fi
 three="3"
 four="4"
 
-temp="$ssd$three"
-cryptsetup -y -v luksFormat $temp
-cryptsetup open $temp cryptroot
-temp=""
+#temp="$ssd$three"
+#cryptsetup -y -v luksFormat $temp
+#cryptsetup open $temp cryptroot
+#temp=""
 
-temp="$ssd$four"
-cryptsetup -y -v luksFormat $temp
-cryptsetup open $temp crypthome
-temp=""
+#temp="$ssd$four"
+#cryptsetup -y -v luksFormat $temp
+#cryptsetup open $temp crypthome
+#temp=""
 
 
 
@@ -343,20 +343,20 @@ then
         swapon $temp
         temp=""
 
-        #temp="$ssd$three"
-        temp="/dev/mapper/cryptroot"
+        temp="$ssd$three"
+        #temp="/dev/mapper/cryptroot"
         mkfs.btrfs $temp # Since I can't find '--noconfirm' option for this, I must do it this way. Testing...
         mkfs.ext4 $temp
         temp=""
 
-        #temp="$ssd$four"
-        temp="/dev/mapper/crypthome"
+        temp="$ssd$four"
+        #temp="/dev/mapper/crypthome"
         mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
-        #temp="$ssd$three"
-        temp="/dev/mapper/cryptroot"
+        temp="$ssd$three"
+        #temp="/dev/mapper/cryptroot"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
@@ -365,8 +365,8 @@ then
         mount $temp /mnt/boot
         temp=""
 
-        #temp="$ssd$four"
-        temp="/dev/mapper/crypthome"
+        temp="$ssd$four"
+        #temp="/dev/mapper/crypthome"
         mount $temp /mnt/home
         temp=""
 else
@@ -375,26 +375,26 @@ else
         swapon $temp
         temp=""
 
-        #temp="$ssd$three"
-        temp="/dev/mapper/cryptroot"
+        temp="$ssd$three"
+        #temp="/dev/mapper/cryptroot"
         mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
-        #temp="$ssd$four"
-        temp="/dev/mapper/crypthome"
+        temp="$ssd$four"
+        #temp="/dev/mapper/crypthome"
         mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
-        #temp="$ssd$three"
-        temp="/dev/mapper/cryptroot"
+        temp="$ssd$three"
+        #temp="/dev/mapper/cryptroot"
         mount $temp /mnt
         mkdir /mnt/home
         temp=""
 
-        #temp="$ssd$four"
-        temp="/dev/mapper/crypthome"
+        temp="$ssd$four"
+        #temp="/dev/mapper/crypthome"
         mount $temp /mnt/home
         temp=""
 fi
