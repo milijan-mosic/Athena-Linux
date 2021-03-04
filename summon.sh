@@ -16,9 +16,14 @@ rootpwd=$(</note/rootpwd.txt)
 username=$(</note/username.txt)
 userpwd=$(</note/userpwd.txt)
 
+set -e
 set -o pipefail
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+
+
+cp -r /Atina/scrollbook /etc/ ; chmod ugo+rwx /etc/scrollbook
+cp -r /Atina/scrollbook/my_systemd_services /usr/sbin/
 
 
 
@@ -36,11 +41,18 @@ timedatectl set-timezone Europe/Belgrade
 #############################
 
 systemctl enable NetworkManager
+systemctl enable NetworkManager-wait-online.service
+
 systemctl enable nftables.service
 systemctl enable paccache.timer
 systemctl enable lightdm
+
 systemctl enable clamav-freshclam.service
 systemctl enable clamav-daemon.service
+
+systemctl enable picom.service
+systemctl enable update-mirrors.service
+systemctl enable update-system.service
 
 
 
@@ -56,7 +68,7 @@ gpasswd -a $username rfkill # User could'nt change Bluetooth On/Off without this
 echo -e "$userpwd\n$userpwd" | passwd $username
 
 
-rm -rf /etc/sudoers
+rm /etc/sudoers
 cp /Atina/files/sudoers /etc/
 
 
@@ -65,7 +77,7 @@ cp /Atina/files/sudoers /etc/
 # SETTING UP LANGUAGES AND KEYBOARD #
 #####################################
 
-rm -rf /etc/locale.gen
+rm /etc/locale.gen
 cp /Atina/files/locale.gen /etc/
 locale-gen
 
@@ -99,7 +111,7 @@ cd /home/$username/.config/ ; mkdir alacritty
 cp /Atina/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
 
 
-rm -rf /home/$username/.bashrc
+rm /home/$username/.bashrc
 cp /Atina/files/bashrc /home/$username/
 mv /home/$username/bashrc /home/$username/.bashrc
 
@@ -108,11 +120,11 @@ cp /Atina/files/xinitrc /home/$username/
 mv /home/$username/xinitrc /home/$username/.xinitrc
 
 
-rm -rf /etc/pacman.conf
+rm /etc/pacman.conf
 cp /Atina/files/pacman.conf /etc/
 
 
-rm -rf /etc/lightdm/lightdm.conf
+rm /etc/lightdm/lightdm.conf
 cp /Atina/files/lightdm.conf /etc/lightdm/
 
 
@@ -120,8 +132,9 @@ amixer sset "Auto-Mute Mode" Disabled
 alsactl store
 
 
-cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
-cp -r /Atina/scrollbook/ /home/$username/.atina/ ; cd /
+# Delete if calling scripts causes no problems.
+#cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
+#cp -r /Atina/scrollbook/ /home/$username/.atina/ ; cd /
 
 
 mkdir /Configs/ ; cd /Configs/
