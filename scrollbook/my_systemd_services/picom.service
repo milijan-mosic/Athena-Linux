@@ -1,0 +1,8 @@
+[Unit]
+Description=Preventing screen tearing
+OnFailure=failure-notification@%n
+[Service]
+Type=simple
+ExecStart=/etc/scrollbook/picom.sh
+[Install]
+WantedBy=multi-user.target

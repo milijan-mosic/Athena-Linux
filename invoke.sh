@@ -233,6 +233,7 @@ done
 
 timedatectl set-ntp true
  
+set -e
 set -o pipefail
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
@@ -241,6 +242,7 @@ pacman -Syy --noconfirm
 
 
 # Command where it wipes SSD/hard disk clean...
+sgdisk -Z $ssd
 #modprobe dm-crypt
 #modprobe dm-mod
 #cryptsetup luksFormat -v -s 512 -h sha512 /dev/sda2
@@ -270,7 +272,6 @@ then
         home_n="4"
         home_type="8302"
 
-        # Input line where it creates new GPT table scheme.
         sgdisk -p $ssd
         sgdisk -o $ssd
         sgdisk -n $boot_n:0G:$boot_size -t $boot_n:$boot_type -g $ssd
@@ -295,7 +296,6 @@ else
         home_n="4"
         home_type="8302"
 
-        # Input line where it creates new GPT table scheme.
         sgdisk -p $ssd
         sgdisk -o $ssd
         sgdisk -n $bios_boot_n:0:$bios_boot_size -t $bios_boot_n:$bios_boot_type -g $ssd
