@@ -240,12 +240,12 @@ reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
 
-
-# Command where it wipes SSD/hard disk clean...
+# Command where it wipes SSD/hard disk clean... and fills it with random data, before encryption # AES-512
+# Can I have all advantages of /home partition without having to make it? I want to encrypt root with one passphrase and that's it.
 sgdisk -Z $ssd
-#modprobe dm-crypt
-#modprobe dm-mod
-#cryptsetup luksFormat -v -s 512 -h sha512 /dev/sda2
+cryptsetup open --type plain -d /dev/urandom $ssd to_be_wiped
+dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+cryptsetup close to_be_wiped
 
 
 
@@ -306,15 +306,22 @@ fi
 
 
 
-#modprobe dm-crypt
-#modprobe dm-mod
+##############
+# ENCRYPTION #
+##############
 
-#three="3"
-#four="4"
-#encrypted_disk="$ssd$three"
+three="3"
+four="4"
 
-#cryptsetup luksFormat -v -s 512 -h sha512 $encrypted_disk
-#cryptsetup open $encrypted_disk encrypted_root # $passphrase
+temp="$ssd$three"
+cryptsetup -y -v luksFormat $temp
+cryptsetup open $temp cryptroot
+temp=""
+
+temp="$ssd$four"
+cryptsetup -y -v luksFormat $temp
+cryptsetup open $temp crypthome
+temp=""
 
 
 
@@ -324,8 +331,6 @@ fi
 
 one="1"
 two="2"
-three="3"
-four="4"
 
 if [ $uefi == 1 ]
 then
@@ -338,20 +343,20 @@ then
         swapon $temp
         temp=""
 
-        temp="$ssd$three"
-        #temp="/dev/mapper/encrypted_root"
+        #temp="$ssd$three"
+        temp="/dev/mapper/cryptroot"
         mkfs.btrfs $temp # Since I can't find '--noconfirm' option for this, I must do it this way. Testing...
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$four"
-        #temp="/dev/mapper/encrypted_home"
+        #temp="$ssd$four"
+        temp="/dev/mapper/crypthome"
         mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$three"
-        #temp="/dev/mapper/encrypted_root"
+        #temp="$ssd$three"
+        temp="/dev/mapper/cryptroot"
         mount $temp /mnt
         mkdir /mnt/boot ; mkdir /mnt/home
         temp=""
@@ -360,8 +365,8 @@ then
         mount $temp /mnt/boot
         temp=""
 
-        temp="$ssd$four"
-        #temp="/dev/mapper/encrypted_home"
+        #temp="$ssd$four"
+        temp="/dev/mapper/crypthome"
         mount $temp /mnt/home
         temp=""
 else
@@ -370,26 +375,26 @@ else
         swapon $temp
         temp=""
 
-        temp="$ssd$three"
-        #temp="/dev/mapper/encrypted_root"
+        #temp="$ssd$three"
+        temp="/dev/mapper/cryptroot"
         mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$four"
-        #temp="/dev/mapper/encrypted_home"
+        #temp="$ssd$four"
+        temp="/dev/mapper/crypthome"
         mkfs.btrfs $temp
         mkfs.ext4 $temp
         temp=""
 
-        temp="$ssd$three"
-        #temp="/dev/mapper/encrypted_root"
+        #temp="$ssd$three"
+        temp="/dev/mapper/cryptroot"
         mount $temp /mnt
         mkdir /mnt/home
         temp=""
 
-        temp="$ssd$four"
-        #temp="/dev/mapper/encrypted_home"
+        #temp="$ssd$four"
+        temp="/dev/mapper/crypthome"
         mount $temp /mnt/home
         temp=""
 fi
@@ -400,7 +405,7 @@ fi
 # INSTALLATION #
 ################
 
-apps="veracrypt thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility clamav xwallpaper"
+apps="thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility clamav xwallpaper openssh"
 internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"

@@ -172,6 +172,8 @@ fi
 
 
 sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd_config # Disabling logging into root via SSH
+
 
 rm -rf /note/
 rm -rf /Atina/
