@@ -22,8 +22,8 @@ set -o pipefail
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 
-cp -r /Atina/scrollbook /etc/
-cp -r /Atina/scrollbook/my_systemd_services /etc/systemd/system/
+cp -r /Athena-Linux/scrollbook /etc/
+cp -r /Athena-Linux/scrollbook/my_systemd_services /etc/systemd/system/
 
 
 
@@ -50,10 +50,10 @@ systemctl enable lightdm
 systemctl enable clamav-freshclam.service
 systemctl enable clamav-daemon.service
 
-systemctl enable picom.service
-systemctl enable update-mirrors.service
-systemctl enable update-system.service
-systemctl enable set-wallpaper.service
+#systemctl enable picom.service
+#systemctl enable update-mirrors.service
+#systemctl enable update-system.service
+#systemctl enable set-wallpaper.service
 
 
 
@@ -70,7 +70,7 @@ echo -e "$userpwd\n$userpwd" | passwd $username
 
 
 rm /etc/sudoers
-cp /Atina/files/sudoers /etc/
+cp /Athena-Linux/files/sudoers /etc/
 
 
 
@@ -79,7 +79,7 @@ cp /Atina/files/sudoers /etc/
 #####################################
 
 rm /etc/locale.gen
-cp /Atina/files/locale.gen /etc/
+cp /Athena-Linux/files/locale.gen /etc/
 locale-gen
 
 
@@ -95,11 +95,11 @@ echo $set_lang > locale.conf ; cd /
 cd /etc/ ; echo $hostname > hostname
 
 
-cp /Atina/files/hosts /etc/
+cp /Athena-Linux/files/hosts /etc/
 ext=".localdomain $hostname"
 base_hostname="$hostname$ext"
 echo $base_hostname >> hosts
-cat /Atina/files/block_ip_addresses >> hosts ; cd /
+cat /Athena-Linux/files/block_ip_addresses >> hosts ; cd /
 
 
 
@@ -109,24 +109,24 @@ cat /Atina/files/block_ip_addresses >> hosts ; cd /
 
 cd /home/$username/ ; mkdir .config ; chmod ugo+rwx /home/$username/.config/
 cd /home/$username/.config/ ; mkdir alacritty
-cp /Atina/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
+cp /Athena-Linux/files/alacritty.yml /home/$username/.config/alacritty/ ; cd /
 
 
 rm /home/$username/.bashrc
-cp /Atina/files/bashrc /home/$username/
+cp /Athena-Linux/files/bashrc /home/$username/
 mv /home/$username/bashrc /home/$username/.bashrc
 
 
-cp /Atina/files/xinitrc /home/$username/
+cp /Athena-Linux/files/xinitrc /home/$username/
 mv /home/$username/xinitrc /home/$username/.xinitrc
 
 
 rm /etc/pacman.conf
-cp /Atina/files/pacman.conf /etc/
+cp /Athena-Linux/files/pacman.conf /etc/
 
 
 rm /etc/lightdm/lightdm.conf
-cp /Atina/files/lightdm.conf /etc/lightdm/
+cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
 
 
 amixer sset "Auto-Mute Mode" Disabled
@@ -135,11 +135,11 @@ alsactl store
 
 # Delete if calling scripts causes no problems.
 #cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
-#cp -r /Atina/scrollbook/ /home/$username/.atina/ ; cd /
+#cp -r /Athena-Linux/scrollbook/ /home/$username/.atina/ ; cd /
 
 
-mkdir /Configs/ ; cd /Configs/
-git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
+cd / ; git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
+mv /Athena-Linux-DE-Configs Configs
 rm -rf /home/$username/.config/lxqt
 cp -r /Configs/lxqt /home/$username/.config/
 cp -r /Configs/wallpaper /etc/scrollbook/ ; chmod ugo+rwx /etc/scrollbook
@@ -150,7 +150,7 @@ cd menu_icon/ ; cp /Configs/helmet.svg . ; cd /
 
 
 pacman -Syu --noconfirm
-bash /Atina/scrollbook/32bit.sh
+bash /Athena-Linux/scrollbook/32bit.sh
 
 pacman -Rns lxqt-archiver pcmanfm-qt qterminal lxqt-about --noconfirm
 pacman -Scc --noconfirm
@@ -176,5 +176,5 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd
 
 
 rm -rf /note/
-rm -rf /Atina/
+rm -rf /Athena-Linux/
 rm -rf /Configs/

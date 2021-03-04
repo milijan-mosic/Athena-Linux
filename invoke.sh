@@ -494,7 +494,6 @@ curr_dest=$(<dest.txt)
 
 cd /mnt
 git clone https://github.com/windwalk-bushido/Athena-Linux.git
-mv Athena-Linux Atina
 cd $curr_dest ; rm dest.txt
 
 
