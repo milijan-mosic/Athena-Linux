@@ -10,6 +10,7 @@ clear
 echo " " ; echo "WELCOME TO ATHENA LINUX! DOWN BELOW YOU'LL BE PROMPTED TO ENTER SOME ESSENTIAL INFO REQUIRED TO INSTALL THE OS." ; echo " "
 echo "FRIENDLY REMINDER: IF YOU ENTERED WRONG INFO, STICK TO THE END. YOU'LL BE PROMPTED TO ENTER ALL INFO AGAIN :)" ; echo " " ; echo " "
 
+
 flag=0
 while [ $flag == 0 ]
 do
@@ -223,7 +224,6 @@ do
                 fi
         done
 done
-# PROMPT A USER FOR ENTERING A PASSPHRASE... TWICE
 
 
 
@@ -232,15 +232,16 @@ done
 #########
 
 timedatectl set-ntp true
- 
+
+
 set -e
 set -o pipefail
+
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
 
-# Command where it wipes SSD/hard disk clean... and fills it with random data, before encryption # AES-512
 # Can I have all advantages of /home partition without having to make it? I want to encrypt root with one passphrase and that's it.
 sgdisk -Z $ssd
 #cryptsetup open --type plain -d /dev/urandom $ssd to_be_wiped
@@ -261,12 +262,10 @@ then
 
         swap_n="2"
         swap_size="+8192M"
-        #swap_size="+2048M" # VM Testing purposes...
 	swap_type="8200"
 
         root_n="3"
         root_size="+30G"
-        #root_size="+15G" # VM Testing purposes...
         root_type="8304"
 
         home_n="4"
@@ -285,12 +284,10 @@ else
 
         swap_n="2"
         swap_size="+8192M"
-        #swap_size="+2048M" # VM Testing purposes...
         swap_type="8200"
 
         root_n="3"
         root_size="+30G"
-        #root_size="+15G" # VM Testing purposes...
         root_type="8304"
 
         home_n="4"
@@ -401,7 +398,7 @@ fi
 # INSTALLATION #
 ################
 
-apps="thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility clamav xwallpaper openssh"
+apps="thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry pavucontrol spectacle sxiv vlc alacritty bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre calligra gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility xwallpaper openssh"
 internet=" broadcom-wl icedtea-web networkmanager nftables reflector webkit2gtk youtube-dl network-manager-applet wireless_tools wpa_supplicant iw"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso grub gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" numlockx git os-prober blueman bluez-tools bluez-utils cmake cups cups-pdf dbus dialog dmidecode hardinfo libtool libxft libxinerama linux-hardened neofetch picom python python-pipenv python3 xorg-server xorg-xinit mesa"
@@ -424,8 +421,8 @@ gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_nvidia=" xf86-video-nouveau"
 
 
-
 musthave="$apps$internet$storage$utilities$text$extra$misc$codecs$browser_addons$essential$desktop_env"
+
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
@@ -476,6 +473,7 @@ else
         packagelist="$musthave$drivers"
 fi
 
+
 pacstrap /mnt $packagelist
 
 
@@ -493,9 +491,7 @@ git clone https://github.com/windwalk-bushido/Athena-Linux.git
 cd $curr_dest ; rm dest.txt
 
 
-
 genfstab -U /mnt > /mnt/etc/fstab
-
 
 
 mkdir /mnt/note
@@ -507,7 +503,6 @@ echo $username > /mnt/note/username.txt
 echo $userpwd > /mnt/note/userpwd.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 chmod ugo+rwx /mnt/note
-
 
 
 arch-chroot /mnt

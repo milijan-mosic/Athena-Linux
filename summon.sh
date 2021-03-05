@@ -9,6 +9,7 @@
 timedatectl set-ntp true
 hwclock -w
 
+
 ssd=$(</note/ssd.txt)
 uefi=$(</note/uefi.txt)
 hostname=$(</note/hostname.txt)
@@ -16,14 +17,20 @@ rootpwd=$(</note/rootpwd.txt)
 username=$(</note/username.txt)
 userpwd=$(</note/userpwd.txt)
 
+
 set -e
 set -o pipefail
+
 
 reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 
 cp -r /Athena-Linux/scrollbook /etc/
-cp -r /Athena-Linux/scrollbook/my_systemd_services /etc/systemd/system/
+
+cp /Athena-Linux/scrollbook/my_systemd_services/picom.service /etc/systemd/system/
+cp /Athena-Linux/scrollbook/my_systemd_services/set-wallpaper.service /etc/systemd/system/
+cp /Athena-Linux/scrollbook/my_systemd_services/update-mirrors.service /etc/systemd/system/
+cp /Athena-Linux/scrollbook/my_systemd_services/update-system.service /etc/systemd/system/
 
 
 
@@ -47,13 +54,10 @@ systemctl enable nftables.service
 systemctl enable paccache.timer
 systemctl enable lightdm
 
-systemctl enable clamav-freshclam.service
-systemctl enable clamav-daemon.service
-
-#systemctl enable picom.service
-#systemctl enable update-mirrors.service
-#systemctl enable update-system.service
-#systemctl enable set-wallpaper.service
+systemctl enable picom.service
+systemctl enable set-wallpaper.service
+systemctl enable update-mirrors.service
+systemctl enable update-system.service
 
 
 
@@ -98,7 +102,7 @@ cd /etc/ ; echo $hostname > hostname
 cp /Athena-Linux/files/hosts /etc/
 ext=".localdomain $hostname"
 base_hostname="$hostname$ext"
-echo $base_hostname >> hosts
+echo $base_hostname >> hosts ; echo " " >> hosts ; echo " " >> hosts # Better formatting
 cat /Athena-Linux/files/block_ip_addresses >> hosts ; cd /
 
 
@@ -133,16 +137,11 @@ amixer sset "Auto-Mute Mode" Disabled
 alsactl store
 
 
-# Delete if calling scripts causes no problems.
-#cd /home/$username/ ; mkdir .atina ; chmod ugo+rwx /home/$username/.atina/
-#cp -r /Athena-Linux/scrollbook/ /home/$username/.atina/ ; cd /
-
-
 cd / ; git clone https://github.com/windwalk-bushido/Athena-Linux-DE-Configs.git
 mv /Athena-Linux-DE-Configs Configs
 rm -rf /home/$username/.config/lxqt
 cp -r /Configs/lxqt /home/$username/.config/
-cp -r /Configs/wallpaper /etc/scrollbook/ ; chmod ugo+rwx /etc/scrollbook
+cp -r /Configs/wallpaper /etc/scrollbook/ ; chmod ugo+rwx /etc/scrollbook ; chmod ugo+rwx /home/$username/.config/lxqt
 
 cd /etc/ ; mkdir my_configs
 cd my_configs ; mkdir menu_icon

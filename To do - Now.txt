@@ -1,22 +1,21 @@
-Test user input properly and beautify printing questions. # FIXED?
-
-
-Sort apps in the better package groups. Rename them!
+Test user input properly and beautify printing questions.
 
 
 Reduce files in /files/ folder by using 'sed'.
-        > 'locale.gen' and 'pacman.conf'
+        > locale.gen
+        > pacman.conf
+        > hosts
+        > lightdm.conf
+        > xinitrc
 
 
 Read '~/Comparrison.txt' and follow instructions.
 
 
-Create systemd service for updateNclean script. (Once per week)
-Make script to run reflector before update, for faster download time. (Once per week)
-Make picom script for executing at every login.
-
-
 Napravi novi raspored pitanja u 'invoke.sh' po uzoru na druge distroe.
+
+
+Script for creating a new user (also, copying dotfiles to that home folder... config replica)
 
 
 Make a list of apps that doesn't require configuring. AKA good defaults.

@@ -2,8 +2,9 @@
 
 echo " " ; echo "Deploying folders..." ; echo " "
 
+timedatectl set-ntp true
+
 cd ~/
-mv Music Songs
 rm -r Public
 rm -r Templates
 
