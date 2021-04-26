@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+
+
 sudo pacman -Syy --noconfirm
 sudo pacman -Syu --noconfirm
 echo " "

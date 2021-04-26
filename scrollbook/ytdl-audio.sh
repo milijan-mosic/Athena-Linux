@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+
+
 link=""
 echo " " ; echo 'Please type a link:'
 read link

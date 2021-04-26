@@ -1,8 +1,13 @@
 #!/bin/bash
 
+
+
+
 gpu_choice=$(</note/gpu_choice.txt)
 
+
 musthave="lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama lib32-mesa"
+
 
 if [ $gpu_choice == 0 ]
 then
@@ -28,4 +33,5 @@ else
         something=1
 fi
 
-sudo pacman -S $packagelist --noconfirm
+
+pacman -S $packagelist --noconfirm
