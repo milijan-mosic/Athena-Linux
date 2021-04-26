@@ -4,6 +4,4 @@ Top priority upgrades are on top...
 > Setup LVM.
 > Make your own ISO with packages and Atina .git into it.
 > Borg backup as systemd service.
-> Change volume levels on all devices to '0db' via one bash line (or more lines) (alsamixer).
-> All packages must be FLOSS.
 > Check many other OS's and make a good, minimalist package list. Good experience out of the box.

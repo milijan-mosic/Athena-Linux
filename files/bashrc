@@ -6,15 +6,9 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias update='bash /etc/scrollbook/updateNclean.sh'
-alias wifi='nmtui'
-alias battery='acpi'
-alias h='htop'
-alias size='df -h'
-alias programlist='sudo pacman -Qeq'
-alias audio='bash /etc/scrollbook/ytdl-audio.sh'
-alias video='bash /etc/scrollbook/ytdl-video.sh'
-alias deploy='bash /etc/scrollbook/deploy-folders.sh'
-alias activate_superuser='bash /etc/scrollbook/superuser.sh'
+alias update='bash ~/.scrollbook/updateNclean.sh'
+alias install_programs='bash ~/.scrollbook/install-programs.sh'
+alias audio='bash ~/.scrollbook/ytdl-audio.sh'
+alias video='bash ~/.scrollbook/ytdl-video.sh'
 
 PS1='[\u@\h \W]\$ '
