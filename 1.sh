@@ -356,8 +356,8 @@ uefi_package=" efibootmgr"
 essential="base base-devel linux linux-firmware grub linux-hardened"
 desktop_env=" lightdm lightdm-gtk-greeter plasma-desktop libtool libxft libxinerama xorg-server xorg-xinit"
 
-misc=" alacritty numlockx mesa python python-pipenv python3 cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins"
-internet=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw"
+misc=" alacritty numlockx mesa python python-pipenv python3 cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
+internet=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget"
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"

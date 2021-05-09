@@ -127,7 +127,7 @@ cp /Athena-Linux/files/alacritty.yml /home/$username/.config/alacritty/
 
 
 rm /home/$username/.bashrc
-cp /home/$username/Athena-Linux/files/bashrc /home/$username/
+cp /Athena-Linux/files/bashrc /home/$username/
 mv /home/$username/bashrc /home/$username/.bashrc
 
 
