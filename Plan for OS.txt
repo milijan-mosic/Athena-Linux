@@ -1,7 +1,0 @@
-Top priority upgrades are on top...
-
-> Encryption with DMCrypt (also, prompt user for a passphrase).
-> Make your own ISO with packages and Athena repo in it.
-> Borg backup as systemd service.
-> Check many other OS's and make a good, minimalist package list. Good experience out of the box.
-> Plasma macOS theme with icons...
