@@ -15,7 +15,7 @@ flag=0
 while [ $flag == 0 ]
 do
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n" ; lsblk ; echo -e "\n\n\n"
                 echo "Where do you want to install Athena Linux?" ; echo -e "\n"
@@ -38,7 +38,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n" ; ls /sys/firmware/efi/efivars ; echo -e "\n\n\n"
                 echo "Is this an UEFI or BIOS firmware?" ; echo -e "\n"
@@ -58,7 +58,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n\n\n"
                 echo "Type in desired name for computer/laptop:"
@@ -80,7 +80,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 root_password=""
                 echo -e "\n\n\n"
@@ -112,7 +112,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n\n\n"
                 echo "Type in desired username for main user account:" ; echo -e "\n"
@@ -134,7 +134,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 user_password=""
                 echo -e "\n\n\n"
@@ -166,7 +166,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n\n\n" # Is there a way to show which CPU computer/laptop has?
                 echo "Which CPU is this computer/laptop using?"
@@ -185,7 +185,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n" ; lspci -v | grep -A1 -e VGA -e 3D ; echo -e "\n\n\n"
                 echo "Which GPU is this computer/laptop using?"
@@ -204,7 +204,7 @@ do
 
 
         pass=true
-        while [ $pass ]
+        while [ $pass == true ]
         do
                 echo -e "\n\n\n"
                 echo "Are you sure that this info you entered is correct?" ; echo -e "\n"
@@ -371,7 +371,7 @@ gpu_nvidia=" xf86-video-nouveau"
 musthave="$essential$desktop_env$cog_wheels$internet_drivers"
 
 
-# Bloat?=python-pipenv python3 python - dbus dialog - vulkan drivers...
+# Bloat? = python-pipenv python3 python - dbus dialog - vulkan drivers...
 
 
 general_programs=" thunderbird print-manager arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
