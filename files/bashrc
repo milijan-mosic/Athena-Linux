@@ -7,7 +7,7 @@
 
 alias ls='ls --color=auto'
 alias update='bash ~/.scrollbook/updateNclean.sh'
-alias install_programs='bash ~/.scrollbook/install-programs.sh'
+alias prepare='bash ~/.scrollbook/prepare.sh'
 alias audio='bash ~/.scrollbook/ytdl-audio.sh'
 alias video='bash ~/.scrollbook/ytdl-video.sh'
 

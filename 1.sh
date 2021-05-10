@@ -9,92 +9,93 @@
 
 
 clear
-flag=0
 
+
+flag = 0
 while [ $flag == 0 ]
 do
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
                 echo -e "\n" ; lsblk ; echo -e "\n\n\n"
-                echo "Where do you want to install Athena?" ; echo -e "\n"
-                echo "Type in SSD/hard disk device name."
-                echo "(e.g. '/dev/sda' or '/dev/sdb' etc.)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo "Where do you want to install Athena Linux?" ; echo -e "\n"
+                echo "Type in SSD/hard disk device name:"
+                echo "(e.g. '/dev/sda' or '/dev/sdb' etc...)" ; echo -e "\n\n\n" ; echo ">>> "
                 read ssd
 
-                lenght=${#ssd}
+                lenght = ${#ssd}
 
                 # Add additional condition for: $ssd != int nor float
-                if [ $lenght -lt 8 ] || [ -z ssd ] # $ssd ?
+                if [ $lenght -lt 8 ] || [ -z $ssd ]
                 then
                         clear
                         echo "Input is not equal to 8 characters or is an empty input... try again." ; echo -e "\n\n"
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
                 echo -e "\n" ; ls /sys/firmware/efi/efivars ; echo -e "\n\n\n"
                 echo "Is this an UEFI or BIOS motherboard?" ; echo -e "\n"
-                echo "Type '0' for BIOS or '1' for UEFI."
-                echo "(if 'no directory is found' error is above, it's BIOS.)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo "Type '0' for BIOS or '1' for UEFI:"
+                echo "(if 'no directory is found' error is above, it's BIOS)" ; echo -e "\n\n\n" ; echo ">>> "
                 read uefi
 
-                if [ $uefi != 1 ] && [ $uefi != 0 ] || [ -z uefi ]
+                if [ $uefi != 1 ] && [ $uefi != 0 ] || [ -z $uefi ]
                 then
                         clear
                         echo "Wrong answer or empty input... try again." ; echo -e "\n\n"
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
                 echo -e "\n\n\n"
                 echo "Type in desired name for computer/laptop:"
                 echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
                 read hostname
 
-                lenght=${#hostname}
+                lenght = ${#hostname}
 
                 # What's the maximum lenght of a hostname?
-                if [ $lenght -lt 3 ] || [ -z hostname ]
+                if [ $lenght -lt 3 ] || [ -z $hostname ]
                 then
                         clear
                         echo "Hostname is too small or empty input... try again."
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
-                rootpwd=""
+                root_password = ""
                 echo -e "\n\n\n"
                 echo "Type in password for root:"
-                echo "(minimum 5 characters of lenght | please use strong password)" ; echo -e "\n\n\n" ; echo ">>> "
-                read -s rootpwd1
+                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
+                read -s root_password1
                 echo -e "\n" ; echo "Type it again >>> "
-                read -s rootpwd2
+                read -s root_password2
 
-                if [ $rootpwd1 != $rootpwd2 ] || [ -z rootpwd1 ] || [ -z rootpwd2 ]
+                if [ $root_password1 != $root_password2 ] || [ -z $root_password1 ] || [ -z $root_password2 ]
                 then
                         clear
                         echo "Password is too small, or there are some empty inputs or passwords does'nt match... try again."
                 else
-                        lenght=${#rootpwd1}
+                        lenght = ${#root_password1}
 
                         # What's the maximum lenght of a password?
                         if [ $lenght -lt 5 ]
@@ -102,53 +103,53 @@ do
                                 clear
                                 echo "Password is too small... try again."
                         else
-                                pass=0
-                                rootpwd="$rootpwd1"
+                                pass = false
+                                root_password = "$root_password1"
                                 clear
                         fi
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
                 echo -e "\n\n\n"
                 echo "Type in desired username for main user account:" ; echo -e "\n"
                 echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
                 read username
 
-                lenght=${#username}
+                lenght = ${#username}
 
                 # What's the maximum lenght of a username? Can it contain numbers?
-                if [ $lenght -lt 3 ] || [ -z username ]
+                if [ $lenght -lt 3 ] || [ -z $username ]
                 then
                         clear
                         echo "Username is too small or is an empty input... try again."
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
-                userpwd=""
+                user_password = ""
                 echo -e "\n\n\n"
-                echo "Type in password for new user:"
-                echo "(minimum 5 characters of lenght | please use strong password)" ; echo -e "\n\n\n" ; echo ">>> "
-                read -s userpwd1
+                echo "Type in password for main user account:"
+                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
+                read -s user_password1
                 echo -e "\n" ; echo "Type it again >>> "
-                read -s userpwd2
+                read -s user_password2
 
-                if [ $userpwd1 != $userpwd2 ] || [ -z userpwd1 ] || [ -z userpwd2 ]
+                if [ $user_password1 != $user_password2 ] || [ -z $user_password1 ] || [ -z $user_password2 ]
                 then
                         clear
                         echo "Password is too small, or there are some empty inputs or passwords does'nt match... try again."
                 else
-                        lenght=${#userpwd1}
+                        lenght = ${#user_password1}
 
                         # What's the maximum lenght of a password?
                         if [ $lenght -lt 5 ]
@@ -156,67 +157,67 @@ do
                                 clear
                                 echo "Password is too small... try again."
                         else
-                                pass=0
-                                userpwd="$userpwd1"
+                                pass = false
+                                user_password = "$user_password1"
                                 clear
                         fi
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
-                echo -e "\n\n\n"
+                echo -e "\n\n\n" # Is there a way to show which CPU and GPU a computer/laptop has?
                 echo "Which CPU is this computer/laptop using?"
-                echo "Type '0' for AMD or '1' for Intel." ; echo -e "\n\n\n" ; echo ">>> "
+                echo "Type '0' for AMD or '1' for Intel:" ; echo -e "\n\n\n" ; echo ">>> "
                 read cpu_choice
 
-                if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ] || [ -z cpu_choice ]
+                if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ] || [ -z $cpu_choice ]
                 then
                         clear
                         echo "Wrong answer or empty input... try again."
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
                 echo -e "\n\n\n"
                 echo "Which GPU is this computer/laptop using?"
-                echo "Type '0' for AMD, '1' for Intel or '2' for nVidia." ; echo -e "\n\n\n" ; echo ">>> "
+                echo "Type '0' for AMD, '1' for Intel or '2' for nVidia:" ; echo -e "\n\n\n" ; echo ">>> "
                 read gpu_choice
 
-                if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ] || [ -z gpu_choice ]
+                if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ] || [ -z $gpu_choice ]
                 then
                         clear
                         echo "Wrong answer or empty input... try again."
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
 
 
-        pass=1
-        while [ $pass == 1 ]
+        pass = true
+        while [ $pass ]
         do
                 echo -e "\n\n\n"
                 echo "Are you sure that this info you entered is correct?" ; echo -e "\n"
                 echo "Do you want to continue with installation?"
-                echo "Type '1' to continue or '0' to enter all information again." ; echo -e "\n\n\n" ; echo ">>> "
+                echo "Type '1' to continue or '0' to enter all information again:" ; echo -e "\n\n\n" ; echo ">>> "
                 read flag
 
-                if [ $flag != 1 ] && [ $flag != 0 ] || [ -z flag ]
+                if [ $flag != 1 ] && [ $flag != 0 ] || [ -z $flag ]
                 then
                         clear
                         echo "Wrong answer or empty input... try again."
                 else
-                        pass=0
+                        pass = false
                         clear
                 fi
         done
@@ -233,7 +234,7 @@ done
 timedatectl set-ntp true
 
 
-reflector --latest 50 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
 
@@ -244,16 +245,16 @@ pacman -Syy --noconfirm
 ################
 
 
-swap_n="2"
-swap_size="+8192M"
-swap_type="8200"
+swap_n = "2"
+swap_size = "+8192M"
+swap_type = "8200"
 
-root_n="3"
-root_size="+30G"
-root_type="8304"
+root_n = "3"
+root_size = "+30G"
+root_type = "8304"
 
-home_n="4"
-home_type="8302"
+home_n = "4"
+home_type = "8302"
 
 sgdisk -Z $ssd
 sgdisk -p $ssd
@@ -261,15 +262,15 @@ sgdisk -o $ssd
 
 if [ $uefi == 1 ]
 then
-        boot_n="1"
-        boot_size="+512M"
-        boot_type="EF00"
+        boot_n = "1"
+        boot_size = "+512M"
+        boot_type = "EF00"
 
         sgdisk -n $boot_n:0G:$boot_size -t $boot_n:$boot_type -g $ssd
 else
-        bios_boot_n="1"
-        bios_boot_size="+1M"
-        bios_boot_type="EF02"
+        bios_boot_n = "1"
+        bios_boot_size = "+1M"
+        bios_boot_type = "EF02"
 
         sgdisk -n $bios_boot_n:0:$bios_boot_size -t $bios_boot_n:$bios_boot_type -g $ssd
 fi
@@ -296,52 +297,52 @@ sgdisk -n $home_n:0G -t $home_n:$home_type -g $ssd
 ##############
 
 
-one="1"
-two="2"
-three="3"
-four="4"
+one = "1"
+two = "2"
+three = "3"
+four = "4"
 
 if [ $uefi == 1 ]
 then
-        temp="$ssd$one"
+        temp = "$ssd$one"
         mkfs.fat -F32 $temp
-        temp=""
+        temp = ""
 else
-        something=1
+        something = 1
 fi
 
-temp="$ssd$two"
+temp = "$ssd$two"
 mkswap $temp
 swapon $temp
-temp=""
+temp = ""
 
-temp="$ssd$three"
+temp = "$ssd$three"
 mkfs.ext4 -F $temp
-temp=""
+temp = ""
 
-temp="$ssd$four"
+temp = "$ssd$four"
 mkfs.ext4 -F $temp
-temp=""
+temp = ""
 
-temp="$ssd$three"
+temp = "$ssd$three"
 mount $temp /mnt
-temp=""
+temp = ""
 
 if [ $uefi == 1 ]
 then
         mkdir /mnt/boot
         mkdir /mnt/home
 
-        temp="$ssd$one"
+        temp = "$ssd$one"
         mount $temp /mnt/boot
-        temp=""
+        temp = ""
 else
         mkdir /mnt/home
 fi
 
-temp="$ssd$four"
+temp = "$ssd$four"
 mount $temp /mnt/home
-temp=""
+temp = ""
 
 
 
@@ -351,67 +352,86 @@ temp=""
 ################
 
 
-uefi_package=" efibootmgr"
+uefi_package = " efibootmgr"
 
-essential="base base-devel linux linux-firmware grub linux-hardened"
-desktop_env=" lightdm lightdm-gtk-greeter plasma-desktop libtool libxft libxinerama xorg-server xorg-xinit"
+essential = "base base-devel linux linux-firmware grub linux-hardened"
+desktop_env = " lightdm lightdm-gtk-greeter plasma-desktop libtool libxft libxinerama xorg-server xorg-xinit"
 
-misc=" alacritty numlockx mesa python python-pipenv python3 cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
-internet=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget"
+cog_wheels = " alacritty numlockx mesa cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
+internet_drivers = " broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget"
 
-cpu_amd=" amd-ucode"
-cpu_intel=" intel-ucode"
+cpu_amd = " amd-ucode"
+cpu_intel = " intel-ucode"
 
-gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"
-gpu_intel=" xf86-video-intel vulkan-intel"
-gpu_nvidia=" xf86-video-nouveau"
+gpu_amd = " xf86-video-ati xf86-video-amdgpu vulkan-radeon"
+gpu_intel = " xf86-video-intel vulkan-intel"
+gpu_nvidia = " xf86-video-nouveau"
 
 
-musthave="$essential$desktop_env$misc$internet"
+musthave = "$essential$desktop_env$cog_wheels$internet_drivers"
+
+
+# Bloat? = python-pipenv python3 python - dbus dialog - vulkan drivers...
+
+
+general_programs = " thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+# Change sxiv to better photo viewer. Sxiv is for advanced user.
+# Htop without using terminal - is it possible?
+internet = " icedtea-web webkit2gtk youtube-dl"
+storage = " android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
+utilities = " blueman bluez-tools bluez-utils cups cups-pdf dmidecode hardinfo neofetch picom"
+text = " gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts"
+extra = " pulseaudio-bluetooth"
+misc = " ffmpeg mpc mpd acpi"
+codecs = " wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
+browser_addons = " firefox-ublock-origin firefox-extension-https-everywhere firefox-decentraleyes firefox-adblock-plus"
+
+
+user_programs = "$general_programs$internet$storage$utilities$text$extra$misc$codecs$browser_addons"
 
 
 
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_amd$cpu_amd"
+        drivers = "$gpu_amd$cpu_amd"
 else
-        something=1
+        something = 1
 fi
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_amd$cpu_intel"
+        drivers = "$gpu_amd$cpu_intel"
 else
-        something=1
+        something = 1
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_intel$cpu_amd"
+        drivers = "$gpu_intel$cpu_amd"
 else
-        something=1
+        something = 1
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_intel$cpu_intel"
+        drivers = "$gpu_intel$cpu_intel"
 else
-        something=1
+        something = 1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_nvidia$cpu_amd"
+        drivers = "$gpu_nvidia$cpu_amd"
 else
-        something=1
+        something = 1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_nvidia$cpu_intel"
+        drivers = "$gpu_nvidia$cpu_intel"
 else
-        something=1
+        something = 1
 fi
 
 
@@ -419,9 +439,9 @@ fi
 
 if [ $uefi == 1 ]
 then
-        packagelist="$musthave$drivers$uefi_package"
+        packagelist = "$musthave$user_programs$drivers$uefi_package"
 else
-        packagelist="$musthave$drivers"
+        packagelist = "$musthave$user_programs$drivers"
 fi
 
 
@@ -437,7 +457,7 @@ pacstrap /mnt $packagelist
 
 # Wasn't sure of the current location while OS installs but I wanted to return to it after I clone OS repo.
 pwd > destination.txt
-current_destination=$(<destination.txt)
+current_destination = $(<destination.txt)
 
 cd /mnt
 git clone https://github.com/windwalk-bushido/Athena-Linux.git
@@ -451,9 +471,9 @@ mkdir /mnt/note
 echo $ssd > /mnt/note/ssd.txt
 echo $uefi > /mnt/note/uefi.txt
 echo $hostname > /mnt/note/hostname.txt
-echo $rootpwd > /mnt/note/rootpwd.txt
+echo $root_password > /mnt/note/root_password.txt
 echo $username > /mnt/note/username.txt
-echo $userpwd > /mnt/note/userpwd.txt
+echo $user_password > /mnt/note/user_password.txt
 echo $gpu_choice > /mnt/note/gpu_choice.txt
 chmod ugo+rwx /mnt/note
 
