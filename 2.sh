@@ -12,15 +12,15 @@ timedatectl set-ntp true
 hwclock -w
 
 
-ssd=$(</note/ssd.txt)
-uefi=$(</note/uefi.txt)
-hostname=$(</note/hostname.txt)
-rootpwd=$(</note/rootpwd.txt)
-username=$(</note/username.txt)
-userpwd=$(</note/userpwd.txt)
+ssd = $(</note/ssd.txt)
+uefi = $(</note/uefi.txt)
+hostname = $(</note/hostname.txt)
+root_password = $(</note/root_password.txt)
+username = $(</note/username.txt)
+user_password = $(</note/user_password.txt)
 
 
-reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
 
 
 
@@ -42,7 +42,6 @@ timedatectl set-timezone Europe/Belgrade
 
 
 systemctl enable NetworkManager
-systemctl enable NetworkManager-wait-online.service
 systemctl enable nftables.service
 systemctl enable lightdm
 
@@ -58,26 +57,27 @@ useradd -m -G wheel -s /bin/bash $username
 gpasswd -a $username optical
 gpasswd -a $username storage
 gpasswd -a $username rfkill # User could'nt change Bluetooth On/Off without this... weird.
-echo -e "$rootpwd\n$rootpwd" | passwd root
-echo -e "$userpwd\n$userpwd" | passwd $username
+echo -e "$root_password\n$root_password" | passwd root
+echo -e "$user_password\n$user_password" | passwd $username
 
 
-rm /etc/sudoers
-cp /Athena-Linux/files/sudoers /etc/
+#rm /etc/sudoers
+#cp /Athena-Linux/files/sudoers /etc/
 
 
 
 
-#####################################
-# SETTING UP LANGUAGES AND KEYBOARD #
-#####################################
+############################################
+# SETTING UP LANGUAGES AND KEYBOARD LAYOUT #
+############################################
+
 
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' etc/locale.gen
 sed -i 's/#sr_RS UTF-8/sr_RS UTF-8/g' etc/locale.gen
 locale-gen
 
 
-cd /etc/ ; set_lang="LANG=en_US.UTF-8"
+cd /etc/ ; set_lang = "LANG=en_US.UTF-8"
 echo $set_lang > locale.conf ; cd /
 
 
@@ -92,7 +92,7 @@ cd /etc/ ; echo $hostname > hostname
 
 
 wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts
-sed -i 's/127.0.0.1 localhost.localdomain/127.0.1.1 $hostname.localdomain $hostname/g' /etc/hosts # Possible future bugs
+sed -i 's/127.0.0.1 localhost.localdomain/127.0.1.1 $hostname.localdomain $hostname/g' /etc/hosts ; cd / # Possible future bugs
 
 
 
@@ -109,8 +109,8 @@ mv /home/$username/xinitrc /home/$username/.xinitrc
 
 
 sed -i 's/#Color/Color/g' /etc/pacman.conf
-sed -i 's/#[multilib]/[multilib]/g' /etc/pacman.conf
-sed -i 's/#Include = /etc/pacman.d/mirrorlist/Include = /etc/pacman.d/mirrorlist/g' /etc/pacman.conf
+sed -i 's/#[multilib]/[multilib]/g' /etc/pacman.conf #
+sed -i 's/#Include = /etc/pacman.d/mirrorlist/Include = /etc/pacman.d/mirrorlist/g' /etc/pacman.conf #
 
 
 rm /etc/lightdm/lightdm.conf
