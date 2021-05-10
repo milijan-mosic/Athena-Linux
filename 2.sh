@@ -117,6 +117,7 @@ sed -i 's/#Include = /etc/pacman.d/mirrorlist/Include = /etc/pacman.d/mirrorlist
 
 #rm /etc/lightdm/lightdm.conf
 #cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
+mkdir /etc/sddm.conf.d/
 cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/sddm.conf
 
 
