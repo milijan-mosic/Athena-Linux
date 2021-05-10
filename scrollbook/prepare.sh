@@ -5,5 +5,9 @@
 
 timedatectl set-ntp true
 
-sudo pacman -Syu --noconfirm
-sudo pacman -Scc --noconfirm
+
+cd ~/.scrollbook/
+rm 32bit.sh
+rm deploy-folders.sh
+rm superuser.sh
+cd ~/
