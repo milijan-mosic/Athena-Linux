@@ -21,6 +21,7 @@ Enter following commands:
 ## When entering for the first time as a new user
 
 Open Alacritty and enter command:
+
         > prepare
 
 ## Notes:
