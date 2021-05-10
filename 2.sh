@@ -44,6 +44,8 @@ timedatectl set-timezone Europe/Belgrade
 systemctl enable NetworkManager
 systemctl enable nftables.service
 systemctl enable lightdm
+systemctl enable cups.socket
+systemctl enable sddm.service
 
 
 
@@ -92,7 +94,7 @@ cd /etc/ ; echo $hostname > hostname
 
 
 wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts
-sed -i 's/127.0.0.1 localhost.localdomain/127.0.1.1 $hostname.localdomain $hostname/g' /etc/hosts ; cd / # Possible future bugs
+sed -i 's/127.0.0.1 localhost.localdomain/127.0.1.1 ${hostname}.localdomain ${hostname}/g' /etc/hosts ; cd / # Possible future bugs
 
 
 
@@ -113,12 +115,13 @@ sed -i 's/#[multilib]/[multilib]/g' /etc/pacman.conf #
 sed -i 's/#Include = /etc/pacman.d/mirrorlist/Include = /etc/pacman.d/mirrorlist/g' /etc/pacman.conf #
 
 
-rm /etc/lightdm/lightdm.conf
-cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
+#rm /etc/lightdm/lightdm.conf
+#cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
+cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/sddm.conf
 
 
-cp -r /Athena-Linux/scrollbook /home/$username/
-mv /home/$username/scrollbook /home/$username/.scrollbook
+cp -r /Athena-Linux/scrollbook /home/$username/.scrollbook
+#mv /home/$username/scrollbook /home/$username/
 chmod ugo+rwx /home/$username/.scrollbook
 
 
@@ -127,8 +130,8 @@ cp /Athena-Linux/files/alacritty.yml /home/$username/.config/alacritty/
 
 
 rm /home/$username/.bashrc
-cp /Athena-Linux/files/bashrc /home/$username/
-mv /home/$username/bashrc /home/$username/.bashrc
+cp /Athena-Linux/files/bashrc /home/$username/.bashrc
+#mv /home/$username/bashrc /home/$username/.bashrc
 
 
 amixer sset "Auto-Mute Mode" Disabled

@@ -41,7 +41,7 @@ do
         while [ $pass ]
         do
                 echo -e "\n" ; ls /sys/firmware/efi/efivars ; echo -e "\n\n\n"
-                echo "Is this an UEFI or BIOS motherboard?" ; echo -e "\n"
+                echo "Is this an UEFI or BIOS firmware?" ; echo -e "\n"
                 echo "Type '0' for BIOS or '1' for UEFI:"
                 echo "(if 'no directory is found' error is above, it's BIOS)" ; echo -e "\n\n\n" ; echo ">>> "
                 read uefi
@@ -67,7 +67,7 @@ do
 
                 lenght = ${#hostname}
 
-                # What's the maximum lenght of a hostname?
+                # What's the maximum lenght of a hostname? Can it contain numbers?
                 if [ $lenght -lt 3 ] || [ -z $hostname ]
                 then
                         clear
@@ -168,7 +168,7 @@ do
         pass = true
         while [ $pass ]
         do
-                echo -e "\n\n\n" # Is there a way to show which CPU and GPU a computer/laptop has?
+                echo -e "\n\n\n" # Is there a way to show which CPU computer/laptop has?
                 echo "Which CPU is this computer/laptop using?"
                 echo "Type '0' for AMD or '1' for Intel:" ; echo -e "\n\n\n" ; echo ">>> "
                 read cpu_choice
@@ -187,7 +187,7 @@ do
         pass = true
         while [ $pass ]
         do
-                echo -e "\n\n\n"
+                echo -e "\n" ; lspci -v | grep -A1 -e VGA -e 3D ; echo -e "\n\n\n"
                 echo "Which GPU is this computer/laptop using?"
                 echo "Type '0' for AMD, '1' for Intel or '2' for nVidia:" ; echo -e "\n\n\n" ; echo ">>> "
                 read gpu_choice
@@ -235,7 +235,7 @@ timedatectl set-ntp true
 
 
 reflector --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
-pacman -Syy --noconfirm
+pacman -Syu --noconfirm
 
 
 
@@ -355,9 +355,9 @@ temp = ""
 uefi_package = " efibootmgr"
 
 essential = "base base-devel linux linux-firmware grub linux-hardened"
-desktop_env = " lightdm lightdm-gtk-greeter plasma-desktop libtool libxft libxinerama xorg-server xorg-xinit"
+desktop_env = " plasma-desktop libtool libxft libxinerama xorg-server xorg-xinit sddm sddm-kcm" # lightdm lightdm-gtk-greeter 
 
-cog_wheels = " alacritty numlockx mesa cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
+cog_wheels = " alacritty numlockx mesa mesa-vdpau usbutils cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
 internet_drivers = " broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget"
 
 cpu_amd = " amd-ucode"
@@ -374,7 +374,7 @@ musthave = "$essential$desktop_env$cog_wheels$internet_drivers"
 # Bloat? = python-pipenv python3 python - dbus dialog - vulkan drivers...
 
 
-general_programs = " thunderbird arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+general_programs = " thunderbird print-manager arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
 # Change sxiv to better photo viewer. Sxiv is for advanced user.
 # Htop without using terminal - is it possible?
 internet = " icedtea-web webkit2gtk youtube-dl"

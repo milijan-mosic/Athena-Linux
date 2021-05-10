@@ -7,20 +7,24 @@
 
         Lightdm greeter is loading properly.
 
+        Numlock is enabled on startup.
+
         You can log in as root as well as a new user.
+
+        Time on clock should be OK (comparing to your smartphone).
 
 lsblk ; sudo fdisk $ssd         # (e.g. /dev/sda)
         Proper partition list scheme with their types and sizes set properly.
 
-programlist
-        Proper CPU + GPU and other packages and/or 'efibootmgr' installed?
+sudo pacman -Qeq
+        Proper CPU + GPU drivers and other packages and/or 'efibootmgr' installed?
 
 timedatectl status
-        Proper timezone. NTP sync ON?
+        Proper timezone. NTP sync is ON?
 
 systemctl status NetworkManager
 systemctl status nftables
-        It should be green (and thus enabled/activeted).
+        It should be green (and thus enabled/activated).
 
 cd /etc/
         vim into:
@@ -31,12 +35,11 @@ cd /etc/
                 hosts
                 pacman.conf
                 sudoers
-cd /etc/lightdm/
-        'lightdm.conf' Is there, with proper content?
+
+cd /
+        There should be no 'Athena-Linux' nor 'note' folder.
 
 cd ~/
-        There should be no 'Atina' folder.
-
         .bashrc
         .xinitrc
                 Are there, with proper contents?
@@ -44,35 +47,11 @@ cd ~/
 cd ~/.config/alacritty/
         'alacritty.yml' Is there, with proper content?
 
-cd /etc/
+cd ~/.scrollbook/ ; ls
         There is 'scrollbook' folder with scripts in it?
 
 alsamixer
         Auto-Mute Mode = Disabled?
 
-cd /
-        There should be no 'note' nor 'Atina' folders.
-
-size
+df -h
         How much OS weights?                    # 11 GB
-
-cd ~/ ; deploy ; ls
-        Are there deployed folders? Check '/etc/scrollbook/deploy-folders.sh' for info.
-
-# SUPERUSER TESTING #
-
-        New packages are installed.
-
-cd ~/ ; ls
-        There should be no 'Atina' or 'AIFAL' folders.
-
-cd ~/.myconfig/
-        There should be 'yay' folder with content.
-cd ~/.atina/scrollbook/
-        Are there new scripts?
-
-vim ~/.bashrc
-        Updated 'bashrc' file?
-
-size
-        How much OS weights now?                # 13 GB
