@@ -12,12 +12,12 @@ timedatectl set-ntp true
 hwclock -w
 
 
-ssd = $(</note/ssd.txt)
-uefi = $(</note/uefi.txt)
-hostname = $(</note/hostname.txt)
-root_password = $(</note/root_password.txt)
-username = $(</note/username.txt)
-user_password = $(</note/user_password.txt)
+ssd=$(</note/ssd.txt)
+uefi=$(</note/uefi.txt)
+hostname=$(</note/hostname.txt)
+root_password=$(</note/root_password.txt)
+username=$(</note/username.txt)
+user_password=$(</note/user_password.txt)
 
 
 reflector --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
@@ -79,7 +79,7 @@ sed -i 's/#sr_RS UTF-8/sr_RS UTF-8/g' etc/locale.gen
 locale-gen
 
 
-cd /etc/ ; set_lang = "LANG=en_US.UTF-8"
+cd /etc/ ; set_lang="LANG=en_US.UTF-8"
 echo $set_lang > locale.conf ; cd /
 
 
