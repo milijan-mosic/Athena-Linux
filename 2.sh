@@ -63,8 +63,8 @@ echo -e "$root_password\n$root_password" | passwd root
 echo -e "$user_password\n$user_password" | passwd $username
 
 
-#rm /etc/sudoers
-#cp /Athena-Linux/files/sudoers /etc/
+rm /etc/sudoers
+cp /Athena-Linux/files/sudoers /etc/
 
 
 
