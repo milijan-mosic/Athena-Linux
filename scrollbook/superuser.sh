@@ -36,8 +36,12 @@ paru -S ttf-iosevka cherrytree labyrinth --noconfirm
 
 
 
-git clone https://github.com/windwalk-bushido/Athena-Linux.git
+sudo systemctl enable --now cups.socket
 
+
+
+
+git clone https://github.com/windwalk-bushido/Athena-Linux.git
 
 cp -r ~/Athena-Linux/scrollbook ~/.scrollbook
 rm ~/.scrollbook/32bit.sh
@@ -65,7 +69,7 @@ cp ~/Athena-Linux/files/spectrwm.conf ~/.spectrwm.conf
 
 
 mkdir .screenlayout
-cp ~/Athena-Linux/files/layout ~/.screenlayout/
+cp ~/Athena-Linux/files/layout.sh ~/.screenlayout/
 
 
 mkdir ~/.wallpaper/ ; cp ~/Athena-Linux/files/wallpaper.jpg ~/.wallpaper/
@@ -88,7 +92,11 @@ mkdir Projects
 
 
 rm -rf ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
+
 paru -Scc --noconfirm
 sudo pacman -Scc --noconfirm
 
-#startx
+
+
+
+startx

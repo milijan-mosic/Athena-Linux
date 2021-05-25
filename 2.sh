@@ -76,8 +76,8 @@ sed -i 's/#sr_RS UTF-8/sr_RS UTF-8/g' etc/locale.gen
 locale-gen
 
 
-cd /etc/ ; set_lang="LANG=en_US.UTF-8"
-echo $set_lang > locale.conf ; cd /
+set_lang="LANG=en_US.UTF-8"
+echo $set_lang > /etc/locale.conf
 
 
 
@@ -87,11 +87,11 @@ echo $set_lang > locale.conf ; cd /
 ############################################
 
 
-cd /etc/ ; echo $hostname > hostname
+echo $hostname > /etc/hostname
 
 
-wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts ; cd /
-#sed -i 's/127.0.0.1 localhost.localdomain/127.0.1.1 ${hostname}.localdomain ${hostname}/g' /etc/hosts # Change this manually?
+rm /etc/hosts
+wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts
 
 
 
