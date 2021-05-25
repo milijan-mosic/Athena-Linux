@@ -3,19 +3,20 @@
 
 
 
+cd ~/
 sudo timedatectl set-ntp true
 
 
 
 
-cd ~/ ; mkdir .paru_aur_installer ; cd ~/.paru_aur_installer
+mkdir .paru_aur_installer ; cd ~/.paru_aur_installer
 git clone https://aur.archlinux.org/paru.git ; cd paru
 makepkg -sic --noconfirm ; cd ~/
 
 
 
 
-general_programs=" numlockx thunderbird print-manager arandr firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+general_programs=" spectrwm numlockx thunderbird print-manager arandr firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
 internet=" icedtea-web webkit2gtk youtube-dl curl"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
 utilities=" blueman bluez-tools bluez-utils cups cups-pdf dmidecode hardinfo neofetch picom"
@@ -40,7 +41,7 @@ git clone https://github.com/windwalk-bushido/Athena-Linux.git
 
 cp -r ~/Athena-Linux/scrollbook ~/.scrollbook
 rm ~/.scrollbook/32bit.sh
-rm ~/.scrollbook/deploy-folders.sh
+rm ~/.scrollbook/deploy_folders.sh
 rm ~/.scrollbook/superuser.sh
 rm ~/.scrollbook/normal.sh
 
@@ -53,7 +54,7 @@ echo "exec spectrwm" >> ~/.xinitrc
 
 
 rm -rf ~/.bashrc
-cp ~/Athena-Linux/files/bashrc-superuser ~/.bashrc
+cp ~/Athena-Linux/files/bashrc_superuser ~/.bashrc
 
 
 mkdir -p ~/.config/alacritty
@@ -72,10 +73,16 @@ mkdir ~/.wallpaper/ ; cp ~/Athena-Linux/files/wallpaper.jpg ~/.wallpaper/
 
 
 
-mkdir Projects
 mkdir MOUNTPOINT
+
 mkdir Music
 mkdir Videos
+
+mkdir Backup
+mkdir Desktop
+mkdir Documents
+mkdir Downloads
+mkdir Projects
 
 
 
