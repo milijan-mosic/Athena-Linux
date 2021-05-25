@@ -3,10 +3,8 @@
 
 
 
-link=""
-echo " " ; echo 'Please type a link:'
+echo -e "\nPlease type a link:"
 read link
 cd ~/Music/
-echo " "
-sudo youtube-dl --audio-quality 0 -x --audio-format mp3 $link
-echo " " ; echo "DONE!" ; echo " "
+echo -e "\n" ; sudo youtube-dl --audio-quality 0 -x --audio-format mp3 $link
+echo -e "\nDONE!\n\n" ; cd ~/

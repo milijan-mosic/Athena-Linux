@@ -4,7 +4,7 @@ Make sure you are connected to internet via RJ-45 (LAN) cable.
 
 Enter following commands:
 
-        > sudo pacman -Sy git glibc --noconfirm
+        > sudo pacman -Sy git --noconfirm
         > git clone https://tinyurl.com/Athena-Linux
         > bash /Athena-Linux/1.sh
 
@@ -22,7 +22,7 @@ Enter following commands:
 
 Open Alacritty and enter command:
 
-        > prepare
+        > bash normal.sh
 
 ## Notes:
 

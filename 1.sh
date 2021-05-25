@@ -207,6 +207,43 @@ do
         while [ $pass == true ]
         do
                 echo -e "\n\n\n"
+
+                echo -e "SSD device name: $ssd\n"
+
+                if [ $uefi == 1 ]
+                then
+                        echo -e "Motherboard firmware: UEFI\n"
+                else
+                        echo -e "Motherboard firmware: BIOS\n"
+                fi
+
+                echo -e "Name for a device: $hostname\n"
+                echo -e "Username for main account: $username\n"
+
+                if [ $cpu_choice == 0 ]
+                then
+                        echo -e "This device uses: AMD CPU\n"
+                else
+                        echo -e "This device uses: Intel CPU\n"
+                fi
+
+                if [ $gpu_choice == 0 ]
+                then
+                        echo -e "This device uses: AMD GPU\n"
+                fi
+                
+                if [ $gpu_choice == 1 ]
+                then
+                        echo -e "This device uses: Intel GPU\n"
+                else
+                        echo -e "This device uses: nVidia GPU\n"
+                fi
+
+                echo -e "Password should be kept secret ;)\n\n\n"
+
+
+
+
                 echo "Are you sure that this info you entered is correct?" ; echo -e "\n"
                 echo "Do you want to continue with installation?"
                 echo "Type '1' to continue or '0' to enter all information again:" ; echo -e "\n\n\n" ; echo ">>> "
@@ -234,7 +271,7 @@ done
 timedatectl set-ntp true
 
 
-reflector --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syu --noconfirm
 
 
@@ -355,10 +392,10 @@ temp=""
 uefi_package=" efibootmgr"
 
 essential="base base-devel linux linux-firmware grub linux-hardened"
-desktop_env=" plasma-desktop libtool libxft libxinerama xorg-server xorg-xinit sddm sddm-kcm" # lightdm lightdm-gtk-greeter 
+desktop_server=" libtool libxft libxinerama xorg-server xorg-xinit"
 
-cog_wheels=" alacritty numlockx mesa mesa-vdpau usbutils cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
-internet_drivers=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget"
+cog_wheels=" vim alacritty mesa mesa-vdpau usbutils cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
+internet_drivers=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget git"
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"
@@ -368,26 +405,10 @@ gpu_intel=" xf86-video-intel vulkan-intel"
 gpu_nvidia=" xf86-video-nouveau"
 
 
-musthave="$essential$desktop_env$cog_wheels$internet_drivers"
+musthave="$essential$desktop_server$cog_wheels$internet_drivers"
 
 
 # Bloat? = python-pipenv python3 python - dbus dialog - vulkan drivers...
-
-
-general_programs=" thunderbird print-manager arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
-# Change sxiv to better photo viewer. Sxiv is for advanced user.
-# Htop without using terminal - is it possible?
-internet=" icedtea-web webkit2gtk youtube-dl"
-storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
-utilities=" blueman bluez-tools bluez-utils cups cups-pdf dmidecode hardinfo neofetch picom"
-text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts"
-extra=" pulseaudio-bluetooth"
-misc=" ffmpeg mpc mpd acpi"
-codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
-browser_addons=" firefox-ublock-origin firefox-extension-https-everywhere firefox-decentraleyes firefox-adblock-plus"
-
-
-user_programs="$general_programs$internet$storage$utilities$text$extra$misc$codecs$browser_addons"
 
 
 
@@ -439,9 +460,9 @@ fi
 
 if [ $uefi == 1 ]
 then
-        packagelist="$musthave$user_programs$drivers$uefi_package"
+        packagelist="$musthave$drivers$uefi_package"
 else
-        packagelist="$musthave$user_programs$drivers"
+        packagelist="$musthave$drivers"
 fi
 
 

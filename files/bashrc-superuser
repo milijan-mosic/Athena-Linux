@@ -1,0 +1,29 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias update='bash ~/.scrollbook/updateNclean.sh'
+alias wifi='nmtui'
+alias bat='acpi'
+alias h='htop'
+alias size='df -h'
+alias programlist='sudo pacman -Qeq'
+alias audio='bash ~/.scrollbook/ytdl-audio.sh'
+alias video='bash ~/.scrollbook/ytdl-video.sh'
+alias r='ranger'
+alias n='neofetch'
+alias s='bash ~/.scrollbook/search.sh'
+alias y='bash ~/.scrollbook/yay.sh'
+alias start='bash ~/.scrollbook/startup.sh'
+alias wallp='xwallpaper --stretch ~/.wallpaper/wallpaper.jpg'
+alias rs='bash .atina/scrollbook/redshift.sh'
+alias change_hosts='bash ~/.scrollbook/change_hosts.sh'
+alias change_hosts_back='bash ~/.scrollbook/change_hosts_back.sh'
+alias fetch_my_template='bash ~/.scrollbook/fetch_template.sh'
+alias cdP='cd ~/Projects/CyberTools'
+
+PS1='[\u@\h \W]\$ '

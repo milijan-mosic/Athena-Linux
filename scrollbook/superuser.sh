@@ -1,32 +1,87 @@
 #!/bin/bash
 
-cd ~/ ; mkdir .myconfig
-cd ~/.myconfig
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -sic --noconfirm
 
-cd ~/
-git clone https://github.com/windwalk-bushido/AIFAL.git
+
+
+sudo timedatectl set-ntp true
+
+
+
+
+cd ~/ ; mkdir .paru_aur_installer ; cd ~/.paru_aur_installer
+git clone https://aur.archlinux.org/paru.git ; cd paru
+makepkg -sic --noconfirm ; cd ~/
+
+
+
+
+general_programs=" numlockx thunderbird print-manager arandr firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+internet=" icedtea-web webkit2gtk youtube-dl curl"
+storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
+utilities=" blueman bluez-tools bluez-utils cups cups-pdf dmidecode hardinfo neofetch picom"
+text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts"
+extra=" pulseaudio-bluetooth"
+misc=" ffmpeg mpc mpd acpi man-db man-pages texinfo"
+codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
+user_choice=" gxkb kcron testdisk code gimp ruby-sass ranger virtualbox virtualbox-host-modules-arch calcurse xwallpaper deno ts-node typescript npm"
+
+
+user_programs="$general_programs$internet$storage$utilities$text$extra$misc$codecs$user_choice"
+
+
+sudo pacman -Syu $user_programs --noconfirm
+paru -S ttf-iosevka cherrytree labyrinth --noconfirm
+
+
+
+
 git clone https://github.com/windwalk-bushido/Athena-Linux.git
-mv Athena-Linux Atina
 
-cp ~/AIFAL/scrollbook/search.sh ~/.atina/scrollbook/
-cp ~/AIFAL/scrollbook/yay.sh ~/.atina/scrollbook/
-cp ~/AIFAL/scrollbook/mount-dvd.sh ~/.atina/scrollbook/
-cp ~/AIFAL/scrollbook/unmount-dvd.sh ~/.atina/scrollbook/
-cd ~/
-chmod ugo+rwx ~/.atina/scrollbook/
+
+cp -r ~/Athena-Linux/scrollbook ~/.scrollbook
+rm ~/.scrollbook/32bit.sh
+rm ~/.scrollbook/deploy-folders.sh
+rm ~/.scrollbook/superuser.sh
+rm ~/.scrollbook/normal.sh
+
+
+
+
+echo "numlockx &" > ~/.xinitrc
+echo " " >> ~/.xinitrc
+echo "exec spectrwm" >> ~/.xinitrc
+
 
 rm -rf ~/.bashrc
-cp ~/Atina/files/bashrc-superuser ~/
-mv ~/bashrc-superuser ~/.bashrc
+cp ~/Athena-Linux/files/bashrc-superuser ~/.bashrc
 
-cd ~/ ; rm -rf ~/AIFAL ; rm -rf ~/Atina
 
-sudo pacman -S git vi man-db man-pages texinfo curl openssh wget gxkb kcron testdisk ardour code atom qtractor audacity flowblade gimp ruby-sass gcc-go go ranger cmatrix virtualbox virtualbox-host-modules-arch vim-latexsuite gummi calcurse xwallpaper --noconfirm
+mkdir -p ~/.config/alacritty
+cp ~/Athena-Linux/files/alacritty.yml ~/.config/alacritty/
 
-yay -S ttf-iosevka gedit-latex cherrytree labyrinth peaclock --noconfirm
 
-yay -Scc --noconfirm
+cp ~/Athena-Linux/files/spectrwm.conf ~/.spectrwm.conf
+
+
+mkdir .screenlayout
+cp ~/Athena-Linux/files/layout ~/.screenlayout/
+
+
+mkdir ~/.wallpaper/ ; cp ~/Athena-Linux/files/wallpaper.jpg ~/.wallpaper/
+
+
+
+
+mkdir Projects
+mkdir MOUNTPOINT
+mkdir Music
+mkdir Videos
+
+
+
+
+rm -rf ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
+paru -Scc --noconfirm
 sudo pacman -Scc --noconfirm
+
+#startx
