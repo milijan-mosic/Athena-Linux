@@ -344,8 +344,6 @@ then
         temp="$ssd$one"
         mkfs.fat -F32 $temp
         temp=""
-else
-        something=1
 fi
 
 temp="$ssd$two"
@@ -416,43 +414,31 @@ musthave="$essential$desktop_server$cog_wheels$internet_drivers"
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
         drivers="$gpu_amd$cpu_amd"
-else
-        something=1
 fi
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 1 ]
 then
         drivers="$gpu_amd$cpu_intel"
-else
-        something=1
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 0 ]
 then
         drivers="$gpu_intel$cpu_amd"
-else
-        something=1
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 1 ]
 then
         drivers="$gpu_intel$cpu_intel"
-else
-        something=1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
 then
         drivers="$gpu_nvidia$cpu_amd"
-else
-        something=1
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
 then
         drivers="$gpu_nvidia$cpu_intel"
-else
-        something=1
 fi
 
 

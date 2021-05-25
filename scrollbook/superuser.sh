@@ -45,7 +45,6 @@ git clone https://github.com/windwalk-bushido/Athena-Linux.git
 
 cp -r ~/Athena-Linux/scrollbook ~/.scrollbook
 rm ~/.scrollbook/32bit.sh
-rm ~/.scrollbook/deploy_folders.sh
 rm ~/.scrollbook/superuser.sh
 rm ~/.scrollbook/normal.sh
 
@@ -57,7 +56,7 @@ echo " " >> ~/.xinitrc
 echo "exec spectrwm" >> ~/.xinitrc
 
 
-rm -rf ~/.bashrc
+rm ~/.bashrc
 cp ~/Athena-Linux/files/bashrc_superuser ~/.bashrc
 
 
@@ -91,7 +90,7 @@ mkdir Projects
 
 
 
-rm -rf ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
+rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
 
 paru -Scc --noconfirm
 sudo pacman -Scc --noconfirm

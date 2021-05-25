@@ -32,8 +32,8 @@ sudo pacman -Syu $user_programs --noconfirm
 
 
 
-sudo systemctl enable cups.socket
-sudo systemctl enable sddm.service
+sudo systemctl enable --now cups.socket
+sudo systemctl enable --now sddm.service
 
 
 
@@ -51,8 +51,8 @@ git clone https://github.com/windwalk-bushido/Athena-Linux.git
 
 mkdir ~/.scrollbook/
 cp ~/Athena-Linux/scrollbook/updateNclean.sh ~/.scrollbook/
-cp ~/Athena-Linux/scrollbook/ytdl-audio.sh ~/.scrollbook/
-cp ~/Athena-Linux/scrollbook/ytdl-video.sh ~/.scrollbook/
+cp ~/Athena-Linux/scrollbook/ytdl_audio.sh ~/.scrollbook/
+cp ~/Athena-Linux/scrollbook/ytdl_video.sh ~/.scrollbook/
 
 
 
@@ -67,11 +67,13 @@ cp ~/Athena-Linux/files/bashrc ~/.bashrc
 
 mkdir Music
 mkdir Videos
+mkdir Documents
+mkdir Downloads
 
 
 
 
-rm -rf ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
+rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
 
 sudo pacman -Rns wget git vim --noconfirm
 sudo pacman -Scc --noconfirm
@@ -79,4 +81,4 @@ sudo pacman -Scc --noconfirm
 
 
 
-#startx
+startx
