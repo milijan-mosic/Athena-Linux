@@ -20,9 +20,11 @@ Enter following commands:
 
 ## When entering for the first time as a new user
 
-Open Alacritty and enter command:
-
         > bash normal.sh
+
+Or if you want a advanced build (for developers or advanced linux users) enter:
+
+        > bash superuser.sh
 
 ## Notes:
 
@@ -31,10 +33,10 @@ SWAP file size: 8 GB. I think it's enough for all RAM sizes.
 
 Filesystem: ext4. Currently without Encryption nor LVM. 
 This means that you can install this OS on only one SSD/hard disk.
-In plan: btrfs + backup files.
+In plan: BTRFS + backup file (if system crashes - recovery is easy).
 
 Desktop Environment: KDE Plasma - the best looking DE on the planet.
-In plan: making dark Mojave theme default (Apple has such good UI principles).
+In plan: making dark MacOS theme default (Apple has such good UI principles).
 
 This OS is designed with two things in mind: No Windows/MacOS apps (therefore no wine package) + No dual boot. 
 If you want to learn Linux you need to burn the bridges behind you and go in adventure!

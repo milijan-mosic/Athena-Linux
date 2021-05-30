@@ -25,9 +25,10 @@ extra=" pulseaudio-bluetooth"
 misc=" ffmpeg mpc mpd acpi man-db man-pages texinfo"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 user_choice=" gxkb kcron testdisk code gimp ruby-sass ranger virtualbox virtualbox-host-modules-arch calcurse xwallpaper deno ts-node typescript npm"
+add_this=" curl libunrar python termdown units borg xlockmore xscreensaver" # xxkb ?
 
 
-user_programs="$general_programs$internet$storage$utilities$text$extra$misc$codecs$user_choice"
+user_programs="$general_programs$internet$storage$utilities$text$extra$misc$codecs$user_choice$add_this"
 
 
 sudo pacman -Syu $user_programs --noconfirm
@@ -68,10 +69,14 @@ cp ~/Athena-Linux/files/spectrwm.conf ~/.spectrwm.conf
 
 
 mkdir .screenlayout
-cp ~/Athena-Linux/files/layout.sh ~/.screenlayout/
+cp ~/Athena-Linux/files/monitor.sh ~/.screenlayout/
+cp ~/Athena-Linux/files/laptop.sh ~/.screenlayout/
 
 
 mkdir ~/.wallpaper/ ; cp ~/Athena-Linux/files/wallpaper.jpg ~/.wallpaper/
+
+
+sudo cp ~/Athena-Linux/files/hosts /etc/hosts_old
 
 
 
@@ -86,6 +91,7 @@ mkdir Desktop
 mkdir Documents
 mkdir Downloads
 mkdir Projects
+mkdir Pictures
 
 
 

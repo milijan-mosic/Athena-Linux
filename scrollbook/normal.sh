@@ -69,6 +69,7 @@ mkdir Music
 mkdir Videos
 mkdir Documents
 mkdir Downloads
+mkdir Pictures
 
 
 
