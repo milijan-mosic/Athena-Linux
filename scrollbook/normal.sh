@@ -3,7 +3,6 @@
 
 
 
-cd ~/
 sudo timedatectl set-ntp true
 
 
@@ -47,7 +46,7 @@ sudo mkdir /etc/sddm.conf.d/
 sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/sddm.conf
 
 
-git clone https://github.com/windwalk-bushido/Athena-Linux.git
+git clone https://github.com/windwalk-bushido/Athena-Linux.git ~/
 
 mkdir ~/.scrollbook/
 cp ~/Athena-Linux/scrollbook/updateNclean.sh ~/.scrollbook/

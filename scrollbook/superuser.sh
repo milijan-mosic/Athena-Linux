@@ -3,15 +3,13 @@
 
 
 
-cd ~/
 sudo timedatectl set-ntp true
 
 
 
 
-mkdir .paru_aur_installer ; cd ~/.paru_aur_installer
-git clone https://aur.archlinux.org/paru.git ; cd paru
-makepkg -sic --noconfirm ; cd ~/
+git clone https://aur.archlinux.org/paru.git ~/ ; mv ~/paru ~/.paru_aur_installer
+cd ~/.paru_aur_installer/ ; makepkg -sic --noconfirm ; cd ~/
 
 
 
@@ -32,7 +30,7 @@ user_programs="$general_programs$internet$storage$utilities$text$extra$misc$code
 
 
 sudo pacman -Syu $user_programs --noconfirm
-paru -S ttf-iosevka cherrytree labyrinth --noconfirm
+paru -S ttf-iosevka cherrytree labyrinth nerd-fonts-complete --noconfirm
 
 
 
@@ -42,7 +40,7 @@ sudo systemctl enable --now cups.socket
 
 
 
-git clone https://github.com/windwalk-bushido/Athena-Linux.git
+git clone https://github.com/windwalk-bushido/Athena-Linux.git ~/
 
 cp -r ~/Athena-Linux/scrollbook ~/.scrollbook
 rm ~/.scrollbook/32bit.sh
@@ -66,6 +64,8 @@ cp ~/Athena-Linux/files/alacritty.yml ~/.config/alacritty/
 
 
 cp ~/Athena-Linux/files/spectrwm.conf ~/.spectrwm.conf
+mkdir -p ~/.config/spectrwm
+cp ~/Athena-Linux/files/baraction.sh ~/.config/spectrwm/
 
 
 mkdir .screenlayout
@@ -77,6 +77,15 @@ mkdir ~/.wallpaper/ ; cp ~/Athena-Linux/files/wallpaper.jpg ~/.wallpaper/
 
 
 sudo cp ~/Athena-Linux/files/hosts /etc/hosts_old
+
+
+mkdir -p ~/.config/ranger/plugins/
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
+
+
+mkdir -p ~/.config/picom/
+cp ~/Athena-Linux/files/picom.conf ~/.config/picom/
 
 
 
