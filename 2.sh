@@ -55,6 +55,7 @@ systemctl enable nftables.service
 useradd -m -G wheel -s /bin/bash $username
 gpasswd -a $username optical
 gpasswd -a $username storage
+gpasswd -a $username power
 gpasswd -a $username rfkill # User could'nt change Bluetooth On/Off without this... weird.
 echo -e "$root_password\n$root_password" | passwd root
 echo -e "$user_password\n$user_password" | passwd $username
@@ -117,6 +118,7 @@ pacman -Scc --noconfirm
 
 cp /Athena-Linux/scrollbook/normal.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal.sh
 cp /Athena-Linux/scrollbook/superuser.sh /home/$username/ ; chmod ugo+rwx /home/$username/superuser.sh
+cp /Athena-Linux/scrollbook/server.sh /home/$username/ ; chmod ugo+rwx /home/$username/server.sh
 
 
 

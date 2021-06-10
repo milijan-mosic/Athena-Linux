@@ -73,7 +73,7 @@ mkdir Pictures
 
 
 
-rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
+rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh ; rm ~/server.sh
 
 sudo pacman -Rns wget git vim --noconfirm
 sudo pacman -Scc --noconfirm

@@ -23,7 +23,7 @@ extra=" pulseaudio-bluetooth"
 misc=" ffmpeg mpc mpd acpi man-db man-pages texinfo"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 user_choice=" gxkb kcron testdisk code gimp ruby-sass ranger virtualbox virtualbox-host-modules-arch calcurse xwallpaper deno ts-node typescript npm"
-add_this=" curl libunrar python termdown units borg xlockmore xscreensaver" # xxkb ?
+add_this=" libunrar python termdown units borg xlockmore xscreensaver" # xxkb ?
 
 
 user_programs="$general_programs$internet$storage$utilities$text$extra$misc$codecs$user_choice$add_this"
@@ -105,7 +105,7 @@ mkdir Pictures
 
 
 
-rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh
+rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh ; rm ~/server.sh
 
 paru -Scc --noconfirm
 sudo pacman -Scc --noconfirm
