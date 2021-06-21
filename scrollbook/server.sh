@@ -8,7 +8,7 @@ sudo timedatectl set-ntp true
 
 
 
-general_programs=" spectrwm xlockmore xscreensaver ark alacritty ranger htop neofetch git icedtea-web webkit2gtk curl gzip p7zip unrar unzip zip libunrar gnu-free-fonts man-db man-pages texinfo npm ngnix openssh"
+general_programs=" spectrwm xlockmore xscreensaver ark alacritty ranger htop neofetch git icedtea-web webkit2gtk curl gzip p7zip unrar unzip zip libunrar gnu-free-fonts man-db man-pages texinfo npm ngnix-mainline openssh"
 php_stuff=" composer doxygen php php-apache php-pgsql php-phpdbg xdebug phppgadmin phpvirtualbox" # uwsgi-plugin-php <-- ?
 
 programs="$general_programs$php_stuff"
@@ -18,7 +18,7 @@ sudo pacman -S $programs --noconfirm
 
 
 
-sudo systemctl enable --now ngnix.service # Is this correct?
+sudo systemctl enable --now ngnix.service
 systemctl enable --now sshd.service
 
 

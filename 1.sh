@@ -272,7 +272,6 @@ timedatectl set-ntp true
 
 
 reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
-pacman -Syu --noconfirm
 
 
 

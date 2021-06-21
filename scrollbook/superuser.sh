@@ -63,6 +63,10 @@ mkdir -p ~/.config/alacritty
 cp ~/Athena-Linux/files/alacritty.yml ~/.config/alacritty/
 
 
+mkdir -p ~/.psensor/
+cp ~/Athena-Linux/files/psensor.cfg ~/.psensor/
+
+
 cp ~/Athena-Linux/files/spectrwm.conf ~/.spectrwm.conf
 mkdir -p ~/.config/spectrwm
 cp ~/Athena-Linux/files/baraction.sh ~/.config/spectrwm/
