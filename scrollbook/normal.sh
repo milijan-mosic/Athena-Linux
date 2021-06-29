@@ -8,7 +8,7 @@ sudo timedatectl set-ntp true
 
 
 
-general_programs=" plasma-desktop thunderbird print-manager arandr borg firefox transmission-gtk ciano kamoso kdeconnect strawberry spectacle gwenview vlc bleachbit blueberry gparted ksysguard k3b nautilus psensor redshift gedit libreoffice-still zathura gnome-calculator kronometer gnome-disk-utility"
+general_programs=" plasma-desktop thunderbird print-manager arandr borg firefox transmission-gtk ciano kamoso kdeconnect strawberry spectacle gwenview vlc bleachbit blueberry gparted ksysguard k3b nautilus psensor redshift gedit libreoffice-still zathura gnome-calculator kronometer gnome-disk-utility gnome"
 internet=" icedtea-web webkit2gtk youtube-dl"
 storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools mtpfs pacman-contrib udiskie"
 utilities=" blueman bluez-tools bluez-utils cups cups-pdfneofetch picom"
@@ -35,6 +35,7 @@ sudo cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
 
 sudo systemctl enable --now cups.socket
 sudo systemctl enable --now lightdm
+#sudo systemctl enable --now gdm.service
 
 
 
@@ -49,7 +50,9 @@ cp ~/Athena-Linux/scrollbook/ytdl_video.sh ~/.scrollbook/
 
 
 
-echo "exec startplasma-x11" >> ~/.xinitrc
+echo "export XDG_SESSION_TYPE=x11" > ~/.xinitrc
+echo "export GDK_BACKEND=x11" >> ~/.xinitrc
+echo "exec gnome-session" >> ~/.xinitrc
 
 
 mkdir -p ~/.config/alacritty
