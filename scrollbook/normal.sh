@@ -8,13 +8,13 @@ sudo timedatectl set-ntp true
 
 
 
-general_programs=" plasma-desktop sddm sddm-kcm numlockx thunderbird print-manager arandr borg units firefox transmission-gtk ciano kamoso kdeconnect kphotoalbum strawberry spectacle sxiv vlc bleachbit blueberry doublecmd-gtk2 gparted htop k3b nautilus psensor redshift bookworm calibre gedit libreoffice-still mcomix paperwork zathura gnome-calculator korganizer kronometer gnome-disk-utility"
+general_programs=" plasma-desktop thunderbird print-manager arandr borg firefox transmission-gtk ciano kamoso kdeconnect strawberry spectacle gwenview vlc bleachbit blueberry gparted ksysguard k3b nautilus psensor redshift gedit libreoffice-still zathura gnome-calculator kronometer gnome-disk-utility"
 internet=" icedtea-web webkit2gtk youtube-dl"
-storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools fuseiso gzip mtpfs p7zip pacman-contrib udiskie unrar unzip zip"
-utilities=" blueman bluez-tools bluez-utils cups cups-pdf dmidecode hardinfo neofetch picom"
+storage=" android-file-transfer ark cdrdao cdrtools dvd+rw-tools mtpfs pacman-contrib udiskie"
+utilities=" blueman bluez-tools bluez-utils cups cups-pdfneofetch picom"
 text=" gedit-plugins zathura-pdf-mupdf ttf-font-awesome ttf-inconsolata gnu-free-fonts"
 extra=" pulseaudio-bluetooth"
-misc=" ffmpeg mpc mpd acpi"
+misc=" ffmpeg mpc mpd acpi lightdm lightdm-gtk-greeter"
 codecs=" wavpack a52dec celt lame libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"
 browser_addons=" firefox-ublock-origin firefox-extension-https-everywhere firefox-decentraleyes firefox-adblock-plus"
 
@@ -22,28 +22,21 @@ browser_addons=" firefox-ublock-origin firefox-extension-https-everywhere firefo
 user_programs="$general_programs$internet$storage$utilities$text$extra$misc$codecs$browser_addons"
 
 
-# Change sxiv to better photo viewer. Sxiv is for advanced user.
-# Htop without using terminal - is it possible?
-# Change package list... minimal one :) For everyday use, later on you can extend "cool" ones...
-
 sudo pacman -Syu $user_programs --noconfirm
 
 
 
 
+sudo rm /etc/lightdm/lightdm.conf
+sudo cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
+
+
+
+
 sudo systemctl enable --now cups.socket
-sudo systemctl enable --now sddm.service
+sudo systemctl enable --now lightdm
 
 
-
-
-echo "numlockx &" > ~/.xinitrc
-echo " " >> ~/.xinitrc
-echo "exec startplasma-x11" >> ~/.xinitrc
-
-
-sudo mkdir /etc/sddm.conf.d/
-sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/sddm.conf
 
 
 git clone https://github.com/windwalk-bushido/Athena-Linux.git ~/
@@ -54,6 +47,9 @@ cp ~/Athena-Linux/scrollbook/ytdl_audio.sh ~/.scrollbook/
 cp ~/Athena-Linux/scrollbook/ytdl_video.sh ~/.scrollbook/
 
 
+
+
+echo "exec startplasma-x11" >> ~/.xinitrc
 
 
 mkdir -p ~/.config/alacritty
@@ -75,10 +71,10 @@ mkdir Pictures
 
 rm -r ~/Athena-Linux ; rm ~/normal.sh ; rm ~/superuser.sh ; rm ~/server.sh
 
-sudo pacman -Rns wget git vim --noconfirm
+sudo pacman -Rns wget git --noconfirm
 sudo pacman -Scc --noconfirm
 
 
 
 
-startx
+reboot

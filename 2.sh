@@ -109,8 +109,8 @@ amixer sset "Auto-Mute Mode" Disabled
 alsactl store
 
 
-pacman -Syu --noconfirm
-bash /Athena-Linux/scrollbook/32bit.sh
+pacman -Sy --noconfirm
+#bash /Athena-Linux/scrollbook/32bit.sh
 pacman -Scc --noconfirm
 
 

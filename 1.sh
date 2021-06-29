@@ -389,23 +389,20 @@ temp=""
 uefi_package=" efibootmgr"
 
 essential="base base-devel linux linux-firmware grub linux-hardened"
-desktop_server=" libtool libxft libxinerama xorg-server xorg-xinit"
+desktop_server=" xorg-server xorg-xinit"
 
-cog_wheels=" vim alacritty mesa mesa-vdpau usbutils cmake dbus dialog sudo alsa alsa-utils alsa-lib alsa-plugins pulseaudio pulseaudio-alsa python-pyalsa pavucontrol"
+cog_wheels=" vim alacritty mesa sudo alsa alsa-utils pulseaudio pulseaudio-alsa pavucontrol"
 internet_drivers=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget git"
 
 cpu_amd=" amd-ucode"
 cpu_intel=" intel-ucode"
 
-gpu_amd=" xf86-video-ati xf86-video-amdgpu vulkan-radeon"
-gpu_intel=" xf86-video-intel vulkan-intel"
+gpu_amd=" xf86-video-ati" # xf86-video-amdgpu
+gpu_intel=" xf86-video-intel"
 gpu_nvidia=" xf86-video-nouveau"
 
 
 musthave="$essential$desktop_server$cog_wheels$internet_drivers"
-
-
-# Bloat? = python-pipenv python3 python - dbus dialog - vulkan drivers...
 
 
 
