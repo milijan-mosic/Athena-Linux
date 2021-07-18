@@ -8,7 +8,7 @@ sudo timedatectl set-ntp true
 
 
 
-git clone https://aur.archlinux.org/paru.git ~/ ; mv ~/paru ~/.paru_aur_installer
+git clone https://aur.archlinux.org/paru-git.git ~/ ; mv ~/paru ~/.paru_aur_installer
 cd ~/.paru_aur_installer/ ; makepkg -sic --noconfirm ; cd ~/
 
 
@@ -46,10 +46,10 @@ rm ~/.scrollbook/server_installation.sh
 
 
 
-sudo rm /etc/lightdm/lightdm.conf
-sudo cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
+#sudo rm /etc/lightdm/lightdm.conf
+#sudo cp /Athena-Linux/files/lightdm.conf /etc/lightdm/
 
-sudo systemctl enable --now lightdm
+#sudo systemctl enable lightdm
 
 
 
