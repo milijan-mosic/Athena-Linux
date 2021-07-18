@@ -110,15 +110,14 @@ alsactl store
 
 
 pacman -Sy --noconfirm
-#bash /Athena-Linux/scrollbook/32bit.sh
 pacman -Scc --noconfirm
 
 
 
 
-cp /Athena-Linux/scrollbook/normal.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal.sh
-cp /Athena-Linux/scrollbook/superuser.sh /home/$username/ ; chmod ugo+rwx /home/$username/superuser.sh
-cp /Athena-Linux/scrollbook/server.sh /home/$username/ ; chmod ugo+rwx /home/$username/server.sh
+cp /Athena-Linux/scrollbook/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
+cp /Athena-Linux/scrollbook/superuser_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/superuser_installation.sh
+cp /Athena-Linux/scrollbook/server_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/server_installation.sh
 
 
 

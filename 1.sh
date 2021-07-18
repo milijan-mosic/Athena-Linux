@@ -386,55 +386,55 @@ temp=""
 ################
 
 
-uefi_package=" efibootmgr"
+uefi_package="efibootmgr"
 
 essential="base base-devel linux linux-firmware grub linux-hardened"
-desktop_server=" xorg-server xorg-xinit"
+desktop_server="xorg-server xorg-xinit"
 
-cog_wheels=" vim alacritty mesa sudo alsa alsa-utils pulseaudio pulseaudio-alsa pavucontrol"
-internet_drivers=" broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget git"
+cog_wheels="vim alacritty mesa sudo alsa alsa-utils pulseaudio pulseaudio-alsa pavucontrol"
+internet_drivers="broadcom-wl networkmanager nftables reflector network-manager-applet wireless_tools wpa_supplicant iw wget git"
 
-cpu_amd=" amd-ucode"
-cpu_intel=" intel-ucode"
+cpu_amd="amd-ucode"
+cpu_intel="intel-ucode"
 
-gpu_amd=" xf86-video-ati" # xf86-video-amdgpu
-gpu_intel=" xf86-video-intel"
-gpu_nvidia=" xf86-video-nouveau"
+gpu_amd="xf86-video-ati" # xf86-video-amdgpu
+gpu_intel="xf86-video-intel"
+gpu_nvidia="xf86-video-nouveau"
 
 
-musthave="$essential$desktop_server$cog_wheels$internet_drivers"
+musthave="$essential $desktop_server $cog_wheels $internet_drivers"
 
 
 
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_amd$cpu_amd"
+        drivers="$gpu_amd $cpu_amd"
 fi
 
 if [ $gpu_choice == 0 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_amd$cpu_intel"
+        drivers="$gpu_amd $cpu_intel"
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_intel$cpu_amd"
+        drivers="$gpu_intel $cpu_amd"
 fi
 
 if [ $gpu_choice == 1 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_intel$cpu_intel"
+        drivers="$gpu_intel $cpu_intel"
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
 then
-        drivers="$gpu_nvidia$cpu_amd"
+        drivers="$gpu_nvidia $cpu_amd"
 fi
 
 if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
 then
-        drivers="$gpu_nvidia$cpu_intel"
+        drivers="$gpu_nvidia $cpu_intel"
 fi
 
 
@@ -442,9 +442,9 @@ fi
 
 if [ $uefi == 1 ]
 then
-        packagelist="$musthave$drivers$uefi_package"
+        packagelist="$musthave $drivers $uefi_package"
 else
-        packagelist="$musthave$drivers"
+        packagelist="$musthave $drivers"
 fi
 
 
