@@ -20,11 +20,11 @@ Enter following commands:
 
 ## When entering for the first time as a new user
 
-        > bash normal.sh
+        > bash normal_installation.sh
 
 Or if you want a advanced build (for developers or advanced linux users) enter:
 
-        > bash superuser.sh
+        > bash superuser_installation.sh
 
 ## Notes:
 
