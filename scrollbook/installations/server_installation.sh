@@ -2,7 +2,7 @@
 
 
 
-
+# UNDER DEVELOPMENT - DO NOT USE
 sudo timedatectl set-ntp true
 
 
