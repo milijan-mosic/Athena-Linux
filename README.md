@@ -1,6 +1,12 @@
+## Download ISO
+
+Get the latest ISO file from ArchLinux official website here -> https://archlinux.org/download/
+
+Make a bootable USB with your favorite program.
+
 ## After booting from USB
 
-Make sure you are connected to internet via LAN cable.
+Make sure you are connected to internet via Ethernet cable.
 
 Enter following commands:
 

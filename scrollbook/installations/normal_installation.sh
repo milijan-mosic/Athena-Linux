@@ -26,6 +26,12 @@ sudo cp ~/Athena-Linux/files/sysfiles/lightdm.conf /etc/lightdm/
 
 sudo systemctl enable --now cups.socket
 sudo systemctl enable --now lightdm
+sudo systemctl enable --now ufw.service
+
+ufw default deny
+ufw allow from 192.168.0.0/24
+ufw limit ssh
+ufw enable
 
 
 

@@ -42,7 +42,6 @@ timedatectl set-timezone Europe/Belgrade
 
 
 systemctl enable NetworkManager
-systemctl enable nftables.service
 
 
 
@@ -55,7 +54,7 @@ systemctl enable nftables.service
 useradd -m -G wheel -s /bin/bash $username
 gpasswd -a $username optical
 gpasswd -a $username storage
-gpasswd -a $username power
+gpasswd -a $username audio
 gpasswd -a $username rfkill # User could'nt change Bluetooth On/Off without this... weird.
 echo -e "$root_password\n$root_password" | passwd root
 echo -e "$user_password\n$user_password" | passwd $username

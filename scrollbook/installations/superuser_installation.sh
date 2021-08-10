@@ -21,10 +21,11 @@ cd ~/.paru_aur_installer/ ; makepkg -sic --noconfirm ; cd ~/
 
 bash ~/Athena-Linux/scrollbook/installations/base_programs.sh
 
-programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver code ruby-sass typescript npm yarn composer php php-pgsql phppgadmin php-mongodb php-redis redis ngnix-mod-redis nginx certbot-nginx rhit"
-
+programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm yarn composer php php-pgsql phppgadmin php-mongodb php-redis redis ngnix-mod-redis nginx certbot-nginx rhit"
 sudo pacman -Syu $programs --noconfirm
-paru -S ttf-iosevka cherrytree nerd-fonts-complete --noconfirm
+
+programs="timeshift ttf-iosevka cherrytree nerd-fonts-complete"
+paru -S $programs --noconfirm
 
 
 
@@ -32,6 +33,18 @@ paru -S ttf-iosevka cherrytree nerd-fonts-complete --noconfirm
 programs="gwenview ksysguard lightdm lightdm-gtk-greeter"
 
 sudo pacman -Rns $programs --noconfirm
+
+
+
+
+sudo systemctl enable --now cups.socket
+sudo systemctl enable --now ufw.service
+
+ufw default deny
+ufw allow from 192.168.0.0/24
+ufw limit ssh
+ufw enable
+# Open UDP and TCP ports 1714 through 1764 for KDE Connect. Also, open ports for Transmission-GTK.
 
 
 
