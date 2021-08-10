@@ -82,38 +82,6 @@ do
         pass=true
         while [ $pass == true ]
         do
-                root_password=""
-                echo -e "\n\n\n"
-                echo "Type in password for root:"
-                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
-                read -s root_password1
-                echo -e "\n" ; echo "Type it again >>> "
-                read -s root_password2
-
-                if [ $root_password1 != $root_password2 ] || [ -z $root_password1 ] || [ -z $root_password2 ]
-                then
-                        clear
-                        echo "Password is too small, or there are some empty inputs or passwords does'nt match... try again."
-                else
-                        lenght=${#root_password1}
-
-                        # What's the maximum lenght of a password?
-                        if [ $lenght -lt 5 ]
-                        then
-                                clear
-                                echo "Password is too small... try again."
-                        else
-                                pass=false
-                                root_password="$root_password1"
-                                clear
-                        fi
-                fi
-        done
-
-
-        pass=true
-        while [ $pass == true ]
-        do
                 echo -e "\n\n\n"
                 echo "Type in desired username for main user account:" ; echo -e "\n"
                 echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
@@ -159,6 +127,38 @@ do
                         else
                                 pass=false
                                 user_password="$user_password1"
+                                clear
+                        fi
+                fi
+        done
+
+
+        pass=true
+        while [ $pass == true ]
+        do
+                root_password=""
+                echo -e "\n\n\n"
+                echo "Type in password for root:"
+                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
+                read -s root_password1
+                echo -e "\n" ; echo "Type it again >>> "
+                read -s root_password2
+
+                if [ $root_password1 != $root_password2 ] || [ -z $root_password1 ] || [ -z $root_password2 ]
+                then
+                        clear
+                        echo "Password is too small, or there are some empty inputs or passwords does'nt match... try again."
+                else
+                        lenght=${#root_password1}
+
+                        # What's the maximum lenght of a password?
+                        if [ $lenght -lt 5 ]
+                        then
+                                clear
+                                echo "Password is too small... try again."
+                        else
+                                pass=false
+                                root_password="$root_password1"
                                 clear
                         fi
                 fi
