@@ -18,4 +18,4 @@ browser_addons="firefox-ublock-origin firefox-extension-https-everywhere firefox
 user_programs="$general_programs $internet $storage $utilities $text $misc $libraries $codecs $browser_addons"
 
 
-sudo pacman -Syu $user_programs --noconfirm
+sudo pacman -S $user_programs --noconfirm
