@@ -7,6 +7,7 @@ echo -e "Type in project link:\n"
 read link
 full_link="$link.git"
 
+rm -r .git
 git init
 git add *
 git commit -m "Init"
