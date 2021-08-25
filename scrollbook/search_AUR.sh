@@ -3,8 +3,8 @@
 
 
 
-echo "Yay package name:"
+echo "AUR package name:"
 read packagename
 echo -e "\n\n"
-yay -Ss $packagename
+paru -Ss $packagename
 echo -e "\n\n"

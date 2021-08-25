@@ -111,7 +111,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Inconsolata
+    family: Iosevka
 
     # The `style` can be specified to pick a specific face.
     style: Serif
@@ -220,6 +220,7 @@ colors:
     matches:
       foreground: '#000000'
       background: '#ffffff'
+      
     focused_match:
       foreground: CellBackground
       background: CellForeground

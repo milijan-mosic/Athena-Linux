@@ -392,7 +392,7 @@ uefi_package="efibootmgr"
 essential="base base-devel linux linux-firmware grub linux-hardened"
 desktop_server="xorg-server xorg-xinit"
 
-cog_wheels="vim alacritty mesa sudo alsa alsa-utils pulseaudio pulseaudio-alsa pavucontrol"
+cog_wheels="vim alacritty mesa sudo"
 internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw wget git"
 
 cpu_amd="amd-ucode"

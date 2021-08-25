@@ -6,7 +6,7 @@
 gpu_choice=$(</note/gpu_choice.txt)
 
 
-musthave="lib32-mesa lib32-mesa-vdpau lib32-alsa-plugins lib32-libpulse lib32-openal libunrar lib32-libxinerama"
+musthave="lib32-libxinerama" # lib32-mesa-vdpau
 
 
 if [ $gpu_choice == 0 ]

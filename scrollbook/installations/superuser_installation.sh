@@ -24,7 +24,7 @@ cd ~/
 
 bash ~/Athena-Linux/scrollbook/installations/base_programs.sh
 
-programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm yarn composer php php-pgsql phppgadmin php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit"
+programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm yarn composer php php-pgsql phppgadmin phpmyadmin mysql-workbench php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit sshfs"
 sudo pacman -S $programs --noconfirm
 
 programs="timeshift ttf-iosevka nerd-fonts-complete" # Find replacment for 'cherrytree'
@@ -115,7 +115,6 @@ mkdir Pictures
 
 rm -r ~/Athena-Linux ; rm ~/normal_installation.sh ; rm ~/superuser_installation.sh ; rm ~/server_installation.sh
 
-sudo pacman -Syu --noconfirm
 sudo pacman -Scc --noconfirm
 paru -Scc --noconfirm
 
