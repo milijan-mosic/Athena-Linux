@@ -287,7 +287,7 @@ swap_size="+8192M"
 swap_type="8200"
 
 root_n="3"
-root_size="+30G"
+root_size="+40G"
 root_type="8304"
 
 home_n="4"
