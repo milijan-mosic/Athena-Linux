@@ -408,35 +408,16 @@ musthave="$essential $desktop_server $cog_wheels $internet_drivers"
 
 
 
-if [ $gpu_choice == 0 ] && [ $cpu_choice == 0 ]
-then
-        drivers="$gpu_amd $cpu_amd"
-fi
+case "$gpu_choice" in
+    0) drivers="$gpu_amd ";;
+    1) drivers="$gpu_intel ";;
+    2) drivers="$gpu_nvidia ";;
+esac
 
-if [ $gpu_choice == 0 ] && [ $cpu_choice == 1 ]
-then
-        drivers="$gpu_amd $cpu_intel"
-fi
-
-if [ $gpu_choice == 1 ] && [ $cpu_choice == 0 ]
-then
-        drivers="$gpu_intel $cpu_amd"
-fi
-
-if [ $gpu_choice == 1 ] && [ $cpu_choice == 1 ]
-then
-        drivers="$gpu_intel $cpu_intel"
-fi
-
-if [ $gpu_choice == 2 ] && [ $cpu_choice == 0 ]
-then
-        drivers="$gpu_nvidia $cpu_amd"
-fi
-
-if [ $gpu_choice == 2 ] && [ $cpu_choice == 1 ]
-then
-        drivers="$gpu_nvidia $cpu_intel"
-fi
+case "$cpu_choice" in
+    0) drivers="$cpu_amd";;
+    1) drivers="$cpu_intel";;
+esac
 
 
 

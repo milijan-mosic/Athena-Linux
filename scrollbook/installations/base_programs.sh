@@ -8,7 +8,7 @@ internet="youtube-dl thunderbird firefox transmission-gtk kdeconnect ufw"
 storage="android-file-transfer ark borg bleachbit gparted k3b nautilus gnome-disk-utility"
 utilities="picom psensor redshift print-manager arandr ciano kamoso"
 text="gedit libreoffice-still zathura gedit-plugins zathura-pdf-mupdf cherrytree vym ttf-font-awesome ttf-inconsolata gnu-free-fonts ttc-iosevka"
-misc="ffmpeg acpi lightdm lightdm-gtk-greeter"
+misc="ffmpeg acpi lightdm lightdm-gtk-greeter pkgstats"
 
 libraries="icedtea-web webkit2gtk cdrdao cdrtools dvd+rw-tools pacman-contrib mtpfs udiskie blueman bluez-tools bluez-utils cups cups-pdf bluez-cups system-config-printer neofetch pulseaudio-bluetooth powerdevil"
 codecs="wavpack a52dec celt lame libavif libheif libmad libmpcdec opus libvorbis opencore-amr speex libdca flac faac faad2 libfdk-aac jasper libwebp aom dav1d rav1e schroedinger libdv x264 x265 libde265 libmpeg2 xvidcore libtheora libvpx fdkaac"

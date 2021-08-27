@@ -24,19 +24,12 @@ cd ~/
 
 bash ~/Athena-Linux/scrollbook/installations/base_programs.sh
 
-programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm yarn composer php php-pgsql phppgadmin phpmyadmin mysql-workbench php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit sshfs ncdu"
+programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm nodejs yarn composer php php-pgsql phppgadmin phpmyadmin mysql-workbench php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit sshfs ncdu"
 thirtytwo="lib32-curl lib32-dbus"
 sudo pacman -S $programs --noconfirm
 
-programs="timeshift ttf-iosevka nerd-fonts-complete"
+programs="timeshift nerd-fonts-complete"
 paru -S $programs --noconfirm
-
-
-
-
-programs="gwenview ksysguard lightdm lightdm-gtk-greeter"
-
-sudo pacman -Rns $programs --noconfirm
 
 
 
