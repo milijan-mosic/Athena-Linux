@@ -179,8 +179,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x0c0d0e'
-    foreground: '0xb7b8b9'
+    background: '#002b36' # base03
+    foreground: '#839496' # base0
 
     # Bright and dim foreground colors
     #
@@ -198,8 +198,8 @@ colors:
   # Allowed values are CellForeground and CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
   cursor:
-    text: CellBackground
-    cursor: CellForeground
+    text:   '#002b36' # base03
+    cursor: '#839496' # base0
 
   # Vi mode cursor colors
   #
@@ -220,7 +220,6 @@ colors:
     matches:
       foreground: '#000000'
       background: '#ffffff'
-      
     focused_match:
       foreground: CellBackground
       background: CellForeground
@@ -251,25 +250,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x0c0d0e'
-    red:     '0xe31a1c'
-    green:   '0x31a354'
-    yellow:  '0xdca060'
-    blue:    '0x3182bd'
-    magenta: '0x756bb1'
-    cyan:    '0x80b1d3'
-    white:   '0xb7b8b9'
+    black:   '#073642' # base02
+    red:     '#dc322f' # red
+    green:   '#859900' # green
+    yellow:  '#b58900' # yellow
+    blue:    '#268bd2' # blue
+    magenta: '#d33682' # magenta
+    cyan:    '#2aa198' # cyan
+    white:   '#eee8d5' # base2
 
   # Bright colors
   bright:
-    black:   '0x737475'
-    red:     '0xe31a1c'
-    green:   '0x31a354'
-    yellow:  '0xdca060'
-    blue:    '0x3182bd'
-    magenta: '0x756bb1'
-    cyan:    '0x80b1d3'
-    white:   '0xfcfdfe'
+    black:   '#586e75' # base01
+    red:     '#cb4b16' # orange
+    green:   '#586e75' # base01
+    yellow:  '#657b83' # base00
+    blue:    '#839496' # base0
+    magenta: '#6c71c4' # violet
+    cyan:    '#93a1a1' # base1
+    white:   '#fdf6e3' # base3
 
   # Dim colors
   #

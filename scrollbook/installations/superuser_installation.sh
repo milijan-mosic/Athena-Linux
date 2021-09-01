@@ -24,7 +24,7 @@ cd ~/
 
 bash ~/Athena-Linux/scrollbook/installations/base_programs.sh
 
-programs="spectrwm sxiv htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm nodejs yarn composer php php-pgsql phppgadmin phpmyadmin mysql-workbench php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit sshfs ncdu"
+programs="htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo gxkb xxkb kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm nodejs yarn composer php php-pgsql phppgadmin phpmyadmin mysql-workbench php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit sshfs ncdu" # sxiv
 thirtytwo="lib32-curl lib32-dbus"
 sudo pacman -S $programs --noconfirm
 
@@ -54,9 +54,6 @@ rm -r ~/.scrollbook/installations/
 
 
 
-echo "exec spectrwm" > ~/.xinitrc
-
-
 rm ~/.bashrc
 cp ~/Athena-Linux/files/dotfiles/bashrc_superuser ~/.bashrc
 
@@ -67,9 +64,6 @@ cp ~/Athena-Linux/files/dotfiles/alacritty.yml ~/.config/alacritty/
 
 mkdir -p ~/.psensor/
 cp ~/Athena-Linux/files/dotfiles/psensor.cfg ~/.psensor/
-
-
-cp ~/Athena-Linux/files/dotfiles/spectrwm.conf ~/.spectrwm.conf
 
 
 mkdir .screenlayout
@@ -90,6 +84,9 @@ echo "default_linemode devicons" > ~/.config/ranger/rc.conf
 
 mkdir -p ~/.config/picom/
 cp ~/Athena-Linux/files/dotfiles/picom.conf ~/.config/picom/
+
+
+bash ~/Athena-Linux/scrollbook/install-WM-stack.sh
 
 
 

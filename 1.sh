@@ -389,11 +389,11 @@ temp=""
 
 uefi_package="efibootmgr"
 
-essential="base base-devel linux linux-firmware grub linux-hardened"
+essential="base base-devel linux linux-firmware util-linux grub linux-hardened"
 desktop_server="xorg-server xorg-xinit"
 
-cog_wheels="vim alacritty mesa sudo"
-internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw wget git"
+cog_wheels="vim alacritty mesa sudo libva-mesa-driver mesa-vdpau"
+internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw wget git ca-certificates libsecret"
 
 cpu_amd="amd-ucode"
 cpu_intel="intel-ucode"
