@@ -10,3 +10,8 @@ npm i --save @fortawesome/free-regular-svg-icons
 
 npm i --save @fortawesome/vue-fontawesome@prerelease
 
+
+
+
+rm src/main.js
+cp ~/Projects/athena-linux/files/dev/main.js src/
