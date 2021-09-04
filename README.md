@@ -28,10 +28,6 @@ Enter following commands:
 
         $ bash normal_installation.sh
 
-Or if you want a advanced build (for developers or advanced linux users) enter:
-
-        $ bash superuser_installation.sh
-
 ## Notes:
 
 These scripts are installing GPT partition table scheme, on both UEFI and BIOS firmware.
