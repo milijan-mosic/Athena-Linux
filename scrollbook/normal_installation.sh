@@ -13,7 +13,7 @@ git clone https://github.com/windwalk-bushido/Athena-Linux.git ~/
 
 
 
-bash ~/Athena-Linux/scrollbook/installations/base_programs.sh
+bash ~/Athena-Linux/scrollbook/base_programs.sh
 
 
 
@@ -24,7 +24,7 @@ sudo cp ~/Athena-Linux/files/sysfiles/lightdm.conf /etc/lightdm/
 
 
 
-sudo systemctl enable --now cups.socket
+#sudo systemctl enable --now cups.socket
 sudo systemctl enable --now lightdm
 #sudo systemctl enable --now ufw.service
 
@@ -44,8 +44,8 @@ cp ~/Athena-Linux/scrollbook/ytdl_video.sh ~/.scrollbook/
 
 
 
-echo "export DESKTOP_SESSION=plasma">> ~/.xinitrc
-echo "exec startplasma-x11">> ~/.xinitrc
+echo "export DESKTOP_SESSION=plasma" > ~/.xinitrc
+echo "exec startplasma-x11" >> ~/.xinitrc
 
 
 mkdir -p ~/.config/alacritty
@@ -65,9 +65,9 @@ mkdir Pictures
 
 
 
-rm -r ~/Athena-Linux ; rm ~/normal_installation.sh ; rm ~/superuser_installation.sh ; rm ~/server_installation.sh
+rm -r ~/Athena-Linux ; rm ~/normal_installation.sh
 
-sudo pacman -Rns wget git --noconfirm
+
 sudo pacman -Scc --noconfirm
 
 

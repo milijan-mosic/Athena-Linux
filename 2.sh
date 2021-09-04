@@ -114,9 +114,7 @@ pacman -Scc --noconfirm
 
 
 
-cp /Athena-Linux/scrollbook/installations/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
-cp /Athena-Linux/scrollbook/installations/superuser_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/superuser_installation.sh
-cp /Athena-Linux/scrollbook/installations/server_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/server_installation.sh
+cp /Athena-Linux/scrollbook/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
 
 
 
