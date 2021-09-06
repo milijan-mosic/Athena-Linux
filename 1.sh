@@ -409,10 +409,13 @@ musthave="$essential $desktop_server $cog_wheels $internet_drivers"
 
 
 case "$gpu_choice" in
-    0) drivers="$gpu_amd ";;
-    1) drivers="$gpu_intel ";;
-    2) drivers="$gpu_nvidia ";;
+    0) drivers="$gpu_amd";;
+    1) drivers="$gpu_intel";;
+    2) drivers="$gpu_nvidia";;
 esac
+
+space=" "
+drivers="$space"
 
 case "$cpu_choice" in
     0) drivers="$cpu_amd";;

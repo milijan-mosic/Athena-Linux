@@ -24,7 +24,7 @@ sudo cp ~/Athena-Linux/files/sysfiles/lightdm.conf /etc/lightdm/
 
 
 
-#sudo systemctl enable --now cups.socket
+sudo systemctl enable --now cups.socket
 sudo systemctl enable --now lightdm
 #sudo systemctl enable --now ufw.service
 
