@@ -1,0 +1,51 @@
+# Commands:
+
+ip a 			- gets an IP address of an device.
+ufw allow 53/udp 	- Allows port 53 to be open for traffic.
+
+
+# Todo:
+
+Install SSH
+"enable --now"
+
+# Check out
+
+Some monitoring program
+Once passwords and users are setup, make the passwd and shadow files immutable. This may backfire if you authenticate with AD, so decide your authentication method early.
+    Files can be made immutable with: $chattr +i $file.
+SMTP email server
+XMPP server
+NGNIX server
+UFW (firewall) > $ufw default deny ; ufw allow ((ssh, default 22, random port), (dns, 53), (http, 80), (https, 443)) ; ufw enable ; ufw status verbose
+ClamAV virus scan
+Maintanance schedule (cleaning cache, orphan packages, virus scan and rebooting)
+FTP (FileZilla)
+Docker containers
+{
+	XMPP
+	Email
+	Ngnix
+	{
+		Ecommerce
+		Portfolio/Blog
+	}
+	Cloud
+	Gitea
+	SyncDocs
+}
+
+
+
+
+# Securing SSH Server
+
+
+> $sudo vim /etc/ssh/sshd_config
+
+You can secure your OpenSSH server by setting the following options in the sshd_config configuration file:
+	X11Forwarding – Enabling X forwarding makes your system vulnerable to X11 related issues. So it’s a good idea to set it to no.
+	PermitRootLogin – You should not allow root users to login directly to the system. You should always set it to no.
+	Port – change the default port 22 to something non-standard like 9812. It’s a good security practice.
+
+> (e.g.) $ssh -p 888 USERNAME@IP_ADDRESS

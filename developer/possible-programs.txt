@@ -1,0 +1,10 @@
+psi+
+kgpg
+xca
+virtualbox
+
+
+(math! shit)
+maxima
+speedcrunch
+
