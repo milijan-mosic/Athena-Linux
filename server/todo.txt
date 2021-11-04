@@ -1,0 +1,11 @@
+Generate 16 char long password for root user ->
+for admin to type in for root while installing.
+
+Check for systemd services available for starting on startup.
+
+Create script for adding new users.
+
+Possible new packages 
+{
+	x
+}

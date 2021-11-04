@@ -20,7 +20,7 @@ username=$(</note/username.txt)
 user_password=$(</note/user_password.txt)
 
 
-reflector --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 24 --sort rate --save /etc/pacman.d/mirrorlist
 
 
 
@@ -42,7 +42,7 @@ timedatectl set-timezone Europe/Belgrade
 
 
 systemctl enable NetworkManager
-systemctl enable bluetooth.service
+systemctl enable sshd.service
 
 
 
@@ -53,17 +53,16 @@ systemctl enable bluetooth.service
 
 
 useradd -m -G wheel -s /bin/bash $username
-gpasswd -a $username optical
+gpasswd -a $username disk
 gpasswd -a $username storage
-gpasswd -a $username audio
-gpasswd -a $username video
-gpasswd -a $username rfkill # User could'nt change Bluetooth On/Off without this... weird.
+gpasswd -a $username kvm
+gpasswd -a $username input
 echo -e "$root_password\n$root_password" | passwd root
 echo -e "$user_password\n$user_password" | passwd $username
 
 
 rm /etc/sudoers
-cp /Athena-Linux/files/sysfiles/sudoers /etc/
+cp /Athena-Linux/server/files/sysfiles/sudoers /etc/
 
 
 
@@ -93,7 +92,7 @@ echo $hostname > /etc/hostname
 
 
 rm /etc/hosts
-wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts
+wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts
 
 
 
@@ -103,20 +102,13 @@ wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alterna
 ###########################
 
 
-rm /etc/pacman.conf ; cp /Athena-Linux/files/sysfiles/pacman.conf /etc/
+rm /etc/pacman.conf ; cp /Athena-Linux/server/files/sysfiles/pacman.conf /etc/
 
 
-amixer sset "Auto-Mute Mode" Disabled
-alsactl store
 
 
 pacman -Sy --noconfirm
 pacman -Scc --noconfirm
-
-
-
-
-cp /Athena-Linux/scrollbook/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
 
 
 
@@ -140,5 +132,5 @@ sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg
 
 
 
-rm -rf /note/
-rm -rf /Athena-Linux/
+rm -rf /note
+rm -rf /Athena-Linux
