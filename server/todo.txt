@@ -4,8 +4,13 @@ for admin to type in for root while installing.
 Check for systemd services available for starting on startup.
 
 Create script for adding new users.
+Create script for configuring UFW.
+Make scripts 'callable' from any point in file system.
 
 Possible new packages 
 {
-	x
+	//search for words 'ncurses', 'server', 'CLI'
+	PHP, // Other backend langs?
+	Database,
+	NGNIX,
 }
