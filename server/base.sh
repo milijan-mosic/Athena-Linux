@@ -18,10 +18,10 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n" ; lsblk ; echo -e "\n\n\n"
-                echo "Where do you want to install Athena Linux?" ; echo -e "\n"
+                echo -e "\n" ; lsblk
+                echo -e "\n\n\nWhere do you want to install Athena Linux?\n"
                 echo "Type in SSD/hard disk device name:"
-                echo "(e.g. '/dev/sda' or '/dev/sdb' etc...)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "(e.g. '/dev/sda' or '/dev/sdb' etc...)\n\n\n>>> "
                 read ssd
 
                 lenght=${#ssd}
@@ -30,7 +30,7 @@ do
                 if [ $lenght -lt 8 ] || [ -z $ssd ]
                 then
                         clear
-                        echo "Input is not equal to 8 characters or is an empty input... try again." ; echo -e "\n\n"
+                        echo -e "Input is not equal to 8 characters or is an empty input... try again.\n\n"
                 else
                         pass=false
                         clear
@@ -41,16 +41,16 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n" ; ls /sys/firmware/efi/efivars ; echo -e "\n\n\n"
-                echo "Is this an UEFI or BIOS firmware?" ; echo -e "\n"
+                echo -e "\n" ; ls /sys/firmware/efi/efivars
+                echo -e "\n\n\nIs this an UEFI or BIOS firmware?\n"
                 echo "Type '0' for BIOS or '1' for UEFI:"
-                echo "(if 'no directory is found' error is above, it's BIOS)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "(if 'no directory is found' error is above, it's BIOS)\n\n\n>>> "
                 read uefi
 
                 if [ $uefi != 1 ] && [ $uefi != 0 ] || [ -z $uefi ]
                 then
                         clear
-                        echo "Wrong answer or empty input... try again." ; echo -e "\n\n"
+                        echo -e "Wrong answer or empty input... try again.\n\n"
                 else
                         pass=false
                         clear
@@ -61,9 +61,8 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n\n\n"
-                echo "Type in desired name for computer/laptop:"
-                echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "\n\n\nType in desired name for computer/laptop:"
+                echo -e "(minimum 3 characters of lenght)\n\n\n>>> "
                 read hostname
 
                 lenght=${#hostname}
@@ -83,9 +82,8 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n\n\n"
-                echo "Type in desired username for main user account:" ; echo -e "\n"
-                echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "\n\n\nType in desired username for main user account:\n"
+                echo -e "(minimum 3 characters of lenght)\n\n\n>>> "
                 read username
 
                 lenght=${#username}
@@ -105,12 +103,10 @@ do
         pass=true
         while [ $pass == true ]
         do
-                user_password=""
-                echo -e "\n\n\n"
-                echo "Type in password for main user account:"
-                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "\n\n\nType in password for main user account:"
+                echo -e "(minimum 5 characters of lenght | please use strong password!)\n\n\n>>> "
                 read -s user_password1
-                echo -e "\n" ; echo "Type it again >>> "
+                echo -e "\nType it again >>> "
                 read -s user_password2
 
                 if [ $user_password1 != $user_password2 ] || [ -z $user_password1 ] || [ -z $user_password2 ]
@@ -137,12 +133,11 @@ do
         pass=true
         while [ $pass == true ]
         do
-                root_password=""
                 echo -e "\n\n\n"
-                echo "Type in password for root:"
-                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
+                openssl rand -base64 10
+                echo -e "\nRetype this generated password:\n\n\n>>> "
                 read -s root_password1
-                echo -e "\n" ; echo "Type it again >>> "
+                echo -e "\nType it again >>> "
                 read -s root_password2
 
                 if [ $root_password1 != $root_password2 ] || [ -z $root_password1 ] || [ -z $root_password2 ]
@@ -169,9 +164,8 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n\n\n" # Is there a way to show which CPU computer/laptop has?
-                echo "Which CPU is this computer/laptop using?"
-                echo "Type '0' for AMD or '1' for Intel:" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "\n\n\nWhich CPU is this computer/laptop using?" # Is there a way to show which CPU computer/laptop has?
+                echo -e "Type '0' for AMD or '1' for Intel:\n\n\n>>> "
                 read cpu_choice
 
                 if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ] || [ -z $cpu_choice ]
@@ -188,9 +182,9 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n" ; lspci -v | grep -A1 -e VGA -e 3D ; echo -e "\n\n\n"
-                echo "Which GPU is this computer/laptop using?"
-                echo "Type '0' for AMD, '1' for Intel or '2' for nVidia:" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "\n" ; lspci -v | grep -A1 -e VGA -e 3D
+                echo -e "\n\n\nWhich GPU is this computer/laptop using?"
+                echo -e "Type '0' for AMD, '1' for Intel or '2' for nVidia:\n\n\n>>> "
                 read gpu_choice
 
                 if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ] || [ -z $gpu_choice ]
@@ -207,9 +201,7 @@ do
         pass=true
         while [ $pass == true ]
         do
-                echo -e "\n\n\n"
-
-                echo -e "SSD device name: $ssd\n"
+                echo -e "\n\n\nSSD device name: $ssd\n"
 
                 if [ $uefi == 1 ]
                 then
@@ -245,9 +237,9 @@ do
 
 
 
-                echo "Are you sure that this info you entered is correct?" ; echo -e "\n"
+                echo -e "Are you sure that this info you entered is correct?\n"
                 echo "Do you want to continue with installation?"
-                echo "Type '1' to continue or '0' to enter all information again:" ; echo -e "\n\n\n" ; echo ">>> "
+                echo -e "Type '1' to continue or '0' to enter all information again:\n\n\n>>> "
                 read flag
 
                 if [ $flag != 1 ] && [ $flag != 0 ] || [ -z $flag ]
