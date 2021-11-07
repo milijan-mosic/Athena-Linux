@@ -42,7 +42,6 @@ timedatectl set-timezone Europe/Belgrade
 
 
 systemctl enable NetworkManager
-systemctl enable sshd.service
 
 
 

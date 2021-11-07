@@ -9,7 +9,7 @@ sudo timedatectl set-ntp true
 
 
 addons="borg ufw rsync keepassxc htop hardinfo cmake python kcron testdisk termdown ncdu"
-misc="pkgstats dbus pacman-contrib dialog"
+misc="pkgstats dbus pacman-contrib dialog git wget curl ranger neofetch"
 archiver="ark p7zip unrar unarchiver unzip zip"
 help="man-db man-pages texinfo"
 server=""
@@ -17,15 +17,6 @@ server=""
 packagelist="$addons $misc $archiver $help"
 
 sudo pacman -S $packagelist --noconfirm
-
-
-git clone https://aur.archlinux.org/paru.git
-mv ~/paru ~/.paru
-cd ~/.paru/
-makepkg -sic --noconfirm
-cd ~/
-
-paru -S timeshift --noconfirm
 
 
 
@@ -44,4 +35,3 @@ cp ~/Athena-Linux/server/files/dotfiles/bashrc ~/.bashrc
 rm -r ~/Athena-Linux ; rm ~/installation.sh
 
 sudo pacman -Scc --noconfirm
-paru -Scc --noconfirm

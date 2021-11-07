@@ -2,15 +2,28 @@ Generate 16 char long password for root user ->
 for admin to type in for root while installing.
 
 Check for systemd services available for starting on startup.
-
-Create script for adding new users.
-Create script for configuring UFW.
 Make scripts 'callable' from any point in file system.
 
 Possible new packages 
 {
-	//search for words 'ncurses', 'server', 'CLI'
+	//search for words 'server', 'Without GUI', 'Security', 'Admin' etc...
 	PHP, // Other backend langs?
 	Database,
-	NGNIX,
+	transmission-cli
+	mutt / neomutt
+	newsboat
+	? mpd + ncmpcpp
+	rmlint // duplicate finder
+	task
+	// proxy server OR use ngnix
+	vserver-git AUR
+	siege // http performance testing tool
+	nextcloud
+	? modoboa AUR
+	ejabberd // XMPP server
+	nextcloud-app-spreed // Google Meet
+	? webcit AUR // Collab. tool
+	? x2goserver // TeamViewer
+	glances OR conky
+	netstat-nat
 }

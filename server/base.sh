@@ -283,11 +283,11 @@ reflector --latest 24 --sort rate --save /etc/pacman.d/mirrorlist
 
 
 swap_n="2"
-swap_size="+8192M"
+swap_size="+4096M"
 swap_type="8200"
 
 root_n="3"
-root_size="+40G"
+root_size="+15G"
 root_type="8304"
 
 home_n="4"
@@ -391,7 +391,7 @@ uefi_package="efibootmgr"
 
 essential="base base-devel linux linux-firmware util-linux grub linux-hardened"
 
-cog_wheels="vim tmux sudo openssh wget curl libsecret ranger neofetch"
+cog_wheels="vim tmux sudo openssh libsecret"
 internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw ca-certificates"
 
 cpu_amd="amd-ucode"

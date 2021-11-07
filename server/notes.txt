@@ -1,15 +1,6 @@
-# Commands:
-
-ip a 			- gets an IP address of an device.
-ufw allow 53/udp 	- Allows port 53 to be open for traffic.
-
-
-# Todo:
-
-Install SSH
-"enable --now"
-
 # Check out
+
+"To truly familiarize yourself with Linux you'll need some projects to do to familiarize yourself with how things work. There are plenty throughout this forum that will give you the needed experience/insight. Build a webserver, a logging server (ELK), a monitoring server (Nagios), a ticketing server (ServiceDesk), a wiki server, a Puppet server, an Elastix server, and other things like that."
 
 Some monitoring program
 Once passwords and users are setup, make the passwd and shadow files immutable. This may backfire if you authenticate with AD, so decide your authentication method early.
@@ -23,6 +14,7 @@ Maintanance schedule (cleaning cache, orphan packages, virus scan and rebooting)
 FTP (FileZilla)
 Docker containers
 {
+	DNS
 	XMPP
 	Email
 	Ngnix
@@ -33,19 +25,11 @@ Docker containers
 	Cloud
 	Gitea
 	SyncDocs
+
+	Monitoring
+	Logging
+	Ticketing
+	Wiki 
+	Puppet
+	Elastix
 }
-
-
-
-
-# Securing SSH Server
-
-
-> $sudo vim /etc/ssh/sshd_config
-
-You can secure your OpenSSH server by setting the following options in the sshd_config configuration file:
-	X11Forwarding – Enabling X forwarding makes your system vulnerable to X11 related issues. So it’s a good idea to set it to no.
-	PermitRootLogin – You should not allow root users to login directly to the system. You should always set it to no.
-	Port – change the default port 22 to something non-standard like 9812. It’s a good security practice.
-
-> (e.g.) $ssh -p 888 USERNAME@IP_ADDRESS

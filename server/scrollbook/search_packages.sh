@@ -3,7 +3,7 @@
 
 
 
-echo "Enter package/s names: "
+echo "Enter package/s names:\n>>>"
 read packagename
 echo -e "\n\n"
 sudo pacman -Ss $packagename
