@@ -25,7 +25,7 @@ cd ~/
 programs="spectrwm ttf-font-awesome htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver ncdu virtualbox virtualbox-host-dkms linux-hardened-headers openssh sshfs godot python-pygame rsync code ruby-sass typescript npm nodejs yarn python-pip python-pipenv python-pipreqs python-redis redis postgresql postgresql-docs postgresql-libs pgadmin4 python-pg8000 python-psycopg2 python-pymongo python-mongomock"
 sudo pacman -S $programs --noconfirm
 
-programs="timeshift nerd-fonts-complete ngrok"
+programs="timeshift nerd-fonts-complete ngrok postman-bin postman-agent mongodb-compass mongodb mongodb-tools-bin"
 paru -S $programs --noconfirm
 
 
