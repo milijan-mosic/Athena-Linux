@@ -3,7 +3,7 @@
 
 
 
-sudo pacman -S nginx-mainline rhit  --noconfirm
+sudo pacman -S nginx-mainline certbot-nginx rhit nginx-mod-redis nginx-mod-redis2 --noconfirm
 
 
 sudo rm /etc/nginx/nginx.conf

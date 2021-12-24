@@ -1,8 +1,3 @@
-Check borg optional packages.
-
-
-
-
 Check other Arch based distros for their package list, compare them to yours and add what's needed.
 
 Check every 'major' program in list in Arch Linux Package List to see if there's better alternative in the same category.
@@ -12,4 +7,3 @@ Check smartphone and Windows for all apps that's using out of the box (also blue
 Go into each category and read (Bluetooth, Security, GTK, QT5, Plasma DE etc.).
 
 Configure and deploy dotfiles...
- 

@@ -383,7 +383,7 @@ uefi_package="efibootmgr"
 
 essential="base base-devel linux linux-firmware util-linux grub linux-hardened"
 
-cog_wheels="vim tmux sudo openssh libsecret"
+cog_wheels="vim sudo openssh libsecret"
 internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw ca-certificates"
 
 cpu_amd="amd-ucode"

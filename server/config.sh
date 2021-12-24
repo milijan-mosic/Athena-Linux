@@ -112,8 +112,7 @@ pacman -Scc --noconfirm
 
 
 
-cp /Athena-Linux/server/installation.sh /home/$username/
-chmod ugo+rwx /home/$username/installation.sh
+cp /Athena-Linux/server/installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/installation.sh
 
 
 

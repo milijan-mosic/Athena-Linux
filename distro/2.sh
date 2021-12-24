@@ -63,7 +63,7 @@ echo -e "$user_password\n$user_password" | passwd $username
 
 
 rm /etc/sudoers
-cp /Athena-Linux/files/sysfiles/sudoers /etc/
+cp /Athena-Linux/distro/files/sysfiles/sudoers /etc/
 
 
 
@@ -103,7 +103,7 @@ wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alterna
 ###########################
 
 
-rm /etc/pacman.conf ; cp /Athena-Linux/files/sysfiles/pacman.conf /etc/
+rm /etc/pacman.conf ; cp /Athena-Linux/distro/files/sysfiles/pacman.conf /etc/
 
 
 amixer sset "Auto-Mute Mode" Disabled
@@ -116,7 +116,7 @@ pacman -Scc --noconfirm
 
 
 
-cp /Athena-Linux/scrollbook/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
+cp /Athena-Linux/distro/scrollbook/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
 
 
 

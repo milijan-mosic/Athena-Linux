@@ -9,5 +9,6 @@ alias ls='ls --color=auto'
 alias update='bash ~/.scrollbook/updateNclean.sh'
 alias audio='bash ~/.scrollbook/ytdl_audio.sh'
 alias video='bash ~/.scrollbook/ytdl_video.sh'
+alias just_remove_orphans='bash ~/.scrollbook/remove_package_orphans.sh'
 
 PS1='[\u@\h \W]\$ '

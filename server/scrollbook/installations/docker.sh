@@ -3,7 +3,7 @@
 
 
 
-sudo pacman -S docker docker-compose docker-machine kompose --noconfirm
+sudo pacman -S docker docker-compose docker-machine docker-scan kompose python-docker python-dockerpty --noconfirm
 
 sudo systemctl enable --now docker.service
 

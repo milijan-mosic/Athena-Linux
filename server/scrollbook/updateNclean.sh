@@ -22,6 +22,10 @@ echo -e "\n\n#### UPDATING SYSTEM... ####\n"
 sudo pacman -Syu --noconfirm
 echo -e "\n#### DONE ####"
 
+echo -e "\n\n#### REMOVING PACKAGE ORPHANS... ####\n"
+just_remove_orphans
+echo -e "\n#### DONE ####"
+
 echo -e "\n\n#### DELETING PACKAGE MANAGER'S CACHE... ####\n"
 sudo pacman -Scc --noconfirm
 echo -e "\n#### DONE ####\n\n"

@@ -8,7 +8,7 @@ sudo timedatectl set-ntp true
 
 
 
-#git clone https://github.com/windwalk-bushido/Athena-Linux.git
+git clone https://github.com/windwalk-bushido/Athena-Linux.git
 
 
 
@@ -22,59 +22,49 @@ cd ~/
 
 
 
-#bash ~/Athena-Linux/scrollbook/installations/base_programs.sh
-
-programs="spectrwm ttf-font-awesome htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver rsync code ruby-sass typescript npm nodejs yarn composer php php-pgsql phppgadmin phpmyadmin mysql-workbench php-mongodb php-redis redis nginx-mod-redis nginx certbot-nginx rhit sshfs ncdu" # sxiv
-#thirtytwo="lib32-curl lib32-dbus"
+programs="spectrwm ttf-font-awesome htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver ncdu virtualbox virtualbox-host-dkms linux-hardened-headers openssh sshfs godot python-pygame rsync code ruby-sass typescript npm nodejs yarn python-pip python-pipenv python-pipreqs python-redis redis postgresql postgresql-docs postgresql-libs pgadmin4 python-pg8000 python-psycopg2 python-pymongo python-mongomock"
 sudo pacman -S $programs --noconfirm
 
-programs="timeshift nerd-fonts-complete"
+programs="timeshift nerd-fonts-complete ngrok"
 paru -S $programs --noconfirm
 
 
 
 
-#sudo systemctl enable --now cups.socket
-#sudo systemctl enable --now ufw.service
-
-# This should be done with 'sudo'. Don't implement it yet, do it manually first.
-#ufw default deny
-#ufw allow from 192.168.0.0/24
-#ufw limit ssh
-#ufw enable
-# Open UDP and TCP ports 1714 through 1764 for KDE Connect. Also, open ports for Transmission-GTK.
+sudo modprobe vboxdrv
+sudo modprobe vboxnetadp
+sudo modprobe vboxnetflt
 
 
 
 
-cp -r ~/superuser/scrollbook ~/.scrollbook
+cp -r ~/Athena-Linux/developer/scrollbook ~/.scrollbook
 rm ~/.scrollbook/32bit.sh
-#rm -r ~/.scrollbook/installations/
 
 
 
 
 rm ~/.bashrc
-cp ~/superuser/dotfiles/bashrc_superuser ~/.bashrc
+cp ~/Athena-Linux/developer/dotfiles/bashrc_superuser ~/.bashrc
 
 
-#mkdir -p ~/.config/alacritty
-#cp ~/Athena-Linux/files/dotfiles/alacritty.yml ~/.config/alacritty/
 
 
 mkdir -p ~/.psensor/
-cp ~/superuser/dotfiles/psensor.cfg ~/.psensor/
+cp ~/Athena-Linux/developer/dotfiles/psensor.cfg ~/.psensor/
 
 
 mkdir .screenlayout
-cp ~/superuser/dotfiles/monitor.sh ~/.screenlayout/
-cp ~/superuser/dotfiles/laptop.sh ~/.screenlayout/
+cp ~/Athena-Linux/developer/dotfiles/monitor.sh ~/.screenlayout/
+cp ~/Athena-Linux/developer/dotfiles/laptop.sh ~/.screenlayout/
 
 
-mkdir ~/.wallpaper/ ; cp ~/Athena-Linux/files/wallpaper.jpg ~/.wallpaper/
+mkdir ~/.wallpaper
+cp ~/Athena-Linux/distro/files/wallpaper.png ~/.wallpaper/
+cp ~/Athena-Linux/distro/files/dark-portal.jpg ~/.wallpaper/
 
 
-#sudo cp ~/Athena-Linux/files/sysfiles/hosts /etc/hosts_old
+sudo cp ~/Athena-Linux/distro/files/sysfiles/hosts /etc/hosts_old
 
 
 mkdir -p ~/.config/ranger/plugins/
@@ -83,11 +73,11 @@ echo "default_linemode devicons" > ~/.config/ranger/rc.conf
 
 
 mkdir -p ~/.config/picom/
-cp ~/superuser/dotfiles/picom.conf ~/.config/picom/
+cp ~/Athena-Linux/developer/dotfiles/picom.conf ~/.config/picom/
 
 
-#bash ~/Athena-Linux/scrollbook/install-WM-stack.sh
-cp ~/superuser/dotfiles/spectrwm.conf ~/.spectrwm.conf
+bash ~/Athena-Linux/developer/scrollbook/dev/install-WM-stack.sh
+cp ~/Athena-Linux/developer/dotfiles/spectrwm.conf ~/.spectrwm.conf
 
 
 
@@ -105,12 +95,13 @@ mkdir Pictures
 
 
 
-#rm -r ~/Athena-Linux ; rm ~/normal_installation.sh ; rm ~/superuser_installation.sh ; rm ~/server_installation.sh
+cp -r ~/Athena-Linux ~/Projects ; rm -r ~/.secret
 
 sudo pacman -Scc --noconfirm
 paru -Scc --noconfirm
+rm -r ~/.cache/paru/clone
 
 
 
 
-#reboot
+reboot

@@ -1,23 +1,15 @@
 <template>
 
-	<p>Component</p>
+	<div class="">
+		<p>Component</p>
+	</div>
 
 </template>
 
 <script>
 
-	//import Component from './components/Component.vue'
-
-	export default
-	{
+	export default {
 		name: "Component",
-		//components: { Component },
 	}
 
 </script>
-
-<style>
-
-
-
-</style>

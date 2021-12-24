@@ -14,6 +14,6 @@ alias n='neofetch'
 alias s='bash ~/.scrollbook/search_packages.sh'
 alias programlist='sudo pacman -Qeq'
 alias update='bash ~/.scrollbook/updateNclean.sh'
-alias remove_orphans='bash ~/.scrollbook/remove_package_orphans.sh'
+alias just_remove_orphans='bash ~/.scrollbook/remove_package_orphans.sh'
 
 PS1='[\u@\h \W]\$ '

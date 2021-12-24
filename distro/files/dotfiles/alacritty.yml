@@ -150,7 +150,7 @@ font:
     style: Bold Italic
 
     # Point size
-  size: 12.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -179,17 +179,18 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#002b36' # base03
-    foreground: '#839496' # base0
-
+    background: '#282a36'
+    foreground: '#f8f8f2'
+    bright_foreground: '#ffffff'
+    
     # Bright and dim foreground colors
     #
     # The dimmed foreground color is calculated automatically if it is not
     # present. If the bright foreground color is not set, or
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
-    dim_foreground: '#828482'
-    bright_foreground: '#eaeaea'
+    #dim_foreground: '#828482'
+    #bright_foreground: '#eaeaea'
 
   # Cursor colors
   #
@@ -198,8 +199,8 @@ colors:
   # Allowed values are CellForeground and CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
   cursor:
-    text:   '#002b36' # base03
-    cursor: '#839496' # base0
+    text: CellBackground
+    cursor: CellForeground
 
   # Vi mode cursor colors
   #
@@ -218,15 +219,21 @@ colors:
     # Allowed values are CellForeground and CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
     matches:
-      foreground: '#000000'
-      background: '#ffffff'
+      foreground: '#44475a'
+      background: '#50fa7b'
     focused_match:
-      foreground: CellBackground
-      background: CellForeground
-
+      foreground: '#44475a'
+      background: '#ffb86c'
     bar:
-      background: '#c5c8c6'
-      foreground: '#1d1f21'
+      background: '#282a36'
+      foreground: '#f8f8f2'
+  hints:
+    start:
+      foreground: '#282a36'
+      background: '#f1fa8c'
+    end:
+      foreground: '#f1fa8c'
+      background: '#282a36'
 
   # Line indicator
   #
@@ -245,44 +252,44 @@ colors:
   # Allowed values are CellForeground and CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
   selection:
-    text: CellBackground
-    background: CellForeground
+    text: CellForeground
+    background: '#44475a'
 
   # Normal colors
   normal:
-    black:   '#073642' # base02
-    red:     '#dc322f' # red
-    green:   '#859900' # green
-    yellow:  '#b58900' # yellow
-    blue:    '#268bd2' # blue
-    magenta: '#d33682' # magenta
-    cyan:    '#2aa198' # cyan
-    white:   '#eee8d5' # base2
+    black: '#21222c'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#bd93f9'
+    magenta: '#ff79c6'
+    cyan: '#8be9fd'
+    white: '#f8f8f2'
 
   # Bright colors
   bright:
-    black:   '#586e75' # base01
-    red:     '#cb4b16' # orange
-    green:   '#586e75' # base01
-    yellow:  '#657b83' # base00
-    blue:    '#839496' # base0
-    magenta: '#6c71c4' # violet
-    cyan:    '#93a1a1' # base1
-    white:   '#fdf6e3' # base3
+    black: '#6272a4'
+    red: '#ff6e6e'
+    green: '#69ff94'
+    yellow: '#ffffa5'
+    blue: '#d6acff'
+    magenta: '#ff92df'
+    cyan: '#a4ffff'
+    white: '#ffffff'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-    black:   '#131415'
-    red:     '#864343'
-    green:   '#777c44'
-    yellow:  '#9e824c'
-    blue:    '#556a7d'
-    magenta: '#75617b'
-    cyan:    '#5b7d78'
-    white:   '#828482'
+  #dim:
+    #black:   '#131415'
+    #red:     '#864343'
+    #green:   '#777c44'
+    #yellow:  '#9e824c'
+    #blue:    '#556a7d'
+    #magenta: '#75617b'
+    #cyan:    '#5b7d78'
+    #white:   '#828482'
 
   # Indexed Colors
   #

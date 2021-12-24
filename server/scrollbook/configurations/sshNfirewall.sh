@@ -16,6 +16,8 @@ sudo ufw allow 80 		# HTTP
 sudo ufw allow 443		# HTTPS
 
 sudo ufw allow 3000		# Grafana
+sudo ufw allow 8000		# Flask
+sudo ufw allow 8080		# Vue
 sudo ufw allow 8086		# InfluxDB
 sudo ufw allow 5432		# Postgres
 
