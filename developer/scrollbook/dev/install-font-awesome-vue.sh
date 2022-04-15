@@ -14,4 +14,4 @@ npm i --save @fortawesome/vue-fontawesome@prerelease
 
 
 rm src/main.js
-cp ~/Projects/athena-linux-black/dev-files/main.js src/
+cp ~/Projects/athena-linux/dev-files/main.js src/

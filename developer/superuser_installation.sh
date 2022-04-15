@@ -22,10 +22,14 @@ cd ~/
 
 
 
-programs="spectrwm ttf-font-awesome htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver ncdu virtualbox virtualbox-host-dkms linux-hardened-headers openssh sshfs godot python-pygame rsync code ruby-sass typescript npm nodejs yarn python-pip python-pipenv python-pipreqs python-redis redis postgresql postgresql-docs postgresql-libs pgadmin4 python-pg8000 python-psycopg2 python-pymongo python-mongomock"
+dev_apps="spectrwm ttf-font-awesome chromium feathernotes htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver ncdu virtualbox virtualbox-host-dkms linux-hardened-headers openssh sshfs godot python-pygame rsync code ruby-sass typescript npm nodejs yarn python-pip python-pipenv python-pipreqs python-redis redis postgresql postgresql-docs postgresql-libs pgadmin4 python-pg8000 python-psycopg2 python-pymongo python-mongomock xonsh"
+pentest_apps="openvpn nmap metasploit hydra hashcat hashcat-utils john nikto perl-image-exiftool openbsd-netcat fcrackzip wireshark-qt socat"
+programs="$dev_apps $pentest_apps"
 sudo pacman -S $programs --noconfirm
 
-programs="timeshift nerd-fonts-complete ngrok postman-bin postman-agent mongodb-compass mongodb mongodb-tools-bin"
+dev_apps="timeshift nerd-fonts-complete ngrok mongodb-compass mongodb mongodb-tools-bin heroku-cli"
+pentest_apps="burpsuite gobuster enum4linux smbmap steghide"
+programs="$dev_apps $pentest_apps"
 paru -S $programs --noconfirm
 
 

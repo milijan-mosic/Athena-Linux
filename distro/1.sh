@@ -287,7 +287,7 @@ swap_size="+8192M"
 swap_type="8200"
 
 root_n="3"
-root_size="+40G"
+root_size="+60G"
 root_type="8304"
 
 home_n="4"
@@ -389,11 +389,11 @@ temp=""
 
 uefi_package="efibootmgr"
 
-essential="base base-devel linux linux-firmware util-linux grub linux-hardened"
+essential="base base-devel linux linux-firmware util-linux grub" # linux-hardened
 desktop_server="xorg-server xorg-xinit"
 
 cog_wheels="vim alacritty mesa sudo libva-mesa-driver mesa-vdpau"
-internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw wget git ca-certificates libsecret"
+internet_drivers="broadcom-wl networkmanager reflector network-manager-applet wireless_tools wpa_supplicant iw iwd wget git ca-certificates libsecret"
 
 cpu_amd="amd-ucode"
 cpu_intel="intel-ucode"

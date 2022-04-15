@@ -28,7 +28,7 @@ archiver="ark p7zip unrar unarchiver"
 #backup_tool="borg openssh python-llfuse x11-ssh-askpass xorg-xauth"
 disk_cleaner="bleachbit"
 disk_formatter="gparted gnome-disk-utility btrfs-progs dosfstools exfatprogs f2fs-tools gpart ntfs-3g polkit xfsprogs e2fsprogs gptfdisk"
-dvd_burner="k3b cdparanoia cdrdao cdrtools dvd+rw-tools emovix transcode vcdimager libquicktime"
+dvd_burner="k3b cdparanoia cdrdao cdrtools dvd+rw-tools emovix transcode vcdimager"
 firewall_tool="ufw"
 file_manager="nautilus python-nautilus"
 password_manager="keepassxc xclip"
@@ -39,7 +39,7 @@ office="libreoffice-still libpaper gtk3 sane"
 pdf_reader="zathura zathura-cb zathura-pdf-mupdf"
 image_manipulation="gimp gutenprint"
 utilities="redshift python-gobject python-pyxdg ciano kamoso ffmpeg acpi vym neofetch xorg-xrandr xorg-xprop udiskie"
-browser_addons="firefox-ublock-origin firefox-extension-https-everywhere firefox-decentraleyes firefox-adblock-plus"
+browser_addons="firefox-ublock-origin firefox-decentraleyes firefox-adblock-plus"
 
 general_programs="$screenshot_tool $music_player $video_player $image_viewer $stopwatch $calculator $task_manager $email_app $browser $torrent_app $sharing_tools $download_tool $archiver $disk_cleaner $disk_formatter $dvd_burner $firewall_tool $file_manager $password_manager $notepad $printer_n_scanner $multi_monitor_tool $office $pdf_reader $image_manipulation $utilities $browser_addons" # $backup_tool - webkit2gtk ?
 
