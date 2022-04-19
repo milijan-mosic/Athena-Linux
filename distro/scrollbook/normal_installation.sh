@@ -31,6 +31,12 @@ sudo systemctl enable --now lightdm
 
 
 
+amixer sset "Auto-Mute Mode" Disabled
+alsactl store
+
+
+
+
 mkdir .scrollbook/
 cp Athena-Linux/distro/scrollbook/updateNclean.sh .scrollbook/
 cp Athena-Linux/distro/scrollbook/ytdl_audio.sh .scrollbook/

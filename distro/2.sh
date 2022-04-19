@@ -107,8 +107,6 @@ rm /etc/pacman.conf
 cp /Athena-Linux/distro/files/sysfiles/pacman.conf /etc/
 
 
-amixer sset "Auto-Mute Mode" Disabled
-alsactl store
 
 
 pacman -Sy --noconfirm
