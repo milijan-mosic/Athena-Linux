@@ -10,23 +10,31 @@ Make sure you are connected to internet via Ethernet cable.
 
 Enter following commands:
 
-$ sudo pacman -Sy git --noconfirm
-$ git clone https://github.com/windwalk-bushido/Athena-Linux.git
-$ bash /Athena-Linux/distro/1.sh
+```
+sudo pacman -Sy git --noconfirm
+git clone https://github.com/windwalk-bushido/Athena-Linux.git
+bash Athena-Linux/distro/1.sh
+```
 
 ## After installation script enters OS (installation will stop, you'll see)
 
-$ bash /Athena-Linux/distro/2.sh
+```
+bash Athena-Linux/distro/2.sh
+```
 
 ## Finish installation
 
-$ exit
-$ umount -R /mnt
-$ reboot
+```
+exit
+umount -R /mnt
+reboot
+```
 
 ## When entering for the first time as a new user
 
-$ bash normal_installation.sh
+```
+bash normal_installation.sh
+```
 
 ## Notes:
 
