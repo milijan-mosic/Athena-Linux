@@ -103,7 +103,8 @@ wget -P /etc/ https://raw.githubusercontent.com/StevenBlack/hosts/master/alterna
 ###########################
 
 
-rm /etc/pacman.conf ; cp /Athena-Linux/distro/files/sysfiles/pacman.conf /etc/
+rm /etc/pacman.conf
+cp /Athena-Linux/distro/files/sysfiles/pacman.conf /etc/
 
 
 amixer sset "Auto-Mute Mode" Disabled
@@ -116,7 +117,8 @@ pacman -Scc --noconfirm
 
 
 
-cp /Athena-Linux/distro/scrollbook/normal_installation.sh /home/$username/ ; chmod ugo+rwx /home/$username/normal_installation.sh
+cp /Athena-Linux/distro/scrollbook/normal_installation.sh /home/$username/
+chmod ugo+rwx /home/$username/normal_installation.sh
 
 
 
@@ -128,11 +130,11 @@ cp /Athena-Linux/distro/scrollbook/normal_installation.sh /home/$username/ ; chm
 
 if [ $uefi == 1 ]
 then
-        grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-        grub-mkconfig -o /boot/grub/grub.cfg
+  grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+  grub-mkconfig -o /boot/grub/grub.cfg
 else
-        grub-install --target=i386-pc $ssd
-        grub-mkconfig -o /boot/grub/grub.cfg
+  grub-install --target=i386-pc $ssd
+  grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
 sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg

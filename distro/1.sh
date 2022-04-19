@@ -9,256 +9,218 @@
 
 
 timedatectl set-ntp true
+
+
+
+
 clear
 
-
-flag=0
-while [ $flag == 0 ]
+got_user_input=false
+while [ $got_user_input == false ]
 do
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n" ; lsblk ; echo -e "\n\n\n"
-                echo "Where do you want to install Athena Linux?" ; echo -e "\n"
-                echo "Type in SSD/hard disk device name:"
-                echo "(e.g. '/dev/sda' or '/dev/sdb' etc...)" ; echo -e "\n\n\n" ; echo ">>> "
-                read ssd
+  pass=false
+  while [ $pass == false ]
+  do
+    echo -e "\n" ; lsblk
+    echo -e "\n\n\nWhere do you want to install Athena Linux?\nType in SSD/hard disk device name:\n\n(e.g. '/dev/sda' or '/dev/sdb' etc...)\n\n\n>>>"
+    read ssd
 
-                lenght=${#ssd}
-
-                # Add additional condition for: $ssd != int nor float
-                if [ $lenght -lt 8 ] || [ -z $ssd ]
-                then
-                        clear
-                        echo "Input is not equal to 8 characters or is an empty input... try again." ; echo -e "\n\n"
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    length=${#ssd}
+    if [ $length -ge 8 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nInput is not equal to 8 characters or is an empty input... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n" ; ls /sys/firmware/efi/efivars ; echo -e "\n\n\n"
-                echo "Is this an UEFI or BIOS firmware?" ; echo -e "\n"
-                echo "Type '0' for BIOS or '1' for UEFI:"
-                echo "(if 'no directory is found' error is above, it's BIOS)" ; echo -e "\n\n\n" ; echo ">>> "
-                read uefi
+  pass=false
+  while [ $pass == false ]
+  do
+    echo -e "\n" ; ls /sys/firmware/efi/efivars
+    echo -e "\n\n\nIs this an UEFI or BIOS firmware?\nType '0' for BIOS or '1' for UEFI:\n\n(if 'no directory is found' error is above, it's BIOS)\n\n\n>>>"
+    read uefi
 
-                if [ $uefi != 1 ] && [ $uefi != 0 ] || [ -z $uefi ]
-                then
-                        clear
-                        echo "Wrong answer or empty input... try again." ; echo -e "\n\n"
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    if [ $uefi == 1 ] || [ $uefi == 0 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nWrong answer or empty input... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n\n\n"
-                echo "Type in desired name for computer/laptop:"
-                echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
-                read hostname
+  pass=false
+  while [ $pass == false ]
+  do
+    echo -e "\n\nType in desired name for device:\n\n(minimum 3 characters of length)\n\n\n>>>"
+    read hostname
 
-                lenght=${#hostname}
-
-                # What's the maximum lenght of a hostname? Can it contain numbers?
-                if [ $lenght -lt 3 ] || [ -z $hostname ]
-                then
-                        clear
-                        echo "Hostname is too small or empty input... try again."
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    length=${#hostname}
+    if [ $length -ge 3 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nHostname is too small or empty input... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n\n\n"
-                echo "Type in desired username for main user account:" ; echo -e "\n"
-                echo "(minimum 3 characters of lenght)" ; echo -e "\n\n\n" ; echo ">>> "
-                read username
+  pass=false
+  while [ $pass == false ]
+  do
+    echo -e "\n\nType in desired username for main user account:\n\n(minimum 3 characters of length)\n\n\n>>>"
+    read username
 
-                lenght=${#username}
-
-                # What's the maximum lenght of a username? Can it contain numbers?
-                if [ $lenght -lt 3 ] || [ -z $username ]
-                then
-                        clear
-                        echo "Username is too small or is an empty input... try again."
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    length=${#username}
+    if [ $length -ge 3 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nUsername is too small or is an empty input... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                user_password=""
-                echo -e "\n\n\n"
-                echo "Type in password for main user account:"
-                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
-                read -s user_password1
-                echo -e "\n" ; echo "Type it again >>> "
-                read -s user_password2
+  pass=false
+  while [ $pass == false ]
+  do
+    user_password=""
+    echo -e "\n\nType in password for main user account:\n\n(minimum 5 characters of length)\n\n\n>>>"
+    read -s user_password1
+    echo -e "\nType it again >>>"
+    read -s user_password2
 
-                if [ $user_password1 != $user_password2 ] || [ -z $user_password1 ] || [ -z $user_password2 ]
-                then
-                        clear
-                        echo "Password is too small, or there are some empty inputs or passwords does'nt match... try again."
-                else
-                        lenght=${#user_password1}
-
-                        # What's the maximum lenght of a password?
-                        if [ $lenght -lt 5 ]
-                        then
-                                clear
-                                echo "Password is too small... try again."
-                        else
-                                pass=false
-                                user_password="$user_password1"
-                                clear
-                        fi
-                fi
-        done
+    if [ $user_password1 == $user_password2 ]; then
+      pass_length1=${#user_password1}
+      pass_length2=${#user_password2}
+      if [ $pass_length1 -ge 5 ] && [ $pass_length2 -ge 5 ]; then
+  pass=true
+  user_password=$user_password1
+  clear
+      else
+  echo -e "\n\nPassword is too small.\n\n"
+      fi
+    else
+      clear
+      echo -e "\n\nPasswords doesn't match or there are some empty inputs... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                root_password=""
-                echo -e "\n\n\n"
-                echo "Type in password for root:"
-                echo "(minimum 5 characters of lenght | please use strong password!)" ; echo -e "\n\n\n" ; echo ">>> "
-                read -s root_password1
-                echo -e "\n" ; echo "Type it again >>> "
-                read -s root_password2
+  pass=false
+  while [ $pass == false ]
+  do
+    root_password=""
+    echo -e "\n\nType in password for root:\n\n(minimum 5 characters of length)\n\n\n>>>"
+    read -s root_password1
+    echo -e "\nType it again >>>"
+    read -s root_password2
 
-                if [ $root_password1 != $root_password2 ] || [ -z $root_password1 ] || [ -z $root_password2 ]
-                then
-                        clear
-                        echo "Password is too small, or there are some empty inputs or passwords does'nt match... try again."
-                else
-                        lenght=${#root_password1}
-
-                        # What's the maximum lenght of a password?
-                        if [ $lenght -lt 5 ]
-                        then
-                                clear
-                                echo "Password is too small... try again."
-                        else
-                                pass=false
-                                root_password="$root_password1"
-                                clear
-                        fi
-                fi
-        done
+    if [ $root_password1 == $user_password2 ]; then
+      pass_length1=${#root_password1}
+      pass_length2=${#root_password2}
+      if [ $pass_length1 -ge 5 ] && [ $pass_length2 -ge 5 ]; then
+  pass=true
+  root_password=$root_password1
+  clear
+      else
+  echo -e "\n\nPassword is too small.\n\n"
+      fi
+    else
+      clear
+      echo -e "\n\nPasswords doesn't match or there are some empty inputs... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n\n\n" # Is there a way to show which CPU computer/laptop has?
-                echo "Which CPU is this computer/laptop using?"
-                echo "Type '0' for AMD or '1' for Intel:" ; echo -e "\n\n\n" ; echo ">>> "
-                read cpu_choice
+  pass=false
+  while [ $pass == false ]
+  do
+    # Is there a way to show which CPU computer/laptop has?
+    echo -e "\n\nWhich CPU is this device using?\nType '0' for AMD or '1' for Intel:\n\n\n>>>"
+    read cpu_choice
 
-                if [ $cpu_choice != 1 ] && [ $cpu_choice != 0 ] || [ -z $cpu_choice ]
-                then
-                        clear
-                        echo "Wrong answer or empty input... try again."
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    if [ $cpu_choice == 1 ] || [ $cpu_choice == 0 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nWrong answer or empty input... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n" ; lspci -v | grep -A1 -e VGA -e 3D ; echo -e "\n\n\n"
-                echo "Which GPU is this computer/laptop using?"
-                echo "Type '0' for AMD, '1' for Intel or '2' for nVidia:" ; echo -e "\n\n\n" ; echo ">>> "
-                read gpu_choice
+  pass=false
+  while [ $pass == false ]
+  do
+    echo -e "\n" ; lspci -v | grep -A1 -e VGA -e 3D
+    echo -e "\n\n\nWhich GPU is this device using?\nType '0' for AMD, '1' for Intel or '2' for nVidia:\n\n\n>>>"
+    read gpu_choice
 
-                if [ $gpu_choice != 0 ] && [ $gpu_choice != 1 ] && [ $gpu_choice != 2 ] || [ -z $gpu_choice ]
-                then
-                        clear
-                        echo "Wrong answer or empty input... try again."
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    if [ $gpu_choice == 0 ] || [ $gpu_choice == 1 ] || [ $gpu_choice == 2 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nWrong answer or empty input... try again.\n\n"
+    fi
+  done
 
 
-        pass=true
-        while [ $pass == true ]
-        do
-                echo -e "\n\n\n"
+  pass=false
+  while [ $pass == false ]
+  do
+    echo -e "\n\nSSD device name: $ssd\n"
 
-                echo -e "SSD device name: $ssd\n"
+    if [ $uefi == 1 ]; then
+      echo -e "Motherboard firmware: UEFI\n"
+    else
+      echo -e "Motherboard firmware: BIOS\n"
+    fi
 
-                if [ $uefi == 1 ]
-                then
-                        echo -e "Motherboard firmware: UEFI\n"
-                else
-                        echo -e "Motherboard firmware: BIOS\n"
-                fi
+    echo -e "Name for a device: $hostname\n"
+    echo -e "Username for main account: $username\n"
 
-                echo -e "Name for a device: $hostname\n"
-                echo -e "Username for main account: $username\n"
+    if [ $cpu_choice == 0 ]; then
+      echo -e "This device uses: AMD CPU\n"
+    else
+      echo -e "This device uses: Intel CPU\n"
+    fi
 
-                if [ $cpu_choice == 0 ]
-                then
-                        echo -e "This device uses: AMD CPU\n"
-                else
-                        echo -e "This device uses: Intel CPU\n"
-                fi
+    if [ $gpu_choice == 0 ]; then
+      echo -e "This device uses: AMD GPU\n"
+    else
+      if [ $gpu_choice == 1 ]; then
+  echo -e "This device uses: Intel GPU\n"
+      else
+  echo -e "This device uses: nVidia GPU\n"
+      fi
+    fi
 
-                if [ $gpu_choice == 0 ]
-                then
-                        echo -e "This device uses: AMD GPU\n"
-                fi
-                
-                if [ $gpu_choice == 1 ]
-                then
-                        echo -e "This device uses: Intel GPU\n"
-                else
-                        echo -e "This device uses: nVidia GPU\n"
-                fi
-
-                echo -e "Password should be kept secret ;)\n\n\n"
+    echo -e "Passwords should be kept secret ;)\n\n\n"
 
 
 
 
-                echo "Are you sure that this info you entered is correct?" ; echo -e "\n"
-                echo "Do you want to continue with installation?"
-                echo "Type '1' to continue or '0' to enter all information again:" ; echo -e "\n\n\n" ; echo ">>> "
-                read flag
+    echo -e "Are you sure that this info you entered is correct?"
+    echo -e "Do you want to continue with installation?\n"
+    echo -e "Type '1' to continue or '0' to enter all information again:\n\n\n>>>"
+    read got_user_input
 
-                if [ $flag != 1 ] && [ $flag != 0 ] || [ -z $flag ]
-                then
-                        clear
-                        echo "Wrong answer or empty input... try again."
-                else
-                        pass=false
-                        clear
-                fi
-        done
+    if [ $got_user_input == 1 ] || [ $got_user_input == 0 ]; then
+      pass=true
+      clear
+    else
+      clear
+      echo -e "\n\nWrong answer or empty input... try again.\n\n"
+    fi
+  done
 done
 
 
@@ -299,17 +261,17 @@ sgdisk -o $ssd
 
 if [ $uefi == 1 ]
 then
-        boot_n="1"
-        boot_size="+512M"
-        boot_type="EF00"
+  boot_n="1"
+  boot_size="+512M"
+  boot_type="EF00"
 
-        sgdisk -n $boot_n:0G:$boot_size -t $boot_n:$boot_type -g $ssd
+  sgdisk -n $boot_n:0G:$boot_size -t $boot_n:$boot_type -g $ssd
 else
-        bios_boot_n="1"
-        bios_boot_size="+1M"
-        bios_boot_type="EF02"
+  bios_boot_n="1"
+  bios_boot_size="+1M"
+  bios_boot_type="EF02"
 
-        sgdisk -n $bios_boot_n:0:$bios_boot_size -t $bios_boot_n:$bios_boot_type -g $ssd
+  sgdisk -n $bios_boot_n:0:$bios_boot_size -t $bios_boot_n:$bios_boot_type -g $ssd
 fi
 
 sgdisk -n $swap_n:0G:$swap_size -t $swap_n:$swap_type -g $ssd
@@ -341,9 +303,9 @@ four="4"
 
 if [ $uefi == 1 ]
 then
-        temp="$ssd$one"
-        mkfs.fat -F32 $temp
-        temp=""
+  temp="$ssd$one"
+  mkfs.fat -F32 $temp
+  temp=""
 fi
 
 temp="$ssd$two"
@@ -365,14 +327,14 @@ temp=""
 
 if [ $uefi == 1 ]
 then
-        mkdir /mnt/boot
-        mkdir /mnt/home
+  mkdir /mnt/boot
+  mkdir /mnt/home
 
-        temp="$ssd$one"
-        mount $temp /mnt/boot
-        temp=""
+  temp="$ssd$one"
+  mount $temp /mnt/boot
+  temp=""
 else
-        mkdir /mnt/home
+  mkdir /mnt/home
 fi
 
 temp="$ssd$four"
@@ -409,17 +371,17 @@ musthave="$essential $desktop_server $cog_wheels $internet_drivers"
 
 
 case "$gpu_choice" in
-    0) drivers="$gpu_amd";;
-    1) drivers="$gpu_intel";;
-    2) drivers="$gpu_nvidia";;
+  0) drivers="$gpu_amd";;
+  1) drivers="$gpu_intel";;
+  2) drivers="$gpu_nvidia";;
 esac
 
 space=" "
 drivers="$space"
 
 case "$cpu_choice" in
-    0) drivers="$cpu_amd";;
-    1) drivers="$cpu_intel";;
+  0) drivers="$cpu_amd";;
+  1) drivers="$cpu_intel";;
 esac
 
 
@@ -427,9 +389,9 @@ esac
 
 if [ $uefi == 1 ]
 then
-        packagelist="$musthave $drivers $uefi_package"
+  packagelist="$musthave $drivers $uefi_package"
 else
-        packagelist="$musthave $drivers"
+  packagelist="$musthave $drivers"
 fi
 
 

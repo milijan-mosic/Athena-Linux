@@ -36,7 +36,7 @@ sudo pacman -Syu --noconfirm
 echo -e "\nDone."
 
 echo -e "\n\nDeleting package managers' cache..."
-just_remove_orphans
+sudo pacman -Qtdq | sudo pacman -Rns -
 sudo pacman -Scc --noconfirm
 rm -r ~/.cache/paru/clone
 echo -e "\nDone.\n\n"
