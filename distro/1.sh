@@ -351,7 +351,7 @@ temp=""
 
 uefi_package="efibootmgr"
 
-essential="base base-devel linux linux-firmware util-linux grub" # linux-hardened
+essential="base base-devel linux linux-firmware util-linux grub archlinux-keyring" # linux-hardened
 desktop_server="xorg-server xorg-xinit"
 
 cog_wheels="vim alacritty mesa sudo libva-mesa-driver mesa-vdpau"

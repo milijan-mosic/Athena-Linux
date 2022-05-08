@@ -6,4 +6,4 @@ Check smartphone and Windows for all apps that's using out of the box (also blue
 
 Go into each category and read (Bluetooth, Security, GTK, QT5, Plasma DE etc.).
 
-Configure and deploy dotfiles...
+Make BSPWM installation complete (mpd, etc.)

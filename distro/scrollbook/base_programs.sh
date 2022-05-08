@@ -12,7 +12,7 @@ misc="pkgstats picom dbus python pacman-contrib"
 system="$sound $desktop_environment $bluetooth_support $fonts $misc"
 
 
-screenshot_tool="spectacle kipi-plugins"
+screenshot_tool="spectacle"
 music_player="strawberry gst-libav gst-plugins-bad gst-plugins-ugly"
 video_player="vlc libcdio"
 image_viewer="gwenview kamera kimageformats qt5-imageformats v4l-utils"
