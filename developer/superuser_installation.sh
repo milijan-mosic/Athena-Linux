@@ -107,4 +107,4 @@ rm -r .cache/paru/clone
 
 
 
-reboot
+#reboot

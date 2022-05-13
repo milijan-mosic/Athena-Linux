@@ -142,3 +142,8 @@ sed -i 's/set timeout=5/set timeout=0.1/g' /boot/grub/grub.cfg
 
 rm -rf /note/
 rm -rf /Athena-Linux/
+
+
+
+
+exit
