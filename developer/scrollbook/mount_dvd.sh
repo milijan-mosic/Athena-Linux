@@ -4,5 +4,6 @@
 
 
 echo -e "\nMounting..."
-mkdir MOUNTPOINT
-sudo mount -o loop /dev/sr0 ~/MOUNTPOINT/ ; echo -e "DONE!\n\n"
+mkdir MNT
+sudo mount -o loop /dev/sr0 ~/MNT/
+echo -e "DONE!\n\n"

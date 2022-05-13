@@ -4,5 +4,6 @@
 
 
 echo -e "\nUnmounting..."
-sudo umount ~/MOUNTPOINT/
+sudo umount ~/MNT/
+rm -r MNT
 echo -e "DONE!\n\n"

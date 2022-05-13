@@ -1,7 +1,0 @@
-psi+
-kgpg
-xca
-
-(math! shit)
-maxima
-speedcrunch
