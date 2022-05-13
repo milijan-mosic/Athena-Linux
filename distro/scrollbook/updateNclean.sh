@@ -37,6 +37,7 @@ echo -e "\nDone."
 
 echo -e "\n\nDeleting package managers' cache..."
 sudo pacman -Qtdq | sudo pacman -Rns -
-sudo pacman -Scc --noconfirm
+sudo pacman -Scc
+paru -Scc
 rm -r ~/.cache/paru/clone
 echo -e "\nDone.\n\n"

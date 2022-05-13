@@ -22,12 +22,12 @@ cd ~/
 
 
 
-dev_apps="spectrwm ttf-font-awesome chromium htop curl fuseiso hardinfo usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver ncdu virtualbox virtualbox-host-dkms openssh sshfs godot python-pygame rsync code ruby-sass typescript npm nodejs yarn python-pip python-pipenv python-pipreqs" # python-redis redis postgresql postgresql-docs postgresql-libs pgadmin4 python-pg8000 python-psycopg2 python-pymongo python-mongomock feathernotes linux-hardened-headers 
+dev_apps="spectrwm ttf-font-awesome chromium htop curl fuseiso usbutils cmake dbus dialog man-db man-pages texinfo kcron testdisk gimp ranger calcurse xwallpaper termdown xlockmore xscreensaver ncdu virtualbox virtualbox-host-dkms openssh sshfs godot python-pygame rsync code ruby-sass typescript npm nodejs yarn python-pip python-pipenv python-pipreqs linux-headers" # python-redis redis postgresql postgresql-docs postgresql-libs pgadmin4 python-pg8000 python-psycopg2 python-pymongo python-mongomock feathernotes hardinfo docker docker-compose
 pentest_apps="openvpn nmap metasploit hydra hashcat hashcat-utils john nikto perl-image-exiftool openbsd-netcat fcrackzip wireshark-qt socat"
 programs="$dev_apps $pentest_apps"
 sudo pacman -S $programs --noconfirm
 
-dev_apps="timeshift nerd-fonts-complete ngrok heroku-cli" # mongodb-compass mongodb mongodb-tools-bin
+dev_apps="timeshift nerd-fonts-complete" # ngrok heroku-cli mongodb-compass mongodb mongodb-tools-bin
 pentest_apps="burpsuite gobuster enum4linux smbmap steghide"
 programs="$dev_apps $pentest_apps"
 paru -S $programs --noconfirm
@@ -44,14 +44,11 @@ sudo modprobe vboxnetflt
 
 cp -r Athena-Linux/developer/scrollbook .scrollbook
 rm .scrollbook/32bit.sh
-
-
+rm -r .scrollbook/dev/
 
 
 rm .bashrc
 cp Athena-Linux/developer/dotfiles/bashrc_superuser .bashrc
-
-
 
 
 mkdir -p .psensor/
@@ -81,6 +78,7 @@ cp Athena-Linux/developer/dotfiles/picom.conf .config/picom/
 
 #bash Athena-Linux/developer/scrollbook/dev/install-WM-stack.sh
 cp Athena-Linux/developer/dotfiles/spectrwm.conf .spectrwm.conf
+echo "exec spectrwm" > .xinitrc
 
 
 
@@ -98,7 +96,7 @@ mkdir Pictures
 
 
 
-cp -r Athena-Linux
+rm -r Athena-Linux
 
 sudo pacman -Scc --noconfirm
 paru -Scc --noconfirm

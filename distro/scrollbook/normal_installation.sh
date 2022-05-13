@@ -26,13 +26,13 @@ sudo cp Athena-Linux/distro/files/sysfiles/lightdm.conf /etc/lightdm/
 
 
 sudo systemctl enable --now cups.socket
-sudo systemctl enable --now lightdm
+sudo systemctl enable lightdm
 
 
 
 
 amixer sset "Auto-Mute Mode" Disabled
-alsactl store
+sudo alsactl store
 
 
 
@@ -76,4 +76,4 @@ sudo pacman -Scc --noconfirm
 
 
 
-reboot
+#reboot

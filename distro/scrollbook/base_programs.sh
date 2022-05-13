@@ -38,7 +38,7 @@ multi_monitor_tool="arandr"
 office="libreoffice-still libpaper gtk3 sane"
 pdf_reader="zathura zathura-cb zathura-pdf-mupdf"
 image_manipulation="gimp gutenprint"
-utilities="redshift python-gobject python-pyxdg ciano kamoso ffmpeg acpi vym neofetch xorg-xrandr xorg-xprop udiskie"
+utilities="redshift python-gobject python-pyxdg ciano kamoso ffmpeg acpi neofetch xorg-xrandr xorg-xprop udiskie"
 browser_addons="firefox-ublock-origin firefox-decentraleyes firefox-adblock-plus"
 
 general_programs="$screenshot_tool $music_player $video_player $image_viewer $stopwatch $calculator $task_manager $email_app $browser $torrent_app $sharing_tools $download_tool $archiver $disk_cleaner $disk_formatter $dvd_burner $firewall_tool $file_manager $password_manager $notepad $printer_n_scanner $multi_monitor_tool $office $pdf_reader $image_manipulation $utilities $browser_addons" # $backup_tool - webkit2gtk ?
